@@ -1,0 +1,366 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml.cs" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml" caret="993" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="482" fromTop="18" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Interface/f:IParser.cs" caret="92" fromTop="4" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Network/f:HttpContentDownloader.cs" caret="1190" fromTop="17" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebsiteBookIndexPageParser.cs" caret="1358" fromTop="15" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="4139" fromTop="35" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="1884" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="1293" fromTop="28" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="6629" fromTop="15" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="5303" fromTop="30" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="4858" fromTop="14" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="5874" fromTop="22" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="6115" fromTop="26" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="7077" fromTop="34" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="4681" fromTop="37" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="4681" fromTop="37" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="4679" fromTop="36" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="2755" fromTop="22" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebsiteBookIndexPageParser.cs" caret="1371" fromTop="37" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebsiteBookIndexPageParser.cs" caret="1769" fromTop="47" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebsiteBookIndexPageParser.cs" caret="923" fromTop="15" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="7027" fromTop="39" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="7409" fromTop="49" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="7201" fromTop="31" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="4621" fromTop="36" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="2755" fromTop="25" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="2755" fromTop="16" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3282" fromTop="21" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3735" fromTop="28" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="4303" fromTop="23" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="4505" fromTop="28" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="4996" fromTop="40" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="2046" fromTop="29" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="3305" fromTop="40" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="4554" fromTop="49" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="3265" fromTop="38" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="2755" fromTop="32" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="1422" fromTop="32" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="public" priority="703" />
+      <Item value="void" priority="383" />
+      <Item value="Uri`0" priority="127" />
+      <Item value="WebClient`0" priority="31" />
+      <Item value="client" priority="191" />
+      <Item value="uri" priority="63" />
+      <Item value="var" priority="1823" />
+      <Item value="e" priority="63" />
+      <Item value="new" priority="895" />
+      <Item value="IDownloader" priority="28" />
+      <Item value="downloader" priority="63" />
+      <Item value="Uri" priority="86" />
+      <Item value="result" priority="159" />
+      <Item value="if" priority="863" />
+      <Item value="reader" priority="31" />
+      <Item value="keyword" priority="95" />
+      <Item value="String`0" priority="127" />
+      <Item value="string" priority="533" />
+      <Item value="content" priority="255" />
+      <Item value="doc" priority="319" />
+      <Item value="parser" priority="63" />
+      <Item value="re" priority="31" />
+      <Item value="match" priority="95" />
+      <Item value="Regex" priority="28" />
+      <Item value="reUrl" priority="31" />
+      <Item value="url" priority="31" />
+      <Item value="TimelineMarker`0" priority="31" />
+      <Item value="matchUrl" priority="31" />
+      <Item value="ListBox`0" priority="31" />
+      <Item value="List&lt;string&gt;" priority="28" />
+      <Item value="SearchResultUrlList" priority="31" />
+      <Item value="Panel`0" priority="63" />
+      <Item value="HtmlAgilityPack" priority="93" />
+      <Item value="HtmlDocument`0" priority="26" />
+      <Item value="HtmlDocument" priority="28" />
+      <Item value="inputStream" priority="191" />
+      <Item value="foreach" priority="287" />
+      <Item value="HtmlNode`0" priority="510" />
+      <Item value="node" priority="351" />
+      <Item value="type" priority="191" />
+      <Item value="HtmlNodeType`0" priority="63" />
+      <Item value="body" priority="511" />
+      <Item value="n" priority="255" />
+      <Item value="tables" priority="95" />
+      <Item value="bookListTable" priority="63" />
+      <Item value="htmlcontent" priority="31" />
+      <Item value="in" priority="255" />
+      <Item value="trElements" priority="319" />
+      <Item value="trElement" priority="95" />
+      <Item value="tdElement" priority="127" />
+      <Item value="return" priority="639" />
+      <Item value="null" priority="575" />
+      <Item value="nguid" priority="27" />
+      <Item value="fixed" priority="31" />
+      <Item value="aElement" priority="223" />
+      <Item value="item" priority="255" />
+      <Item value="x" priority="255" />
+      <Item value="UriKind`0" priority="63" />
+      <Item value="tdElements" priority="31" />
+      <Item value="Count`1" priority="53" />
+      <Item value="Length" priority="53" />
+      <Item value="DateTime`0" priority="127" />
+      <Item value="DateTime" priority="28" />
+      <Item value="MediaStreamAttributeKeys`0" priority="95" />
+      <Item value="input" priority="31" />
+      <Item value="object" priority="95" />
+      <Item value="InvalidCastException`0" priority="31" />
+      <Item value="Stream`0" priority="61" />
+      <Item value="WebsiteBookIndexPageParser" priority="29" />
+      <Item value="int" priority="95" />
+      <Item value="count" priority="191" />
+      <Item value="nodes" priority="319" />
+      <Item value="List" priority="95" />
+      <Item value="throw" priority="31" />
+      <Item value="Math`0" priority="31" />
+      <Item value="else" priority="95" />
+      <Item value="static" priority="191" />
+      <Item value="CultureInfo`0" priority="31" />
+      <Item value="childs" priority="95" />
+      <Item value="Type`0" priority="31" />
+      <Item value="typeList" priority="31" />
+      <Item value="GetSingleDirectChildByType`0" priority="31" />
+      <Item value="next" priority="63" />
+      <Item value="HtmlParseHelper`0" priority="154" />
+      <Item value="index" priority="31" />
+      <Item value="GetSingleDirectChildByTypeAndIndex`0" priority="31" />
+      <Item value="table" priority="95" />
+      <Item value="bookRows" priority="95" />
+      <Item value="tr" priority="31" />
+      <Item value="topTd" priority="127" />
+      <Item value="using" priority="92" />
+      <Item value="SmartReader" priority="30" />
+      <Item value="Library" priority="26" />
+      <Item value="Helper" priority="26" />
+      <Item value="BookWebSite`0" priority="31" />
+      <Item value="hh" priority="287" />
+      <Item value="chapterUrl" priority="63" />
+      <Item value="lowerTd" priority="63" />
+      <Item value="MixedCodeDocumentFragmentList`0" priority="92" />
+      <Item value="ChapterItem`0" priority="31" />
+      <Item value="List&lt;ChapterItem&gt;" priority="28" />
+      <Item value="items" priority="31" />
+      <Item value="ValueType`0" priority="31" />
+      <Item value="begin" priority="63" />
+      <Item value="end" priority="95" />
+      <Item value="beginIndex" priority="63" />
+      <Item value="temp" priority="287" />
+      <Item value="endIndex" priority="63" />
+      <Item value="TextElementEnumerator`0" priority="31" />
+      <Item value="ElementAt`1" priority="26" />
+      <Item value="as" priority="31" />
+      <Item value="IParser`0" priority="32" />
+      <Item value="WebSiteBookContentPageParser" priority="28" />
+      <Item value="SoduBookLastestUpdatePageParser" priority="29" />
+      <Item value="encoding" priority="31" />
+      <Item value="UTF8Encoding" priority="28" />
+      <Item value="BinaryReader`0" priority="31" />
+      <Item value="System" priority="30" />
+      <Item value="Linq" priority="26" />
+      <Item value="child" priority="383" />
+      <Item value="id" priority="63" />
+      <Item value="FindElementById`0" priority="31" />
+      <Item value="contentNode" priority="191" />
+      <Item value="GetContentNode`0" priority="31" />
+      <Item value="RemoveScriptNode`0" priority="63" />
+      <Item value="nodesToBeDeleted" priority="159" />
+      <Item value="deleteNode" priority="31" />
+      <Item value="xxx" priority="31" />
+      <Item value="ChapterName" priority="32" />
+      <Item value="textNodeParents" priority="127" />
+      <Item value="GetAllTextElementWithTheirParent`0" priority="31" />
+      <Item value="textNodes" priority="63" />
+      <Item value="StringBuilder" priority="28" />
+      <Item value="sb" priority="95" />
+      <Item value="Chapter`0" priority="31" />
+      <Item value="Metadata" priority="95" />
+      <Item value="hyperLinkNodes" priority="31" />
+      <Item value="private" priority="31" />
+      <Item value="CleanHtmlTree`0" priority="63" />
+      <Item value="continue" priority="31" />
+      <Item value="line" priority="31" />
+      <Item value="indexText3" priority="63" />
+      <Item value="htmlLink" priority="95" />
+      <Item value="indexText1" priority="31" />
+      <Item value="indexText2" priority="31" />
+      <Item value="startIndex" priority="63" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.WebClient">
+      <Item value="OpenReadCompleted" priority="26" />
+      <Item value="OpenReadAsync`0" priority="26" />
+      <Item value="Encoding" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.OpenReadCompletedEventArgs">
+      <Item value="Result" priority="26" />
+      <Item value="UserState" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.UriKind">
+      <Item value="Absolute" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Library.Network.HttpContentDownloader">
+      <Item value="Download`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.Stream">
+      <Item value="CanRead" priority="26" />
+      <Item value="Length" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamReader">
+      <Item value="ReadToEnd`0" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.HttpUtility">
+      <Item value="UrlDecode`0" priority="26" />
+      <Item value="UrlEncode`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="26" />
+      <Item value="IsNullOrWhiteSpace`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Library.Parser.SearchResultPageParser">
+      <Item value="Parse`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Regex">
+      <Item value="Match`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Match">
+      <Item value="Captures" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Capture">
+      <Item value="Value" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.CaptureCollection">
+      <Item value="Count" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="134" />
+      <Item value="Count" priority="53" />
+      <Item value="Contains`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:HtmlAgilityPack.HtmlDocument">
+      <Item value="Load`0" priority="80" />
+      <Item value="DocumentNode" priority="134" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:HtmlAgilityPack.HtmlNode">
+      <Item value="ChildAttributes`0" priority="26" />
+      <Item value="ChildNodes" priority="26" />
+      <Item value="NodeType" priority="107" />
+      <Item value="DescendantNodes`0" priority="242" />
+      <Item value="Name" priority="188" />
+      <Item value="InnerHtml" priority="80" />
+      <Item value="Attributes" priority="161" />
+      <Item value="InnerText" priority="242" />
+      <Item value="Id" priority="53" />
+      <Item value="Remove`0" priority="80" />
+      <Item value="ParentNode" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Where`1" priority="161" />
+      <Item value="Count`1" priority="269" />
+      <Item value="ElementAt`1" priority="26" />
+      <Item value="OrderByDescending`2" priority="26" />
+      <Item value="ToArray`1" priority="107" />
+      <Item value="Skip`1" priority="134" />
+      <Item value="Reverse`1" priority="107" />
+      <Item value="First`1" priority="189" />
+      <Item value="GetEnumerator`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Library.DataContract.SearchResultItem">
+      <Item value="IndexPageUri" priority="26" />
+      <Item value="BookName" priority="26" />
+      <Item value="LastUpdateChapterLink" priority="26" />
+      <Item value="LastUpdateDate" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:HtmlAgilityPack.HtmlAttribute">
+      <Item value="Value" priority="134" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Parse`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Abs`0" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToLower`0" priority="164" />
+      <Item value="Substring`0" priority="80" />
+      <Item value="Replace`0" priority="53" />
+      <Item value="Trim`0" priority="54" />
+      <Item value="Length" priority="26" />
+      <Item value="IndexOf`0" priority="107" />
+      <Item value="Contains`0" priority="161" />
+      <Item value="EndsWith`0" priority="26" />
+      <Item value="LastIndexOf`0" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Globalization.CultureInfo">
+      <Item value="InvariantCulture" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@SmartReader.Library.Helper.HtmlParseHelper">
+      <Item value="GetDirectChildrenByType`0" priority="107" />
+      <Item value="GetSingleDirectChildByType`0" priority="134" />
+      <Item value="GetSingleChildByTypeChain`0" priority="80" />
+      <Item value="GetSingleDirectChildByTypeAndIndex`0" priority="26" />
+      <Item value="Skip`0" priority="53" />
+      <Item value="SubArray`0" priority="53" />
+      <Item value="FindElementById`0" priority="80" />
+      <Item value="RemoveScriptNode`0" priority="26" />
+      <Item value="GetAllTextElementWithTheirParent`0" priority="26" />
+      <Item value="RemoveNodeById`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Library.DataContract.ChapterItem">
+      <Item value="ChapterName" priority="26" />
+      <Item value="ChapterUri" priority="26" />
+      <Item value="WebSite" priority="26" />
+      <Item value="LastUpdateTime" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.Encoding">
+      <Item value="GetEncoding`0" priority="26" />
+      <Item value="UTF8" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int64">
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Application">
+      <Item value="GetResourceStream`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@HtmlAgilityPack.HtmlNodeType">
+      <Item value="Text" priority="53" />
+      <Item value="Element" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="Append`0" priority="26" />
+      <Item value="AppendLine`0" priority="26" />
+      <Item value="ToString`0" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Library.DataContract.Chapter">
+      <Item value="Content" priority="26" />
+      <Item value="ChapterName" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Debug">
+      <Item value="Assert`0" priority="26" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

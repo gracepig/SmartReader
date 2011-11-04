@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SmartReader.Controls.DownloadSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="210"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="下载起始章节号" VerticalAlignment="Center"></TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1"  x:Name="DownloadChapterStart" Text="{Binding DownloadStartIndex, Mode=TwoWay}"  />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="下载：" VerticalAlignment="Top" Margin="5,20"></TextBlock>
+        <toolkit:ListPicker Grid.Row="1" Grid.Column="1" x:Name="DownloadChapterCountSelect" SelectedItem="{Binding ChapterToBeDownloadedCount,Mode=TwoWay}">
+        </toolkit:ListPicker>
+    </Grid>
+</UserControl>
