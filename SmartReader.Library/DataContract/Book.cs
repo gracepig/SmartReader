@@ -3,12 +3,17 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Linq;
+using SmartReader.Library.Helper;
 
 namespace SmartReader.Library.DataContract
 {
     [Table]
     public class Book : INotifyPropertyChanged, INotifyPropertyChanging
     {
+        public Book()
+        {
+        }
+
         private int _id;
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
         public int Id
@@ -37,9 +42,21 @@ namespace SmartReader.Library.DataContract
 
                 if (_displayingChapters == null)
                 {
-                    _displayingChapters = (from c in Chapters
-                                           select c).Take(10).ToArray();
 
+                    int displayStartChapterIndex = 0;
+                    if (LastReadChapterId > 0)
+                    {
+                        for(var i =0 ; i< Chapters.Length; i++)
+                        {
+                            if (Chapters[i].Id == LastReadChapterId)
+                            {
+                                displayStartChapterIndex = i;
+                            }
+                        }
+                    }
+
+                    _displayingChapters = (from c in Chapters
+                                           select c).Skip(displayStartChapterIndex).Take(Constants.ChapterShowInOnePage).ToArray();
                     currentDisplayingChapterIndex = 0;
                 }
             }
@@ -133,9 +150,9 @@ namespace SmartReader.Library.DataContract
         }
 
 
-        private DateTime _lastUpdateTime;
+        private DateTime _lastUpdateTime = DateTime.Now;
 
-        [Column]
+        [Column(CanBeNull = true)]
         public DateTime LastUpdateTime
         {
             set
@@ -198,26 +215,26 @@ namespace SmartReader.Library.DataContract
 
         public void NextPageChapters()
         {
-            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex + 10).Take(10).ToArray();
-            currentDisplayingChapterIndex += 10;
+            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex + Constants.ChapterShowInOnePage).Take(Constants.ChapterShowInOnePage).ToArray();
+            currentDisplayingChapterIndex += Constants.ChapterShowInOnePage;
         }
 
         public void PreviousPageChapters()
         {
-            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex - 10).Take(10).ToArray();
-            currentDisplayingChapterIndex -= 10;
+            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex - Constants.ChapterShowInOnePage).Take(Constants.ChapterShowInOnePage).ToArray();
+            currentDisplayingChapterIndex -= Constants.ChapterShowInOnePage;
         }
 
         public void FirstPageChapters()
         {
-            DisplayingChapters = Chapters.Take(10).ToArray();
+            DisplayingChapters = Chapters.Take(Constants.ChapterShowInOnePage).ToArray();
             currentDisplayingChapterIndex = 0;
         }
 
         public void LastPageChapters()
         {
-            DisplayingChapters = Chapters.Skip(Chapters.Count() -10).ToArray();
-            currentDisplayingChapterIndex = Chapters.Count() - 10;
+            DisplayingChapters = Chapters.Skip(Chapters.Count() - Constants.ChapterShowInOnePage).ToArray();
+            currentDisplayingChapterIndex = Chapters.Count() - Constants.ChapterShowInOnePage;
         }
     }
 }

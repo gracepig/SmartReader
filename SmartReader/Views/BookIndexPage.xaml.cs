@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using SmartReader.Library.DataContract;
@@ -10,7 +9,7 @@ namespace SmartReader.Views
 {
     public partial class BookIndexPage
     {
-        private PhoneStorage _storage;
+        private readonly PhoneStorage _storage;
 
         private BookIndexViewModel _model;
 
@@ -28,10 +27,8 @@ namespace SmartReader.Views
 
             var temp = ModelManager.GetBookIndexModel();
             _storage = PhoneStorage.GetPhoneStorageInstance();
-            if (temp.Book.Chapters == null)
-            {
-               temp.Book.Chapters = _storage.GetChaptersByBook(temp.Book);
-            }
+            
+            temp.Book.Chapters = _storage.GetChaptersByBook(temp.Book);
             Model = temp;
         }
 
@@ -62,6 +59,11 @@ namespace SmartReader.Views
         private void LastPage(object sender, EventArgs e)
         {
             Model.LastPage();
+        }
+
+        private void Refresh(object sender, EventArgs e)
+        {
+            Model.Refresh();
         }
     }
 }

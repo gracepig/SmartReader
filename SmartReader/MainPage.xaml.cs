@@ -1,41 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Linq;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ImageTools.Controls;
-using ImageTools.IO.Gif;
-using ImageTools.IO.Png;
-using Microsoft.Phone.Controls;
-using SmartReader.Library.DataContract;
-using SmartReader.Library.Interface;
-using SmartReader.Library.Network;
-using SmartReader.Library.Parser.BookSite;
-using SmartReader.Library.Parser.Sodu;
-using SmartReader.Library.Storage;
+using SmartReader.Helper;
 
 namespace SmartReader
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : IShell
     {
+
         // Constructor
         public MainPage()
         {
+            CrossThreadHelper.UIThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId; 
             InitializeComponent();
-
-            
-
             this.DataContext = this;
+            PageManager.RegisterRootPage(this);
         }
 
 
@@ -69,6 +47,17 @@ namespace SmartReader
         private void GotoTestViewPage(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Test/ViewTest.xaml", UriKind.Relative));
+        }
+
+        public void ShowExceptionError(Exception ex)
+        {
+            //this.ErrorMessage.IsOpen = true;
+           // MessageBox.Show(ex.Message);
+        }
+
+        public void Navigate (Uri uri)
+        {
+            NavigationService.Navigate(uri);
         }
     }
 }

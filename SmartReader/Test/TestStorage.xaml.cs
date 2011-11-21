@@ -118,7 +118,7 @@ namespace SmartReader.Test
         {
             var chapter = new Chapter();
             chapter.Book = book;
-            chapter.Content = "String Content";
+            chapter.SaveContent1 = "String Content";
             chapter.ChapterUri = new Uri("http://www.tszw.net/files/article/html/79/79194/2417331.html", UriKind.Absolute);
             chapter.ChapterName = "敌手的面目";
             chapter.LastUpdateTime = DateTime.Now;
@@ -131,7 +131,7 @@ namespace SmartReader.Test
         private ArticleImage CreateFakeArticleImage(Chapter chapter)
         {
             var image = new ArticleImage();
-            image.Chapter = chapter;
+          //  image.Chapter = chapter;
 
             var bitMapImage = new BitmapImage();
 
@@ -187,8 +187,8 @@ namespace SmartReader.Test
 
         private void LoadImage(object sender, RoutedEventArgs e)
         {
-            var image = Storage.GetAllArticleImages().First();
-
+            var image = PhoneStorage.GetPhoneStorageInstance().GetAllArticleImages().First();
+             
             this.ImageContainer.Source = ConvertToBitmapImage(image.ImageBytes);
         }
     }

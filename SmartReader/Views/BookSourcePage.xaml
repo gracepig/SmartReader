@@ -30,7 +30,7 @@
         </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <ListBox Grid.Row="0" x:Name="BookList" ItemsSource="{Binding BookList}">
+        <!--<ListBox Grid.Row="0" x:Name="BookList" ItemsSource="{Binding BookList}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Button Click="BookSelected">
@@ -47,6 +47,41 @@
                                 </StackPanel>
 
                                 <TextBlock Grid.Row="1" Text="{Binding LastestUpdateChapterName}" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+
+        <ListBox Grid.Row="0" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,0" Padding="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Click="BookSelected" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="0" Padding="-4">
+                        <Button.Content>
+                            <Grid HorizontalAlignment="Stretch" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle Grid.RowSpan="2" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Red"  Margin="0,0,5,0"/>
+
+                                <Grid Grid.Row="0" Grid.Column="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="18" />
+                                    <TextBlock Grid.Column="1" Text="{Binding WebSite.WebSiteName}" FontSize="18" HorizontalAlignment="Right"/>
+                                </Grid>
+
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastestUpdateChapterName}" FontSize="18" />
                             </Grid>
                         </Button.Content>
                     </Button>

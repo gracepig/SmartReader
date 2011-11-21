@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Interface;
@@ -16,7 +17,6 @@ namespace SmartReader.Library.Network
             //client.OpenReadCompleted += get;
             //client.OpenReadAsync(uri,keyWord);
         }
-
 
         public void Download(Uri uri, object metaData ,IParser parser )
         {
@@ -56,6 +56,29 @@ namespace SmartReader.Library.Network
             var state = new RequestState { Request = request };
             request.BeginGetResponse(callback,state );
         }
+
+
+        public void DownloadPost(Uri targetUri, string key,  string data, AsyncCallback callback)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(targetUri);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            var state = new RequestState { Request = request };
+
+            request.BeginGetRequestStream( ar =>
+                                               {
+                                                   var requestStream = request.EndGetRequestStream(ar);
+                                                   using (var sw = new StreamWriter(requestStream))
+                                                   {
+                                                       sw.Write(String.Format("_method=POST&"));
+                                                       sw.Write(String.Format("{0}={1}", key, data));
+                                                   }
+
+                                                   request.BeginGetResponse(callback, state);
+
+                                               }, null);
+        }
+
     }
 
     public class RequestState

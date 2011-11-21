@@ -44,6 +44,15 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\..\project\HtmlAgilityPack\Trunk\HAPPhone\Bin\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="ImageTools">
+      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="mscorlib.Extensions" />
@@ -63,8 +72,8 @@
     <Compile Include="DataContract\WebSite.cs" />
     <Compile Include="DataContract\Chapter.cs" />
     <Compile Include="DataContract\SearchResult.cs" />
+    <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\EncodingHelper.cs" />
-    <Compile Include="Helper\ExceptionHandler.cs" />
     <Compile Include="Helper\HtmlParseHelper.cs" />
     <Compile Include="Helper\SmallDispatcher.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -77,11 +86,12 @@
     <Compile Include="Parser\Sodu\SoduBookIndexPageParser.cs" />
     <Compile Include="Parser\Sodu\SoduSearchResultPageParser.cs" />
     <Compile Include="Parser\BookSite\WebsiteBookIndexPageParser.cs" />
+    <Compile Include="Parser\Xiaoelang\XiaoelangBookLastestUpdatePageParser.cs" />
+    <Compile Include="Parser\Xiaoelang\XiaoelangSearchResultPageParser.cs" />
     <Compile Include="Storage\PhoneStorage.cs" />
     <Compile Include="Storage\SmartReaderDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Parser\Xiaoelang\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

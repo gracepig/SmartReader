@@ -6,6 +6,7 @@ using SmartReader.Library.DataContract;
 using SmartReader.Library.Network;
 using SmartReader.Library.Parser.BookSite;
 using SmartReader.Library.Parser.Sodu;
+using SmartReader.Library.Storage;
 
 namespace SmartReader.Test
 {
@@ -50,7 +51,10 @@ namespace SmartReader.Test
             //var uri7 = new Uri(String.Format("http://www.dazhouhuangzu.net/mulu/0/175/1789564.html"), UriKind.Absolute);
             //var uri8 = new Uri(String.Format("http://www.baihuawen.com/xiaoshuo/27/27183/9662281.html"), UriKind.Absolute);
             //var uri9 = new Uri(String.Format("http://www.xiaoshuoread.com/read/0/853/2119114.html"), UriKind.Absolute); 
-            var uri10 = new Uri(String.Format("http://www.xiaoshuo999.org/files/article/html/0/421/1077782.html"), UriKind.Absolute);
+            var uri10 = new Uri(String.Format("http://www.wanshuba.com/Html/3/3833/2151249.html"), UriKind.Absolute);
+
+            var dbHelpler = TestDBHelper.GetTestDBInstance();
+            dbHelpler.PrepareTempDB();
 
             //downloader.Download(uri1, new Chapter { ChapterUri = uri1, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
             //downloader.Download(uri2, new Chapter { ChapterUri = uri2, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
@@ -61,7 +65,7 @@ namespace SmartReader.Test
             //downloader.Download(uri7, new Chapter { ChapterUri = uri7, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
             //downloader.Download(uri8, new Chapter { ChapterUri = uri8, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
             //downloader.Download(uri9, new Chapter { ChapterUri = uri9, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
-            downloader.Download(uri10, new Chapter { ChapterUri = uri10, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
+            downloader.Download(uri10, dbHelpler.TestTextChapter, new WebSiteBookContentPageParser());
         }
 
         private void CallWebSiteBookSearchPage(object sender, RoutedEventArgs e)

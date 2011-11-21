@@ -211,5 +211,10 @@ namespace SmartReader.Controls
             return textBlock;
         }
 
+        public void BackToTop()
+        {
+            var scrollContainder = this.GetTemplateChild("ScrollViewer") as ScrollViewer;
+            if (scrollContainder != null) scrollContainder.ScrollToVerticalOffset(0);
+        }
     }
 }

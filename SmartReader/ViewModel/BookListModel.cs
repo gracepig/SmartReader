@@ -19,7 +19,12 @@ namespace SmartReader.ViewModel
         public BookListModel()
         {
             _storage = PhoneStorage.GetPhoneStorageInstance();
-            _bookList = _storage.GetAllBooks();
+            BookList = _storage.GetAllBooks();
+        }
+
+        public void RefreshBookList()
+        {
+            BookList = _storage.GetAllBooks();
         }
     }
 }

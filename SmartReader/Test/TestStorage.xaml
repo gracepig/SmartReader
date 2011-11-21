@@ -29,16 +29,14 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition  Height="60"></RowDefinition>
+                <RowDefinition  Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Content="Prepare DB " Click="PrepareDB" Grid.Row="0"></Button>
-            <Button Content="TestLocal DB " Click="TestLocalDB" Grid.Row="1"></Button>
-            <Button Content="LoadImage" Click="LoadImage" Grid.Row="2"></Button>
+            <Button Content="Prepare DB " Click="PrepareDB" Grid.Row="0" FontSize="15"></Button>
+            <Button Content="TestLocal DB " Click="TestLocalDB" Grid.Row="1" FontSize="15"></Button>
+            <Button Content="LoadImage" Click="LoadImage" Grid.Row="2" FontSize="15"></Button>
             
             <Image x:Name="ImageContainer" Grid.Row="3"/>
             

@@ -27,6 +27,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <!--<Setter Property="Background" Value="Red"/>-->
+        </Style>
+        
+        
+        <Storyboard x:Name="ScaleUp">
+            
+        </Storyboard>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

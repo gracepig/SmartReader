@@ -32,7 +32,7 @@
         </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}">
+        <!--<ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Button>
@@ -54,6 +54,36 @@
                     </Button>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+        </ListBox>-->
+
+        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" LayoutUpdated="ChapterListPageLayoutUpdated" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Blue" />
+                        <Button Grid.Row="0"  Grid.Column="1" Click="ShowChapter" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding ChapterName}" HorizontalAlignment="Left" FontSize="18"/>
+                                    <TextBlock Grid.Column="1" Text="已下载" HorizontalAlignment="Right" Visibility="{Binding Downloaded, Converter={StaticResource ShowDownloadStatusConverter}}" FontSize="18"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
 
@@ -68,8 +98,10 @@
                 <shell:ApplicationBarMenuItem Text="最后一页" Click="LastPage"/>
                 <shell:ApplicationBarMenuItem Text="下载设置" Click="DownloadSetting"/>
                 <shell:ApplicationBarMenuItem Text="下载" Click="Download"/>
+                <shell:ApplicationBarMenuItem Text="返回本地书库" Click="BackToBookListPage"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
+

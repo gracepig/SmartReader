@@ -14,8 +14,10 @@ namespace SmartReader.Views
         private SearchViewModel _model;
         public SearchViewModel Model
         {
-            set { _model = value;
-                this.DataContext = _model;
+            set 
+            { 
+                _model = value;
+                DataContext = _model;
             }
             get { return _model; }
         }
@@ -48,7 +50,7 @@ namespace SmartReader.Views
 
         private void SearchBtnClicked(object sender, RoutedEventArgs e)
         {
-            var keyword = this.KeywordInput.Text.Trim();
+            var keyword = KeywordInput.Text.Trim();
 
             Model.Search(keyword);
         }

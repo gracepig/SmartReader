@@ -8,6 +8,8 @@ using SmartReader.Library.Helper;
 using SmartReader.Library.Network;
 using SmartReader.Library.Parser.BookSite;
 using SmartReader.Library.Parser.Sodu;
+using SmartReader.Library.Parser.Xiaoelang;
+using SearchEngine = SmartReader.Library.DataContract.SearchEngine;
 
 namespace SmartReader.ViewModel
 {
@@ -56,16 +58,22 @@ namespace SmartReader.ViewModel
         {
             Downloading = true;
 
-            var searchEngine = GetSearchEngines()[0];
+            var searchEngine = GetSearchEngine();
 
-            var searchUri = new Uri(String.Format(searchEngine.SearchUri, HttpUtility.UrlEncode(keyword)), UriKind.Absolute);
-
+            Uri searchUri = new Uri(searchEngine.SearchUri, UriKind.Absolute);
+            if (searchEngine.Type == SearchEngineType.Sodu)
+            {
+                searchUri = new Uri(String.Format(searchEngine.SearchUri, HttpUtility.UrlEncode(keyword)), UriKind.Absolute);
+            }
+            
             //var searchResults = new List<SearchResult>();
 
             HttpContentDownloader downloader = new HttpContentDownloader();
             var searchResult = new SearchResult();
-            //downloader.Download(searchUri, searchResult, GetData);
-            downloader.Download(searchUri,
+
+            if (searchEngine.Type == SearchEngineType.Sodu)
+            {
+                downloader.Download(searchUri,
                 ar =>
                 {
                     //At this step, we can get the index page in the search engine 
@@ -79,18 +87,27 @@ namespace SmartReader.ViewModel
                     response.GetResponseStream();
                     var parser = new SoduSearchResultPageParser();
                     SearchBookResult = parser.Parse(response.GetResponseStream(), searchResult) as List<SearchResult>;
-
-                    //if (searchEngine.Name == "Sodu")
-                    //{
-                    //    if (searchResults.Count > 0)
-                    //    {
-                    //        GetBookSiteLink(searchResults[0].IndexPageUri, searchResults[0]);
-                    //    }
-                    //}
-
-                    //Application.Current.RootVisual.Dispatcher.BeginInvoke(() => {Downloading = false;});
                     Downloading = false;
                 });
+            }
+
+            if (searchEngine.Type == SearchEngineType.Xiaoelang)
+            {
+                downloader.DownloadPost(searchUri, "keyword" , keyword, 
+                ar =>
+                {
+                    //At this step, we can get the index page in the search engine 
+                    var state = (RequestState)ar.AsyncState;
+                    var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                    var metaData = state.Metadata as SearchResult;
+                    if (metaData != null) { }
+                    response.GetResponseStream();
+                    var parser = new XiaoelangSearchResultPageParser();
+                    SearchBookResult = parser.Parse(response.GetResponseStream(), searchResult) as List<SearchResult>;
+                    
+                    Downloading = false;
+                });
+            }
         }
 
         private List<Book> _bookList;
@@ -102,6 +119,8 @@ namespace SmartReader.ViewModel
 
         public void GetBookSiteLink(SearchResult searchResult)
         {
+            var searchEngine = GetSearchEngine();
+            
             Uri soduBookLatestUpdatePage = searchResult.IndexPageUri;
             var downloader = new HttpContentDownloader();
             //downloader.Download(searchUri, searchResult, GetData);
@@ -112,8 +131,19 @@ namespace SmartReader.ViewModel
                     var state = (RequestState)ar.AsyncState;
                     var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                     response.GetResponseStream();
-                    var parser = new SoduBookLastestUpdatePageParser();
-                    BookList = parser.Parse(response.GetResponseStream(), searchResult.Book) as List<Book>;
+
+                    if (searchEngine.Type == SearchEngineType.Sodu)
+                    {
+                        var parser = new SoduBookLastestUpdatePageParser();
+                        BookList = parser.Parse(response.GetResponseStream(), searchResult.Book) as List<Book>;    
+                    }
+                    
+                    if (searchEngine.Type == SearchEngineType.Xiaoelang)
+                    {
+                        var parser = new XiaoelangBookLastestUpdatePageParser();
+                        BookList = parser.Parse(response.GetResponseStream(), searchResult.Book) as List<Book>;    
+                    }
+
                 });
         }
 
@@ -122,26 +152,32 @@ namespace SmartReader.ViewModel
         public void GetBookSiteBookIndexPageLink(Book book)
         {
             var downloader = new HttpContentDownloader();
-
-            downloader.Download(book.IndexPage,
-                ar =>
-                {
-                    //At this step, we can get the index page in the search engine 
-                    var state = (RequestState)ar.AsyncState;
-                    var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
-                    response.GetResponseStream();
-
-                    book.RootUrl = UrlHelper.GetRootUrlString(response.ResponseUri);
-                    var parser = new WebSiteBookContentPageParser();
-                    parser.Parse(response.GetResponseStream(), book);
-
-                    ParseWebSiteBookIndexPage(book);
-
-                    if (GetBookIndexPageCompleted != null )
+            try
+            {
+                downloader.Download(book.IndexPage,
+                    ar =>
                     {
-                        GetBookIndexPageCompleted(this, null);
-                    }
-                });
+                        //At this step, we can get the index page in the search engine 
+                        var state = (RequestState)ar.AsyncState;
+                        var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                        response.GetResponseStream();
+
+                        book.RootUrl = UrlHelper.GetRootUrlString(response.ResponseUri);
+                        var parser = new WebSiteBookContentPageParser();
+                        parser.Parse(response.GetResponseStream(), book);
+
+                        ParseWebSiteBookIndexPage(book);
+
+                        if (GetBookIndexPageCompleted != null)
+                        {
+                            GetBookIndexPageCompleted(this, null);
+                        }
+                    });
+            }
+            catch (WebException we)
+            {
+                ExceptionHandler.HandleException(we);
+            }
         }
 
         public void ParseWebSiteBookIndexPage(Book book)
@@ -158,7 +194,14 @@ namespace SmartReader.ViewModel
 
                     book.RootUrl = UrlHelper.GetRootUrlString(response.ResponseUri);
                     var parser = new WebsiteBookIndexPageParser();
-                    parser.Parse(response.GetResponseStream(), book);
+
+                    try {
+                        parser.Parse(response.GetResponseStream(), book);
+                    }
+                    catch (Exception e)
+                    {
+                        ExceptionHandler.HandleException(e);
+                    }
 
                     SelectedBook = book;
 
@@ -166,13 +209,30 @@ namespace SmartReader.ViewModel
                 });
         }
 
-        private SearchEngine[] GetSearchEngines()
+        private SearchEngine GetSearchEngine()
         {
-            var ret = new SearchEngine();
-            ret.Name = "Sodu";
-            //var uri = new Uri(String.Format("http://search.sodu.org/searchname.aspx?wd={0}", HttpUtility.UrlEncode(keyword)), UriKind.Absolute);
-            ret.SearchUri = "http://search.sodu.org/searchname.aspx?wd={0}";
-            return new SearchEngine[] { ret };
+            if (Settings.DefaultSearchEngineType == SearchEngineType.Sodu)
+            {
+                var ret = new SearchEngine();
+                ret.Type = SearchEngineType.Sodu;
+                //var uri = new Uri(String.Format("http://search.sodu.org/searchname.aspx?wd={0}", HttpUtility.UrlEncode(keyword)), UriKind.Absolute);
+                ret.SearchUri = "http://search.sodu.org/searchname.aspx?wd={0}";
+                ret.Method = HttpMethod.Get;
+                return ret ;
+            }
+
+            if (Settings.DefaultSearchEngineType == SearchEngineType.Xiaoelang)
+            {
+                var ret = new SearchEngine();
+                ret.Type = SearchEngineType.Xiaoelang;
+                //var uri = new Uri(String.Format("http://www.xiaoelang.com/books/search", HttpUtility.UrlEncode(keyword)), UriKind.Absolute);
+                ret.SearchUri = "http://www.xiaoelang.com/books/search";
+                ret.Method = HttpMethod.Post;
+                return  ret ;
+            }
+
+            return null;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

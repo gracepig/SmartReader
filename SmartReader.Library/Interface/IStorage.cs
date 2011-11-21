@@ -18,7 +18,7 @@ namespace SmartReader.Library.Interface
 
         void SaveChapters(IEnumerable<Chapter> chapter);
 
-        void UpdateChapter(Chapter chapter);
+        void UpdateDB();
 
         void SaveWebSite(WebSite website);
     }

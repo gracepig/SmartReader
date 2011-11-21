@@ -1,8 +1,8 @@
-﻿<xapCache source="D:\Projects\SmartReader\SmartReader\Bin\Debug\SmartReader.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="10/30/2011 4:51:44 PM">
-  <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="10/19/2011 2:25:38 PM" />
-  <file source="D:\Projects\SmartReader\SmartReader\Background.png" archivePath="Background.png" lastWriteTime="8/19/2011 10:06:31 PM" />
-  <file source="D:\Projects\SmartReader\SmartReader\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="8/19/2011 10:06:31 PM" />
-  <file source="D:\Projects\SmartReader\SmartReader\obj\Debug\SmartReader.dll" archivePath="SmartReader.dll" lastWriteTime="10/30/2011 4:51:43 PM" />
+﻿<xapCache source="D:\Projects\SmartReader\SmartReader\Bin\Debug\SmartReader.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="11/18/2011 2:58:23 PM">
+  <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="11/17/2011 4:19:52 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\ApplicationIcon173173.png" archivePath="ApplicationIcon173173.png" lastWriteTime="11/17/2011 4:18:47 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\ApplicationIcon6262.png" archivePath="ApplicationIcon6262.png" lastWriteTime="11/17/2011 4:17:23 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\obj\Debug\SmartReader.dll" archivePath="SmartReader.dll" lastWriteTime="11/18/2011 2:58:22 PM" />
   <file source="D:\Projects\SmartReader\packages\Coding4Fun.Phone.Controls.Complete.1.4.8\lib\Coding4Fun.Phone.Controls.dll" archivePath="Coding4Fun.Phone.Controls.dll" lastWriteTime="10/24/2011 11:18:29 PM" />
   <file source="D:\Projects\SmartReader\packages\Coding4Fun.Phone.Controls.Complete.1.4.8\lib\Coding4Fun.Phone.Controls.Toolkit.dll" archivePath="Coding4Fun.Phone.Controls.Toolkit.dll" lastWriteTime="10/24/2011 11:18:29 PM" />
   <file source="D:\Projects\ImageTools 0.30\bin\Phone\ImageTools.Controls.dll" archivePath="ImageTools.Controls.dll" lastWriteTime="10/12/2010 1:05:50 AM" />
@@ -11,11 +11,13 @@
   <file source="D:\Projects\ImageTools 0.30\bin\Phone\ImageTools.IO.Png.dll" archivePath="ImageTools.IO.Png.dll" lastWriteTime="10/12/2010 1:05:31 AM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="9/15/2011 3:36:26 PM" />
   <file source="D:\Projects\SmartReader\packages\Coding4Fun.Phone.Controls.Complete.1.4.8\lib\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="10/24/2011 11:18:29 PM" />
-  <file source="D:\Projects\SmartReader\SmartReader.Library\Bin\Debug\SmartReader.Library.dll" archivePath="SmartReader.Library.dll" lastWriteTime="10/30/2011 2:27:23 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader.Library\Bin\Debug\SmartReader.Library.dll" archivePath="SmartReader.Library.dll" lastWriteTime="11/18/2011 2:30:17 PM" />
   <file source="D:\Projects\SmartReader\SmartReader.Library\Bin\Debug\HtmlAgilityPack.dll" archivePath="HtmlAgilityPack.dll" lastWriteTime="8/23/2011 8:37:35 PM" />
   <file source="D:\Projects\ImageTools 0.30\bin\Phone\PhoneCodeContractsAssemblies.dll" archivePath="PhoneCodeContractsAssemblies.dll" lastWriteTime="10/10/2010 9:40:57 PM" />
   <file source="D:\Projects\ImageTools 0.30\bin\Phone\ImageTools.Utils.dll" archivePath="ImageTools.Utils.dll" lastWriteTime="10/12/2010 1:05:39 AM" />
   <file source="D:\Projects\ImageTools 0.30\bin\Phone\ICSharpCode.SharpZLib.Phone.dll" archivePath="ICSharpCode.SharpZLib.Phone.dll" lastWriteTime="10/10/2010 9:40:58 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="8/19/2011 10:06:31 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\Background.png" archivePath="Background.png" lastWriteTime="8/19/2011 10:06:31 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Images\appbar.add.rest.png" archivePath="Images\appbar.add.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Images\appbar.back.rest.png" archivePath="Images\appbar.back.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Images\appbar.basecircle.rest.png" archivePath="Images\appbar.basecircle.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />
@@ -42,6 +44,8 @@
   <file source="D:\Projects\SmartReader\SmartReader\README_FIRST.txt" archivePath="README_FIRST.txt" lastWriteTime="9/21/2011 8:55:21 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="8/19/2011 10:06:31 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="10/25/2011 10:35:28 AM" />
+  <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="8/19/2011 10:06:31 PM" />
+  <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="8/19/2011 10:06:31 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\Images\appbar.add.rest.png" archivePath="Images\appbar.add.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\Images\appbar.back.rest.png" archivePath="Images\appbar.back.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />
   <file source="D:\Projects\SmartReader\SmartReader\Bin\Debug\Images\appbar.basecircle.rest.png" archivePath="Images\appbar.basecircle.rest.png" lastWriteTime="10/19/2011 2:49:05 PM" />

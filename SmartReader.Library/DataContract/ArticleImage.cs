@@ -21,6 +21,9 @@ namespace SmartReader.Library.DataContract
             }
         }
 
+        [Column]
+        public string ImageUrl { get; set; }
+
         [Column(IsVersion = true)]
         private Binary version;
 

@@ -13,9 +13,10 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape"
     Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True"
-    OrientationChanged="PageOrientationChanged">
+    OrientationChanged="PageOrientationChanged"
+    LayoutUpdated="LayoutUpdated">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -26,8 +27,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding ChapterInfo}" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -41,18 +41,43 @@
             <Controls:ScrollableTextBlock x:Name="ChapterTextContent" Text="{Binding CurrentChapter.Content}" Style="{StaticResource ScrollableTextBlockStyle}"
                                           HorizontalAlignment="Left" VerticalAlignment="Top" 
                                           Height="618" Width="427" Margin="12,-11,0,0" />
+            <ListBox x:Name="ImageContainer" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="{Binding}" />
+                            <!--<TextBlock Text="Image Start" />-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--<ScrollViewer>
+                <StackPanel x:Name="ImageContainer" Orientation="Vertical">
+                    <Image x:Name="image1" />
+                    <Image x:Name="image2" />
+                </StackPanel>
+            </ScrollViewer>-->
+
+            <!--<Grid  x:Name="ImageContainer">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image x:Name="image1" Grid.Row="0"/>
+                    <Image x:Name="image2" Grid.Row="1"/>
+            </Grid>-->
         </Grid>
         
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="False"  IsMenuEnabled="True" >
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.next.rest.png" Text="Button 2"/>
+        <shell:ApplicationBar IsVisible="True"  IsMenuEnabled="True" >
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="Back" Click="PreviousChapter"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.next.rest.png" Text="Next" Click="NextChapter"/>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+                <shell:ApplicationBarMenuItem Text="回目录" Click="BackToBookIndex"/>
+                <shell:ApplicationBarMenuItem Text="返回本地书库" Click="BackToBookListPage"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

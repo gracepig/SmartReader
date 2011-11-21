@@ -74,7 +74,7 @@ namespace SmartReader.Library.DataContract
             }
         }
 
-        private DateTime _lastUpdateTime;
+        private DateTime _lastUpdateTime = DateTime.Now;
         [Column]
         public DateTime LastUpdateTime
         {
@@ -116,15 +116,28 @@ namespace SmartReader.Library.DataContract
         private string _content;
 
         [Column]
-        public string Content
+        public string SaveContent1
         {
             set
             {
-                NotifyPropertyChanging("Content");
                 _content = value;
-                NotifyPropertyChanged("Content");
             }
             get { return _content; }
+        }
+
+        [Column]
+        public string SaveContent2
+        {
+            set
+            {
+                _content = value;
+            }
+            get { return _content; }
+        }
+
+        public string Content
+        {
+            get { return SaveContent1 + SaveContent2; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

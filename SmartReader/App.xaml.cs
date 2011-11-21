@@ -12,8 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using SmartReader.Helper;
 using SmartReader.Library.Helper;
 using SmartReader.Library.Storage;
+using SmartReader.Test;
+using SmartReader.ViewModel;
+using SmartReader.Views;
 
 namespace SmartReader
 {
@@ -24,6 +28,8 @@ namespace SmartReader
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        private PhoneApplicationPage RootPage = null;
 
         /// <summary>
         /// Constructor for the Application object.
@@ -66,13 +72,23 @@ namespace SmartReader
         private void Init()
         {
             EncodingHelper.BuildGBKToUnicodeMapping();
+
+            Settings.Load();
             using (var db1 = new SmartReaderDataContext("isostore:/SmartReader.sdf"))
             {
                 if (db1.DatabaseExists() == false)
                 {
+                    //db1.DeleteDatabase();
+                  db1.CreateDatabase();
+                }
+                else
+                {
+                    db1.DeleteDatabase();
                     db1.CreateDatabase();
                 }
             }
+
+            App.Current.RootVisual = new ViewTest();
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -116,6 +132,27 @@ namespace SmartReader
             {
                 // An unhandled exception has occurred; break into the debugger
                 System.Diagnostics.Debugger.Break();
+            }
+
+            e.Handled = true;
+            Error.Exception = e.ExceptionObject;
+
+            if (CrossThreadHelper.IsUIThread)
+            {
+                var phoneApplicationFrame = RootVisual as PhoneApplicationFrame;
+                if (phoneApplicationFrame != null)
+                    phoneApplicationFrame.Source =
+                        new Uri("/Views/Error.xaml", UriKind.Relative);
+            }
+            else
+            {
+                CrossThreadHelper.CrossThreadMethodCall(()=>
+                                                            {
+                                                                var phoneApplicationFrame = RootVisual as PhoneApplicationFrame;
+                                                                if (phoneApplicationFrame != null)
+                                                                    phoneApplicationFrame.Source =
+                                                                        new Uri("/Views/Error.xaml", UriKind.Relative);                                                
+                                                            });
             }
         }
 

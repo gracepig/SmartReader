@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Windows.Threading;
@@ -40,15 +41,8 @@ namespace SmartReader.ViewModel
             Book = targetBook;
             DownloadStartIndex = 1;
 
-            var chapterToBeDownloadedCount = ChapterToBeDownloadedCount;
-            if (!AppSetting.TryGetSetting<int>("DefaultDownloadBatchSize", out chapterToBeDownloadedCount))
-            {
-                ChapterToBeDownloadedCount = 10;
-            }
-            else
-            {
-                ChapterToBeDownloadedCount = chapterToBeDownloadedCount;
-            }
+            int chapterToBeDownloadedCount;
+            ChapterToBeDownloadedCount = !AppSetting.TryGetSetting("DefaultDownloadBatchSize", out chapterToBeDownloadedCount) ? 10 : chapterToBeDownloadedCount;
         }
 
         private readonly PhoneStorage _storage = PhoneStorage.GetPhoneStorageInstance();
@@ -57,49 +51,71 @@ namespace SmartReader.ViewModel
         {
             _storage.SaveWebSite(Book.WebSite);
             _storage.SaveBook(Book);
+            _storage.SaveChapters(Book.Chapters);
             ThreadPool.QueueUserWorkItem(DownloadChapters);
         }
 
-        private Object thisLock = new Object();
-        private int BatchCompleteCount = 0;
-        private int ThreadCount = 2;
+        private readonly Object _thisLock = new Object();
+        private int _batchCompleteCount;
+        private const int ThreadCount = 2;
 
         public void DownloadChapters(object s)
         {
             Debug.Assert(DownloadStartIndex > 0);
 
-            var downloadEndIndex = DownloadStartIndex + ChapterToBeDownloadedCount > Book.Chapters.Length
+            var downloadEndIndex = DownloadStartIndex + ChapterToBeDownloadedCount - 1 > Book.Chapters.Length
                                        ? Book.Chapters.Length
-                                       : DownloadStartIndex + ChapterToBeDownloadedCount;
+                                       : DownloadStartIndex + ChapterToBeDownloadedCount - 1;
 
-            var i = 0;
+            var i = DownloadStartIndex - 1;
+            var newChapters = new List<Chapter>();
+            var updatedChapters = new List<Chapter>();
 
             do
             {
-                var resetEvents = i + ThreadCount < downloadEndIndex
+                var resetEvents = i + ThreadCount <= downloadEndIndex
                                       ? new ManualResetEvent[ThreadCount]
                                       : new ManualResetEvent[1];
-                for (var j = DownloadStartIndex - 1; j < ThreadCount && i + j < downloadEndIndex; j++)
+                for (var j = 0; i + j < downloadEndIndex && j < resetEvents.Length; j++)
                 {
                     var chapter = Book.Chapters[i + j];
+                    updatedChapters.Add(chapter);
                     resetEvents[j] = new ManualResetEvent(false);
                     ThreadPool.QueueUserWorkItem(DownloadChapter,
-                                                 new DownloadTask {TaskChapter = chapter, ResetEvent = resetEvents[j]});
+                                                 new DownloadTask {TaskChapter = chapter, 
+                                                     ResetEvent = resetEvents[j],
+                                                     BatchCount = resetEvents.Length});
                 }
                 
                 WaitHandle.WaitAny(resetEvents);
 
-                i += ThreadCount;
+                if ( i + ThreadCount <= downloadEndIndex)
+                {
+                    i += ThreadCount;
+                }
+                else
+                {
+                    i++;
+                }
 
-                ProgressIndicatorHelper.SetIndicatorValue(i/(double) ChapterToBeDownloadedCount);
+                ProgressIndicatorHelper.SetIndicatorValue((i-DownloadStartIndex + 1)/(double) ChapterToBeDownloadedCount);
                 
-                if (i == ChapterToBeDownloadedCount)
+                if ((i - DownloadStartIndex + 1) >= ChapterToBeDownloadedCount)
                 {
                     ProgressIndicatorHelper.StopProgressIndicator();
-                    _storage.SaveChapters(Book.Chapters);
                 }
 
             } while (i < downloadEndIndex);
+            
+            //foreach (var chapter in updatedChapters)
+            //{
+            //    _storage.UpdateDB(chapter);
+            //}
+            _storage.UpdateDB();
+            //foreach (var chapter in newChapters)
+            //{
+            //    PhoneStorage.GetPhoneStorageInstance();
+            //}
         }
 
         public void DownloadChapter(object s)
@@ -119,14 +135,14 @@ namespace SmartReader.ViewModel
                     var parser = new WebSiteBookContentPageParser();
                     parser.Parse(response.GetResponseStream(), cha.TaskChapter);
 
-                    lock (thisLock)
+                    lock (_thisLock)
                     {
-                        BatchCompleteCount++;
+                        _batchCompleteCount++;
                     }
 
-                    if (BatchCompleteCount == ThreadCount)
+                    if (_batchCompleteCount == cha.BatchCount)
                     {
-                        BatchCompleteCount = 0;
+                        _batchCompleteCount = 0;
                         cha.ResetEvent.Set();
                     }
 
@@ -176,6 +192,7 @@ namespace SmartReader.ViewModel
         {
             public Chapter TaskChapter;
             public ManualResetEvent ResetEvent;
+            public int BatchCount;
         }
 
         public void NextPageChapters()
@@ -202,16 +219,49 @@ namespace SmartReader.ViewModel
 
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            if (this.PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 SmartDispatcher.BeginInvoke(() => PropertyChanged(this, e));
-
             }
         }
 
         private void RaiseProperyChanged(string name)
         {
             OnPropertyChanged(new PropertyChangedEventArgs(name));
+        }
+
+        public void Refresh()
+        {
+            var downloader = new HttpContentDownloader();
+
+            downloader.Download(Book.IndexPage,
+                ar =>
+                {
+                    //At this step, we can get the index page in the search engine 
+                    var state = (RequestState)ar.AsyncState;
+                    var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                    response.GetResponseStream();
+
+                    Book.RootUrl = UrlHelper.GetRootUrlString(response.ResponseUri);
+                    var parser = new WebsiteBookIndexPageParser();
+
+                    var temp = new Book {RootUrl = Book.RootUrl};
+                    parser.Parse(response.GetResponseStream(), temp );
+
+                    var newChapters = new List<Chapter>();
+                    newChapters.AddRange(Book.Chapters);
+                    newChapters.AddRange(
+                            temp.Chapters.Where
+                            (
+                                chapter => !Book.Chapters.Any(c => c.ChapterName == chapter.ChapterName)
+                            )
+                        );
+
+                    if (newChapters.Count > Book.Chapters.Count())
+                    {
+                        Book.Chapters = newChapters.ToArray();
+                    }
+                });
         }
     }
 }

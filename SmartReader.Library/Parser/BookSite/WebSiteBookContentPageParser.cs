@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using HtmlAgilityPack;
+using ImageTools.IO.Gif;
+using ImageTools.IO.Png;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Helper;
 using SmartReader.Library.Interface;
+using SmartReader.Library.Network;
+using SmartReader.Library.Storage;
 using hh = SmartReader.Library.Helper.HtmlParseHelper;
 
 namespace SmartReader.Library.Parser.BookSite
 {
     public class WebSiteBookContentPageParser : IParser 
     {
-
         public Chapter Metadata;
 
         //As for state we need to parse book metadata to here
@@ -21,11 +27,11 @@ namespace SmartReader.Library.Parser.BookSite
             Metadata = state as Chapter;
 
             Book book = null;
-            bool GetIndexPage = false;
+            bool getIndexPage = false;
             if (Metadata == null )
             {
                 book = state as Book;
-                GetIndexPage = true;
+                getIndexPage = true;
             }
 
             var content1 = EncodingHelper.FromGBKToUnicode(inputStream);
@@ -35,7 +41,7 @@ namespace SmartReader.Library.Parser.BookSite
             var body = hh.GetSingleChildByTypeChain(doc.DocumentNode, new[] {"html", "body"});
             if (body == null) body = doc.DocumentNode;
 
-            if (GetIndexPage && book != null )
+            if (getIndexPage && book != null )
             {
                GetIndexPageLink(body, book);
                 return null;
@@ -50,17 +56,29 @@ namespace SmartReader.Library.Parser.BookSite
             {
                 var imageNodes = new List<HtmlNode>();
                 hh.GetAllImageElementWithFilter(contentNode, imageNodes);
-
                 GetImageContents(imageNodes);
             }
             else
             {
                 var textNodes = new List<HtmlNode>();
                 hh.GetAllTextElement(contentNode, textNodes);
-                Metadata.Content = NormalizeContentNode(textNodes);
+                if (Metadata != null) 
+                {
+                    var content = NormalizeContentNode(textNodes);
+
+                    if (content.Length > 4000)
+                    {
+                        Metadata.SaveContent1 = content.Substring(0, 4000);
+                        Metadata.SaveContent2 = content.Substring(4000, content.Length - 4000);
+                    }
+                    else
+                    {
+                        Metadata.SaveContent1 = content;
+                    }
+                }
             }
 
-            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() => 
+            Deployment.Current.Dispatcher.BeginInvoke(() => 
                         { Metadata.Downloaded = true; }
                 );
             return Metadata;
@@ -68,6 +86,8 @@ namespace SmartReader.Library.Parser.BookSite
 
         private void GetImageContents(List<HtmlNode> imageNodes)
         {
+            List<string> urlList = new List<string>();
+
             foreach (var imageNode in imageNodes)
             {
                 if (imageNode.Attributes["src"] != null)
@@ -76,9 +96,54 @@ namespace SmartReader.Library.Parser.BookSite
 
                     if (!url.Contains("http:"))
                     {
+                        var rootUrl = Metadata.Book.RootUrl;
+                        var subUrl = url.StartsWith("/") ? url.Substring(1) : url;
                         //Process if image path is relative path
+                        url = rootUrl.EndsWith("/") ? rootUrl + url : rootUrl + "/" + subUrl;
                     }
+                    urlList.Add(url);
                 }
+            }
+
+            foreach (var imageUrl in urlList)
+            {
+                var downloader = new HttpContentDownloader();
+                downloader.Download(new Uri(imageUrl, UriKind.Absolute), ar =>
+                {
+                    try
+                    {
+                        //At this step, we can get the index page in the search engine 
+                        var state = (RequestState)ar.AsyncState;
+                        var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                        var imageStream = response.GetResponseStream();
+                        Metadata.IsImageContent = true;
+                        
+                        var image = new ArticleImage {Chapter = Metadata, ImageUrl =  response.ResponseUri.ToString()};
+                        //var image = new ArticleImage();
+
+                        var gd = new GifDecoder();
+                        var img = new ImageTools.ExtendedImage();
+
+                        gd.Decode(img, imageStream);
+
+                        var png = new PngEncoder();
+                        
+                        using (var memStream = new MemoryStream())
+                        {
+                            png.Encode(img, memStream);
+                            byte[] byteArray = memStream.GetBuffer();
+                            image.ImageBytes = byteArray;
+                        }
+                        
+                        PhoneStorage.GetPhoneStorageInstance().SaveArticleImage(image);
+
+                        Metadata.Downloaded = true;
+                    }
+                    catch (WebException ex)
+                    {
+                        throw ex;
+                    }
+                });
             }
         }
 
@@ -141,7 +206,7 @@ namespace SmartReader.Library.Parser.BookSite
             {
                 var line = reader.ReadLine();
                 sb.Append(line);
-                if (line.Contains(indexText1) || line.Contains(indexText2) || line.Contains(indexText3))
+                if (line != null && (line.Contains(indexText1) || line.Contains(indexText2) || line.Contains(indexText3)))
                 {
 
                     var startIndex = sb.ToString().LastIndexOf("<a");
@@ -158,7 +223,6 @@ namespace SmartReader.Library.Parser.BookSite
                         {
                             htmlLink = temp.Substring(startIndex, endIndex - startIndex + 4);    
                         }
-                        
                     }
 
                     var linkNode = new HtmlDocument();
@@ -171,18 +235,15 @@ namespace SmartReader.Library.Parser.BookSite
                         //item.IndexPageUri = new Uri(link, UriKind.Absolute);
                         return;
                     }
-                    else
-                    {
-                        if (item.RootUrl.EndsWith(link))
-                        {  
-                            item.IndexPage = new Uri(item.RootUrl, UriKind.Absolute);
-                            return;
-                        }
-                        
-                        item.IndexPage = new Uri(item.RootUrl +  link, UriKind.Absolute);
-                        //item.IndexPageUri = new Uri(item.PageRootUri + link, UriKind.Absolute);
+                    if (item.RootUrl.EndsWith(link))
+                    {  
+                        item.IndexPage = new Uri(item.RootUrl, UriKind.Absolute);
                         return;
                     }
+                        
+                    item.IndexPage = new Uri(item.RootUrl +  link, UriKind.Absolute);
+                    //item.IndexPageUri = new Uri(item.PageRootUri + link, UriKind.Absolute);
+                    return;
                 }
             }
         }
@@ -203,6 +264,18 @@ namespace SmartReader.Library.Parser.BookSite
             return body;
         }
 
+        public static byte[] ConvertToBytes(BitmapImage bitmapImage)
+        {
+            byte[] data;
+            using (var stream = new MemoryStream())
+            {
+                var wBitmap = new WriteableBitmap(bitmapImage);
+                wBitmap.SaveJpeg(stream, wBitmap.PixelWidth, wBitmap.PixelHeight, 0, 100);
+                stream.Seek(0, SeekOrigin.Begin);
+                data = stream.GetBuffer();
+            }
+            return data;
+        }
 
         public event EventHandler ParsingCompleted;
     }

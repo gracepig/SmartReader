@@ -88,15 +88,20 @@
       <DependentUpon>DownloadSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ScrollableTextBlock.cs" />
+    <Compile Include="Controls\VisualizationTreeHelper.cs" />
     <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Helper\AppSetting.cs" />
     <Compile Include="Helper\CrossThreadHelper.cs" />
+    <Compile Include="Helper\ExceptionHandler.cs" />
     <Compile Include="Helper\ProgressIndicatorHelper.cs" />
+    <Compile Include="IShell.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\CommonModels.cs" />
+    <Compile Include="Test\TestDBHelper.cs" />
     <Compile Include="Test\ViewTest.xaml.cs">
       <DependentUpon>ViewTest.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,7 @@
     <Compile Include="ViewModel\ChapterViewModel.cs" />
     <Compile Include="ViewModel\ModelManager.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\Settings.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\BookIndexPage.xaml.cs">
       <DependentUpon>BookIndexPage.xaml</DependentUpon>
@@ -121,6 +127,9 @@
     <Compile Include="Views\ChatperDownload.xaml.cs">
       <DependentUpon>ChatperDownload.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Error.xaml.cs">
+      <DependentUpon>Error.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchInputView.xaml.cs">
       <DependentUpon>SearchInputView.xaml</DependentUpon>
     </Compile>
@@ -132,6 +141,9 @@
     </Compile>
     <Compile Include="Test\TestStorage.xaml.cs">
       <DependentUpon>TestStorage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SearchInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,11 +203,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
-    <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Thumbs.db" />
     <None Include="Toolkit.Content\Thumbs.db" />
   </ItemGroup>
@@ -199,6 +221,8 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="ApplicationIcon173173.png" />
+    <Resource Include="ApplicationIcon6262.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

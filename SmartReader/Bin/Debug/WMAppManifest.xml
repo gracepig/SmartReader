@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
   <App xmlns="" ProductID="{7ce83d91-cab8-45cd-93c3-c92b85c86f7e}" Title="SmartReader" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SmartReader author" Description="Sample description" Publisher="SmartReader">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">ApplicationIcon6262.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
@@ -24,7 +24,7 @@
     <Tokens>
       <PrimaryToken TokenID="SmartReaderToken" TaskName="_default">
         <TemplateType5>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">ApplicationIcon173173.png</BackgroundImageURI>
           <Count>0</Count>
           <Title>SmartReader</Title>
         </TemplateType5>

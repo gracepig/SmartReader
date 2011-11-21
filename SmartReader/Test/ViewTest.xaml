@@ -34,6 +34,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             
             <Button Grid.Row="0" Content="ChapterViewPageTest" Click="ViewChapter" />
@@ -41,6 +42,7 @@
             <Button Grid.Row="2" Content="ChapterViewBookIndexTest" Click="ViewChapter" />
             <Button Grid.Row="3" Content="ChapterViewSearchResultTest" Click="ViewChapter" />
             <Button Grid.Row="4" Content="BookListTest" Click="ViewBooks" />
+            <Button Grid.Row="5" Content="TestViewImageChapter" Click="ViewImageChapter" />
         </Grid>
     </Grid>
  

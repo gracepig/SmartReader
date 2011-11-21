@@ -170,8 +170,6 @@ namespace SmartReader.Library.Helper
                         && !(child.Attributes["target"] != null)
                         && child.Attributes["onclick"] == null )
                     {
-
-
                         if (!hyperLinkNode.Contains(child))
                             hyperLinkNode.Add(child);
                     }

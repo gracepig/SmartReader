@@ -60,25 +60,30 @@ namespace SmartReader.Library.Storage
         public void SaveChapters(IEnumerable<Chapter> chapters)
         {
             _db.Chapters.InsertAllOnSubmit(chapters);
+            _db.SubmitChanges(); 
+        }
+
+        public void SaveChapter(Chapter chapter)
+        {
+            _db.Chapters.Attach(chapter);
             _db.SubmitChanges();
         }
 
-        public void UpdateChapter(Chapter _chapter)
+        public void UpdateDB()
         {
-            if (_chapter == null) throw new ArgumentNullException("_chapter");
-            var target = from chapter in _db.Chapters
-                         where chapter.Id == _chapter.Id
-                         select chapter;
+            //var target = from chapter in _db.Chapters
+            //             where chapter.Id == _chapter.Id
+            //             select chapter;
 
-            if (target.Count() > 0)
-            {
-                var chapter = target.First();
-                chapter.ChapterName = _chapter.ChapterName;
-                chapter.ChapterUri = _chapter.ChapterUri;
-                chapter.Content = _chapter.Content;
-                chapter.LastUpdateTime = _chapter.LastUpdateTime;
-                chapter.Book = _chapter.Book;
-            }
+            //if (target.Count() > 0)
+            //{
+            //    var chapter = target.First();
+            //    chapter.ChapterName = _chapter.ChapterName;
+            //    chapter.ChapterUri = _chapter.ChapterUri;
+            //    chapter.Content = _chapter.Content;
+            //    chapter.LastUpdateTime = _chapter.LastUpdateTime;
+            //    chapter.Book = _chapter.Book;
+            //}
 
             _db.SubmitChanges();
         }
@@ -132,6 +137,12 @@ namespace SmartReader.Library.Storage
             _db.SubmitChanges();
         }
 
+        public void SaveArticleImage(ArticleImage image)
+        {
+            _db.ArticleImages.InsertOnSubmit(image);
+            _db.SubmitChanges();
+        }
+
         public IEnumerable<ArticleImage> GetAllArticleImages ()
         {
             var result = from articleImage in _db.ArticleImages
@@ -142,22 +153,18 @@ namespace SmartReader.Library.Storage
         public bool IsBookExist (Book book)
         {
             var books = from b in _db.Books
-                        where b.Name == book.Name
+                        where b.Id == book.Id
                         select b;
 
-            if (books.Any())
-            {
-                return true;
-            }
-
+            if (books.Any()) { return true;}
             return false;
         }
 
         public bool IsWebSiteExist(WebSite website)
         {
             var ws = from w in _db.WebSites
-                        where w.WebSiteName == website.WebSiteName
-                        select w;
+                     where w.WebSiteName == website.WebSiteName
+                     select w;
 
             if (ws.Any())
             {
@@ -165,6 +172,14 @@ namespace SmartReader.Library.Storage
             }
 
             return false;
+        }
+
+        public IEnumerable<ArticleImage> GetArticleImageByChapter(Chapter currentChapter)
+        {
+            var result = from articleImage in _db.ArticleImages
+                         where articleImage.Chapter.Id == currentChapter.Id
+                         select articleImage;
+            return result;
         }
     }
 }
