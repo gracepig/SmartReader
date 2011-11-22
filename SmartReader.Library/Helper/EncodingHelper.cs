@@ -32,7 +32,7 @@ namespace SmartReader.Library.Helper
                             var unicode = Mapping[BitConverter.ToString(new[] { x, y })];
                             list.AddRange(unicode.Reverse().ToArray());    
                         }
-                        catch (KeyNotFoundException e)
+                        catch (KeyNotFoundException)
                         {
                             //Swallow it
                         }

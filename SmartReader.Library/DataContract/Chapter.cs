@@ -2,7 +2,10 @@
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
+using System.IO;
+using System.Linq;
 using System.Windows.Media.Imaging;
+using SmartReader.Library.Storage;
 
 namespace SmartReader.Library.DataContract
 {
@@ -159,6 +162,27 @@ namespace SmartReader.Library.DataContract
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public BitmapImage[] Images
+        {
+            get
+            {
+                var images = PhoneStorage.GetPhoneStorageInstance().GetArticleImageByChapter(this);
+                if (images != null && images.Count() > 0)
+                {
+                    return images.Select(image => ConvertToBitmapImage(image.ImageBytes)).ToArray();
+                }
+                return null;    
+            }
+        }
+        
+        public static BitmapImage ConvertToBitmapImage(byte[] bytes)
+        {
+            var stream = new MemoryStream(bytes);
+            var image = new BitmapImage();
+            image.SetSource(stream);
+            return image;
         }
     }
 }

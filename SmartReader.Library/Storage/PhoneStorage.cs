@@ -137,9 +137,9 @@ namespace SmartReader.Library.Storage
             _db.SubmitChanges();
         }
 
-        public void SaveArticleImage(ArticleImage image)
+        public void SaveArticleImages(List<ArticleImage> images)
         {
-            _db.ArticleImages.InsertOnSubmit(image);
+            _db.ArticleImages.InsertAllOnSubmit(images);
             _db.SubmitChanges();
         }
 
@@ -177,8 +177,8 @@ namespace SmartReader.Library.Storage
         public IEnumerable<ArticleImage> GetArticleImageByChapter(Chapter currentChapter)
         {
             var result = from articleImage in _db.ArticleImages
-                         where articleImage.Chapter.Id == currentChapter.Id
-                         select articleImage;
+                         where articleImage.ChapterId == currentChapter.Id orderby articleImage.SequenceId
+                         select articleImage ;
             return result;
         }
     }

@@ -110,7 +110,8 @@ namespace SmartReader.Library.Parser.BookSite
             }
             else
             {
-                chapter.ChapterUri = new Uri(book.RootUrl + node.Attributes["href"].Value, UriKind.Absolute);    
+                var baseUri = new Uri(book.RootUrl);
+                chapter.ChapterUri = new Uri(baseUri , node.Attributes["href"].Value);   //Take care of the double "//" problem
             }
             chapter.Book = book;
             chapterList.Add(chapter);
@@ -118,20 +119,10 @@ namespace SmartReader.Library.Parser.BookSite
 
         private HtmlNode GetIndexContentNode ( HtmlNode body)
         {
-            //var indexNode = hh.FindElementById(body, "Content");
-            //if (indexNode != null) return indexNode;
-
-            //var indexNode = hh.FindElementByClass(body, "Content");
-            //if (indexNode != null) return indexNode;
-
             var indexNode = hh.FindElementById(body, "BookText");
-
             if (indexNode != null) return indexNode;
-
             return body;
-
         }
-
 
         public event EventHandler ParsingCompleted;
     }

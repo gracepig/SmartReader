@@ -1,68 +1,68 @@
 <Configuration>
   <RecentFiles>
     <RecentFiles>
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Storage/f:PhoneStorage.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ModelManager.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Helper/f:ExceptionHandler.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:BookIndexViewModel.cs" caret="0" fromTop="0" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Interface/f:IStorage.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:SearchInputView.xaml.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Helper/f:CrossThreadHelper.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookListPage.xaml.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookIndexPage.xaml.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:PageManager.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:BookListModel.cs" caret="0" fromTop="0" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduSearchResultPageParser.cs" caret="2369" fromTop="30" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="4379" fromTop="31" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="1968" fromTop="29" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="345" fromTop="12" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:EncodingHelper.cs" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml" caret="4350" fromTop="15" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml" caret="852" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml" caret="830" fromTop="13" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:HtmlParseHelper.cs" caret="5902" fromTop="24" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml.cs" caret="5168" fromTop="13" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:SearchViewModel.cs" caret="7225" fromTop="17" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="1255" fromTop="19" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:AppManifest.xml" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:PageManager.cs" caret="459" fromTop="10" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:Settings.cs" caret="183" fromTop="9" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:Error.xaml.cs" caret="410" fromTop="12" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="2753" fromTop="10" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="1707" fromTop="1" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="2241" fromTop="12" />
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Network/f:HttpContentDownloader.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:SearchViewModel.cs" caret="7986" fromTop="22" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Storage/f:PhoneStorage.cs" caret="4474" fromTop="20" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduBookLastestUpdatePageParser.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangBookLastestUpdatePageParser.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="0" fromTop="0" />
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml" caret="1350" fromTop="15" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:SettingsPage.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:Error.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookIndexPage.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookSourcePage.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookListPage.xaml" caret="0" fromTop="0" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4878" fromTop="29" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="1663" fromTop="33" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="8112" fromTop="81" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduSearchResultPageParser.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:SearchEngine.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Helper/f:Constants.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebsiteBookIndexPageParser.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:ArticleImage.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Storage/f:SmartReaderDataContext.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="11595" fromTop="31" />
     </RecentFiles>
     <RecentEdits>
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="2532" fromTop="40" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="68" fromTop="2" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="2608" fromTop="23" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="499" fromTop="14" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="2353" fromTop="38" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="775" fromTop="27" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="2653" fromTop="19" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml" caret="1040" fromTop="15" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml" caret="3508" fromTop="28" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="3144" fromTop="38" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="3365" fromTop="44" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="3018" fromTop="15" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="3383" fromTop="25" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="2901" fromTop="26" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml.cs" caret="3016" fromTop="29" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="457" fromTop="3" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="1487" fromTop="26" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="343" fromTop="14" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduSearchResultPageParser.cs" caret="2369" fromTop="30" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="4301" fromTop="28" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="1949" fromTop="28" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="1649" fromTop="43" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="731" fromTop="17" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="3136" fromTop="44" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="3012" fromTop="40" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4213" fromTop="48" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="718" fromTop="21" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4213" fromTop="43" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4709" fromTop="12" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="1318" fromTop="15" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml" caret="4350" fromTop="15" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="2725" fromTop="29" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="701" fromTop="16" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="755" fromTop="18" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml" caret="2404" fromTop="15" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="282" fromTop="10" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:BookListPage.xaml.cs" caret="3033" fromTop="21" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml.cs" caret="3278" fromTop="13" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:App.xaml.cs" caret="5239" fromTop="16" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:Settings.cs" caret="183" fromTop="9" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:Error.xaml.cs" caret="621" fromTop="26" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:Error.xaml.cs" caret="855" fromTop="27" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3586" fromTop="35" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3457" fromTop="20" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3586" fromTop="8" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="12746" fromTop="40" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="12559" fromTop="33" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="3858" fromTop="28" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:PageManager.cs" caret="880" fromTop="25" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:PageManager.cs" caret="459" fromTop="10" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="1255" fromTop="19" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="9166" fromTop="31" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="8673" fromTop="17" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="12746" fromTop="14" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="10602" fromTop="9" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="10888" fromTop="16" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="11088" fromTop="23" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="11263" fromTop="27" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="11454" fromTop="33" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="1572" fromTop="21" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -86,32 +86,32 @@
   </SettingsComponent>
   <CompletionStatisticsManager>
     <ItemStatistics item="CSharpCodeCompletionContext">
-      <Item value="public" priority="3165" />
-      <Item value="void" priority="1822" />
+      <Item value="public" priority="3133" />
+      <Item value="void" priority="1854" />
       <Item value="Uri`0" priority="254" />
       <Item value="WebClient`0" priority="31" />
       <Item value="client" priority="191" />
       <Item value="uri" priority="127" />
-      <Item value="var" priority="4351" />
-      <Item value="e" priority="222" />
-      <Item value="new" priority="2816" />
+      <Item value="var" priority="4671" />
+      <Item value="e" priority="254" />
+      <Item value="new" priority="2880" />
       <Item value="IDownloader" priority="28" />
       <Item value="downloader" priority="95" />
       <Item value="Uri" priority="289" />
       <Item value="result" priority="191" />
-      <Item value="if" priority="2239" />
+      <Item value="if" priority="2495" />
       <Item value="reader" priority="31" />
       <Item value="keyword" priority="159" />
-      <Item value="String`0" priority="191" />
-      <Item value="string" priority="1013" />
-      <Item value="content" priority="223" />
+      <Item value="String`0" priority="255" />
+      <Item value="string" priority="1109" />
+      <Item value="content" priority="319" />
       <Item value="doc" priority="287" />
       <Item value="parser" priority="63" />
       <Item value="re" priority="31" />
       <Item value="match" priority="95" />
       <Item value="Regex" priority="28" />
       <Item value="reUrl" priority="31" />
-      <Item value="url" priority="319" />
+      <Item value="url" priority="351" />
       <Item value="TimelineMarker`0" priority="31" />
       <Item value="matchUrl" priority="31" />
       <Item value="ListBox`0" priority="63" />
@@ -122,22 +122,22 @@
       <Item value="HtmlDocument`0" priority="26" />
       <Item value="HtmlDocument" priority="28" />
       <Item value="inputStream" priority="191" />
-      <Item value="foreach" priority="767" />
-      <Item value="HtmlNode`0" priority="764" />
-      <Item value="node" priority="543" />
+      <Item value="foreach" priority="799" />
+      <Item value="HtmlNode`0" priority="828" />
+      <Item value="node" priority="575" />
       <Item value="type" priority="191" />
       <Item value="HtmlNodeType`0" priority="63" />
-      <Item value="body" priority="607" />
+      <Item value="body" priority="639" />
       <Item value="n" priority="255" />
       <Item value="tables" priority="95" />
       <Item value="bookListTable" priority="63" />
       <Item value="htmlcontent" priority="31" />
-      <Item value="in" priority="799" />
+      <Item value="in" priority="863" />
       <Item value="trElements" priority="319" />
       <Item value="trElement" priority="95" />
       <Item value="tdElement" priority="127" />
-      <Item value="return" priority="1759" />
-      <Item value="null" priority="1537" />
+      <Item value="return" priority="1791" />
+      <Item value="null" priority="1601" />
       <Item value="nguid" priority="27" />
       <Item value="fixed" priority="31" />
       <Item value="aElement" priority="223" />
@@ -147,7 +147,7 @@
       <Item value="tdElements" priority="31" />
       <Item value="Count`1" priority="53" />
       <Item value="Length" priority="297" />
-      <Item value="DateTime`0" priority="416" />
+      <Item value="DateTime`0" priority="384" />
       <Item value="DateTime" priority="28" />
       <Item value="MediaStreamAttributeKeys`0" priority="95" />
       <Item value="input" priority="31" />
@@ -158,10 +158,10 @@
       <Item value="int" priority="921" />
       <Item value="count" priority="191" />
       <Item value="nodes" priority="319" />
-      <Item value="List" priority="461" />
+      <Item value="List" priority="493" />
       <Item value="throw" priority="127" />
       <Item value="Math`0" priority="31" />
-      <Item value="else" priority="607" />
+      <Item value="else" priority="671" />
       <Item value="static" priority="831" />
       <Item value="CultureInfo`0" priority="31" />
       <Item value="childs" priority="31" />
@@ -181,7 +181,7 @@
       <Item value="Library" priority="26" />
       <Item value="Helper" priority="26" />
       <Item value="BookWebSite`0" priority="31" />
-      <Item value="hh" priority="607" />
+      <Item value="hh" priority="639" />
       <Item value="chapterUrl" priority="63" />
       <Item value="lowerTd" priority="63" />
       <Item value="MixedCodeDocumentFragmentList`0" priority="92" />
@@ -221,15 +221,15 @@
       <Item value="StringBuilder" priority="28" />
       <Item value="sb" priority="31" />
       <Item value="Chapter`0" priority="512" />
-      <Item value="Metadata" priority="223" />
+      <Item value="Metadata" priority="479" />
       <Item value="WebsiteBookIndexPageParser`0" priority="95" />
       <Item value="IndexPage" priority="32" />
       <Item value="private" priority="1279" />
-      <Item value="Book`0" priority="447" />
+      <Item value="Book`0" priority="415" />
       <Item value="metaData" priority="31" />
       <Item value="indexNode" priority="191" />
       <Item value="hyperLinkNode" priority="127" />
-      <Item value="hyperLinkNodes" priority="255" />
+      <Item value="hyperLinkNodes" priority="287" />
       <Item value="continue" priority="31" />
       <Item value="GetIndexContentNode`0" priority="31" />
       <Item value="LicenseAcquirer`0" priority="31" />
@@ -250,16 +250,16 @@
       <Item value="_content" priority="63" />
       <Item value="SmartReaderDataContext" priority="57" />
       <Item value="db" priority="607" />
-      <Item value="false" priority="543" />
+      <Item value="false" priority="575" />
       <Item value="from" priority="95" />
       <Item value="select" priority="127" />
       <Item value="bookTable" priority="31" />
       <Item value="SmartReaderDataContext`0" priority="95" />
       <Item value="smartReaderDataContext" priority="96" />
       <Item value="_books" priority="63" />
-      <Item value="this" priority="959" />
-      <Item value="protected" priority="191" />
-      <Item value="override" priority="287" />
+      <Item value="this" priority="1119" />
+      <Item value="protected" priority="159" />
+      <Item value="override" priority="223" />
       <Item value="book" priority="416" />
       <Item value="ObservableCollection&lt;Book&gt;" priority="57" />
       <Item value="booksInDB" priority="31" />
@@ -274,7 +274,7 @@
       <Item value="ReadBooksFromDB`0" priority="63" />
       <Item value="IEnumerable" priority="63" />
       <Item value="UpdateOneRecord`0" priority="63" />
-      <Item value="DbType" priority="31" />
+      <Item value="DbType" priority="63" />
       <Item value="Binary`0" priority="31" />
       <Item value="BitmapImage`0" priority="127" />
       <Item value="PhoneStorage`0" priority="543" />
@@ -294,7 +294,7 @@
       <Item value="stream" priority="95" />
       <Item value="articleImage" priority="63" />
       <Item value="imageNode" priority="95" />
-      <Item value="true" priority="703" />
+      <Item value="true" priority="767" />
       <Item value="imageNodes" priority="127" />
       <Item value="nodesList" priority="63" />
       <Item value="SearchResult`0" priority="94" />
@@ -326,8 +326,8 @@
       <Item value="case" priority="31" />
       <Item value="urlPatternPartsCount" priority="159" />
       <Item value="list" priority="31" />
-      <Item value="List&lt;HtmlNode&gt;" priority="57" />
-      <Item value="break" priority="31" />
+      <Item value="List&lt;HtmlNode&gt;" priority="87" />
+      <Item value="break" priority="63" />
       <Item value="deletedNodes" priority="159" />
       <Item value="ThreadPool`0" priority="31" />
       <Item value="DownloadChapters`0" priority="32" />
@@ -371,13 +371,13 @@
       <Item value="_bookList" priority="63" />
       <Item value="try" priority="95" />
       <Item value="catch" priority="95" />
-      <Item value="WebException`0" priority="63" />
+      <Item value="WebException`0" priority="95" />
       <Item value="Thread`0" priority="31" />
       <Item value="Windows" priority="80" />
       <Item value="Deployment`0" priority="80" />
       <Item value="EventHandler`0" priority="32" />
       <Item value="GetBookIndexPageCompleted" priority="63" />
-      <Item value="ProgressIndicatorHelper`0" priority="191" />
+      <Item value="ProgressIndicatorHelper`0" priority="127" />
       <Item value="Action`0" priority="63" />
       <Item value="action" priority="31" />
       <Item value="CrossThreadHelper`0" priority="127" />
@@ -400,11 +400,11 @@
       <Item value="website" priority="95" />
       <Item value="BookIndexViewModel`0" priority="31" />
       <Item value="ChapterViewModel`0" priority="160" />
-      <Item value="CurrentBook" priority="447" />
+      <Item value="CurrentBook" priority="383" />
       <Item value="ChapterModel" priority="95" />
       <Item value="ChapterViewModel" priority="28" />
       <Item value="CurrentChapterIndex" priority="255" />
-      <Item value="CurrentChapter" priority="319" />
+      <Item value="CurrentChapter" priority="255" />
       <Item value="ViewModelBase`0" priority="95" />
       <Item value="_currentChapter" priority="319" />
       <Item value="_db" priority="95" />
@@ -438,8 +438,8 @@
       <Item value="LoadSettingByKey`1" priority="31" />
       <Item value="DefaultSearchEngine" priority="31" />
       <Item value="SearchEngine`0" priority="62" />
-      <Item value="SettingsPage`0" priority="31" />
-      <Item value="Settings`0" priority="287" />
+      <Item value="SettingsPage`0" priority="63" />
+      <Item value="Settings`0" priority="378" />
       <Item value="SetBinding`0" priority="95" />
       <Item value="ImageFrameCollection" priority="28" />
       <Item value="SaveSettingByKey`0" priority="31" />
@@ -449,12 +449,12 @@
       <Item value="ViewTest" priority="28" />
       <Item value="ViewTest`0" priority="32" />
       <Item value="root" priority="63" />
-      <Item value="Exception" priority="92" />
+      <Item value="Exception" priority="124" />
       <Item value="MainPage`0" priority="32" />
       <Item value="PhoneApplicationPage`0" priority="95" />
       <Item value="Exception`0" priority="127" />
       <Item value="IShell`0" priority="31" />
-      <Item value="PageManager`0" priority="285" />
+      <Item value="PageManager`0" priority="349" />
       <Item value="Shell" priority="95" />
       <Item value="MessageBox`0" priority="31" />
       <Item value="ex" priority="63" />
@@ -516,8 +516,8 @@
       <Item value="newChapters" priority="63" />
       <Item value="SaveCurrentBook`0" priority="31" />
       <Item value="readonly" priority="31" />
-      <Item value="is" priority="31" />
-      <Item value="UserFriendlyMessage" priority="31" />
+      <Item value="is" priority="63" />
+      <Item value="UserFriendlyMessage" priority="63" />
       <Item value="Get" priority="16" />
       <Item value="SearchEngineType`0" priority="159" />
       <Item value="Xiaoelang" priority="33" />
@@ -526,6 +526,17 @@
       <Item value="requestStream" priority="31" />
       <Item value="sw" priority="31" />
       <Item value="data" priority="63" />
+      <Item value="Name" priority="31" />
+      <Item value="Content" priority="31" />
+      <Item value="ExtendContent" priority="31" />
+      <Item value="rx" priority="63" />
+      <Item value="RequestState`0" priority="31" />
+      <Item value="hostName" priority="31" />
+      <Item value="link" priority="127" />
+      <Item value="indexText1" priority="31" />
+      <Item value="indexText2" priority="31" />
+      <Item value="indexText3" priority="31" />
+      <Item value="GetIndexPageLinkNew`0" priority="31" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Net.WebClient">
       <Item value="OpenReadCompleted" priority="26" />
@@ -556,15 +567,16 @@
       <Item value="UrlEncode`0" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.String">
-      <Item value="Format`0" priority="107" />
+      <Item value="Format`0" priority="161" />
       <Item value="IsNullOrWhiteSpace`0" priority="26" />
       <Item value="IsNullOrEmpty`0" priority="53" />
+      <Item value="Empty" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:SmartReader.Library.Parser.SearchResultPageParser">
       <Item value="Parse`0" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.RegularExpressions.Regex">
-      <Item value="Match`0" priority="53" />
+      <Item value="Match`0" priority="80" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.RegularExpressions.Match">
       <Item value="Captures" priority="107" />
@@ -596,8 +608,8 @@
       <Item value="DescendantNodes`0" priority="269" />
       <Item value="Name" priority="215" />
       <Item value="InnerHtml" priority="134" />
-      <Item value="Attributes" priority="404" />
-      <Item value="InnerText" priority="269" />
+      <Item value="Attributes" priority="431" />
+      <Item value="InnerText" priority="350" />
       <Item value="Id" priority="26" />
       <Item value="Remove`0" priority="134" />
       <Item value="ParentNode" priority="26" />
@@ -621,24 +633,24 @@
       <Item value="LastUpdateDate" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:HtmlAgilityPack.HtmlAttribute">
-      <Item value="Value" priority="296" />
+      <Item value="Value" priority="323" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.DateTime">
       <Item value="Parse`0" priority="53" />
       <Item value="Today" priority="26" />
-      <Item value="Now" priority="108" />
+      <Item value="Now" priority="81" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Math">
       <Item value="Abs`0" priority="80" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
       <Item value="ToLower`0" priority="245" />
-      <Item value="Substring`0" priority="80" />
+      <Item value="Substring`0" priority="161" />
       <Item value="Replace`0" priority="53" />
       <Item value="Trim`0" priority="54" />
-      <Item value="Length" priority="26" />
-      <Item value="IndexOf`0" priority="26" />
-      <Item value="Contains`0" priority="216" />
+      <Item value="Length" priority="80" />
+      <Item value="IndexOf`0" priority="53" />
+      <Item value="Contains`0" priority="297" />
       <Item value="EndsWith`0" priority="54" />
       <Item value="Split`0" priority="26" />
       <Item value="StartsWith`0" priority="53" />
@@ -659,7 +671,7 @@
       <Item value="RemoveNodeByType`0" priority="26" />
       <Item value="GetAllHyperlinkElement`0" priority="26" />
       <Item value="FindElementByClass`0" priority="53" />
-      <Item value="GetAllHyperlinkElementWithFilter`0" priority="26" />
+      <Item value="GetAllHyperlinkElementWithFilter`0" priority="53" />
       <Item value="GetAllImageElementWithFilter`0" priority="53" />
       <Item value="RemoveNonDisplayNode`0" priority="26" />
     </ItemStatistics>
@@ -690,12 +702,13 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:SmartReader.Library.DataContract.Chapter">
       <Item value="Content" priority="107" />
-      <Item value="ChapterName" priority="242" />
-      <Item value="ChapterUri" priority="134" />
+      <Item value="ChapterName" priority="215" />
+      <Item value="ChapterUri" priority="242" />
       <Item value="Downloaded" priority="215" />
-      <Item value="Book" priority="53" />
+      <Item value="Book" priority="134" />
       <Item value="IsImageContent" priority="53" />
-      <Item value="Id" priority="80" />
+      <Item value="Id" priority="53" />
+      <Item value="SaveContent1" priority="188" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:SmartReader.Library.DataContract.WebSite">
       <Item value="Id" priority="26" />
@@ -713,12 +726,12 @@
     <ItemStatistics item="Qualified:SmartReader.Library.DataContract.Book">
       <Item value="Author" priority="26" />
       <Item value="IndexPage" priority="108" />
-      <Item value="LastReadChapterId" priority="53" />
+      <Item value="LastReadChapterId" priority="26" />
       <Item value="Name" priority="80" />
-      <Item value="LastUpdateTime" priority="53" />
+      <Item value="LastUpdateTime" priority="80" />
       <Item value="WebSite" priority="134" />
       <Item value="Chapters" priority="566" />
-      <Item value="RootUrl" priority="53" />
+      <Item value="RootUrl" priority="134" />
       <Item value="Id" priority="53" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Library.Storage.SmartReaderDataContext">
@@ -740,10 +753,10 @@
       <Item value="Attach`0" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Uri">
-      <Item value="ToString`0" priority="55" />
+      <Item value="ToString`0" priority="163" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Library.Storage.PhoneStorage">
-      <Item value="GetPhoneStorageInstance`0" priority="485" />
+      <Item value="GetPhoneStorageInstance`0" priority="512" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:SmartReader.Library.Storage.PhoneStorage">
       <Item value="SaveWebSite`0" priority="107" />
@@ -883,8 +896,8 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Helper.ProgressIndicatorHelper">
       <Item value="GetProgressIndicator`0" priority="26" />
-      <Item value="StopProgressIndicator`0" priority="134" />
-      <Item value="StartProgressIndicator`0" priority="107" />
+      <Item value="StopProgressIndicator`0" priority="107" />
+      <Item value="StartProgressIndicator`0" priority="80" />
       <Item value="SetIndicatorValue`0" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Helper.CrossThreadHelper">
@@ -964,6 +977,7 @@
       <Item value="DefaultSearchEngine" priority="53" />
       <Item value="SaveSettingByKey`0" priority="26" />
       <Item value="DefaultDownloadItemCountKey" priority="26" />
+      <Item value="ShowTestPage" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Library.Helper.SearchEngine">
       <Item value="Sodu" priority="26" />
@@ -995,10 +1009,10 @@
     <ItemStatistics item="Qualified:@SmartReader.PageManager">
       <Item value="RegisterRootPage`0" priority="53" />
       <Item value="Show`0" priority="26" />
-      <Item value="Navigate`0" priority="107" />
+      <Item value="Navigate`0" priority="134" />
       <Item value="ChapterViewPage" priority="53" />
       <Item value="BookIndexPage" priority="26" />
-      <Item value="BookListPage" priority="53" />
+      <Item value="BookListPage" priority="80" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:SmartReader.IShell">
       <Item value="ShowExceptionError`0" priority="26" />
@@ -1051,7 +1065,7 @@
       <Item value="RefreshBookList`0" priority="26" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Controls.TextBlock">
-      <Item value="Text" priority="26" />
+      <Item value="Text" priority="53" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SmartReader.Library.Helper.SearchEngineType">
       <Item value="Sodu" priority="80" />
@@ -1067,6 +1081,21 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Object">
       <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SmartReader.Views.BookListPage">
+      <Item value="TestItem" priority="26" />
+      <Item value="ApplicationBar" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Phone.Shell.ApplicationBarMenuItem">
+      <Item value="IsEnabled" priority="53" />
+      <Item value="Text" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Phone.Shell.IApplicationBar">
+      <Item value="MenuItems" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IList">
+      <Item value="Remove`0" priority="53" />
+      <Item value="Count" priority="26" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

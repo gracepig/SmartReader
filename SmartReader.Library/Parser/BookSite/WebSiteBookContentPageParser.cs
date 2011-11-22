@@ -56,6 +56,7 @@ namespace SmartReader.Library.Parser.BookSite
 
             if (IsContentImage(contentNode))
             {
+                Metadata.IsImageContent = true;
                 var imageNodes = new List<HtmlNode>();
                 hh.GetAllImageElementWithFilter(contentNode, imageNodes);
                 GetImageContents(imageNodes);
@@ -116,9 +117,14 @@ namespace SmartReader.Library.Parser.BookSite
                 }
             }
 
+
+            var imageList = new List<ArticleImage>();
             foreach (var imageUrl in urlList)
             {
+                var imageSequence = 0;
                 var downloader = new HttpContentDownloader();
+                var image = new ArticleImage { ChapterId = Metadata.Id, SequenceId = imageSequence};
+                imageSequence++;
                 downloader.Download(new Uri(imageUrl, UriKind.Absolute), ar =>
                 {
                     try
@@ -127,9 +133,9 @@ namespace SmartReader.Library.Parser.BookSite
                         var state = (RequestState)ar.AsyncState;
                         var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                         var imageStream = response.GetResponseStream();
-                        Metadata.IsImageContent = true;
+                        //Metadata.IsImageContent = true;
                         
-                        var image = new ArticleImage {Chapter = Metadata, ImageUrl =  response.ResponseUri.ToString()};
+                         image.ImageUrl =  response.ResponseUri.ToString();
                         //var image = new ArticleImage();
 
                         var gd = new GifDecoder();
@@ -145,10 +151,20 @@ namespace SmartReader.Library.Parser.BookSite
                             byte[] byteArray = memStream.GetBuffer();
                             image.ImageBytes = byteArray;
                         }
-                        
-                        PhoneStorage.GetPhoneStorageInstance().SaveArticleImage(image);
 
-                        Metadata.Downloaded = true;
+                        imageList.Add(image);
+                        
+                        if (imageList.Count == urlList.Count)
+                        {
+                            PhoneStorage.GetPhoneStorageInstance().SaveArticleImages(imageList);
+                            Metadata.Downloaded = true;
+
+                            if (ParsingCompleted != null )
+                            {
+                                ParsingCompleted(this, null );
+                            }
+                        }
+                        
                     }
                     catch (WebException ex)
                     {

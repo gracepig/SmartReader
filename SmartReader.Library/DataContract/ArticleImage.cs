@@ -29,27 +29,14 @@ namespace SmartReader.Library.DataContract
 
         [Column(DbType = "Image")] 
         public byte[] ImageBytes;
-
-        [Column]
-        private int _chapterId;
-
+        
         // Entity reference, to identify the ToDoCategory "storage" table
         private EntityRef<Chapter> _chapter;
 
+        [Column]
+        public int ChapterId { set; get; }
 
-        [Association(Storage = "_chapter", ThisKey = "_chapterId", OtherKey = "Id", IsForeignKey = true)]
-        public Chapter Chapter
-        {
-            get { return _chapter.Entity; }
-            set
-            {
-                _chapter.Entity = value;
-
-                if (value != null)
-                {
-                    _chapterId = value.Id;
-                }
-            }
-        }
+        [Column]
+        public int SequenceId { set; get; }
     }
 }
