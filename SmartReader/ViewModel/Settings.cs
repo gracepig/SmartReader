@@ -5,7 +5,15 @@ namespace SmartReader.ViewModel
 {
     public class Settings : ViewModelBase
     {
-        public static int ChapterItemCountInSinglePage { set; get; }
+        
+#if DEBUG 
+    public static bool IsDebugMode=true;
+#else
+        public static bool IsDebugMode=false;
+#endif
+
+
+public static int ChapterItemCountInSinglePage { set; get; }
 
         public static int DefaultDownloadItemCount { set; get; }
 

@@ -88,7 +88,7 @@ namespace SmartReader
                 }
             }
 
-            App.Current.RootVisual = new ViewTest();
+            //App.Current.RootVisual = new ViewTest();
         }
 
         // Code to execute when the application is launching (eg, from Start)

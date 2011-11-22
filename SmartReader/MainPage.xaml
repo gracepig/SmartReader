@@ -29,7 +29,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
-                
+                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -40,6 +40,7 @@
             <Button Content="Test Storage" Grid.Row="1" Click="GotoStorageTestPage" />
             <Button Content="Test Parser with Storage" Grid.Row="2" Click="GotoParserAndStorageTestPage" />
             <Button Content="Test Views" Grid.Row="3" Click="GotoTestViewPage" />
+            <Button Content="Clear DB" Grid.Row="4" Click="ClearDB" />
         </Grid>
     </Grid>
  

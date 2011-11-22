@@ -115,7 +115,7 @@
     <Compile Include="Views\BookIndexPage.xaml.cs">
       <DependentUpon>BookIndexPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BookListPage.xaml.cs">
+    <Compile Include="BookListPage.xaml.cs">
       <DependentUpon>BookListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BookSourcePage.xaml.cs">
@@ -167,7 +167,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookListPage.xaml">
+    <Page Include="BookListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

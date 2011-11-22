@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using SmartReader.Helper;
+using SmartReader.Library.Storage;
 
 namespace SmartReader
 {
@@ -24,8 +25,8 @@ namespace SmartReader
 
             //this.Books = new ObservableCollection<Book>(booksInDB);
 
-
             base.OnNavigatedTo(e);
+            PageManager.Navigate(PageManager.BookListPage);
         }
 
 
@@ -58,6 +59,18 @@ namespace SmartReader
         public void Navigate (Uri uri)
         {
             NavigationService.Navigate(uri);
+        }
+
+        private void ClearDB(object sender, RoutedEventArgs e)
+        {
+            using (var db1 = new SmartReaderDataContext("isostore:/SmartReader.sdf"))
+            {
+                if (db1.DatabaseExists() == false)
+                {
+                    db1.DeleteDatabase();
+                    db1.CreateDatabase();
+                }
+            }
         }
     }
 }

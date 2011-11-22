@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using SmartReader.ViewModel;
 
 namespace SmartReader.Views
 {
@@ -17,11 +18,24 @@ namespace SmartReader.Views
         {
             base.OnNavigatedTo(e);
 
-            if (Exception is WebException )
+            if (Settings.IsDebugMode)
             {
-                UserFriendlyMessage.Text = Exception.Message;
+                if (Exception is WebException)
+                {
+                    UserFriendlyMessage.Text = Exception.Message;
+                }
+
+                ErrorText.Text = Exception.ToString();    
             }
-            ErrorText.Text = Exception.ToString();
+            else
+            {
+                if (Exception is WebException)
+                {
+                    UserFriendlyMessage.Text = "当前页面无法访问，请尝试其他网站。";
+                }
+            }
+
+
         }
     }
 }

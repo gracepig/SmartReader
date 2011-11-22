@@ -5,7 +5,6 @@
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ModelManager.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Helper/f:ExceptionHandler.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:BookIndexViewModel.cs" caret="0" fromTop="0" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="0" fromTop="0" />
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Interface/f:IStorage.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:SearchInputView.xaml.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:MainPage.xaml.cs" caret="0" fromTop="0" />
@@ -14,8 +13,14 @@
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookIndexPage.xaml.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/f:PageManager.cs" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:BookListModel.cs" caret="0" fromTop="0" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduSearchResultPageParser.cs" caret="2369" fromTop="30" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="4379" fromTop="31" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="1968" fromTop="29" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="345" fromTop="12" />
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Network/f:HttpContentDownloader.cs" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:SearchViewModel.cs" caret="7986" fromTop="22" />
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="0" fromTop="0" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml" caret="1350" fromTop="15" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChatperDownload.xaml" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:SettingsPage.xaml" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:Error.xaml" caret="0" fromTop="0" />
@@ -23,14 +28,9 @@
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookIndexPage.xaml" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookSourcePage.xaml" caret="0" fromTop="0" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:BookListPage.xaml" caret="0" fromTop="0" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Sodu/f:SoduSearchResultPageParser.cs" caret="2369" fromTop="30" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Book.cs" caret="4379" fromTop="31" />
-      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:DataContract/f:Chapter.cs" caret="1968" fromTop="29" />
+      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4878" fromTop="29" />
       <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Properties/f:WMAppManifest.xml" caret="1663" fromTop="33" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:SearchViewModel.cs" caret="7986" fromTop="22" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml" caret="1350" fromTop="15" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:Views/f:ChapterViewPage.xaml.cs" caret="345" fromTop="12" />
-      <File id="BE72316F-3BDF-4A73-90B7-519954EBCB53/d:ViewModel/f:ChapterViewModel.cs" caret="4213" fromTop="15" />
+      <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:BookSite/f:WebSiteBookContentPageParser.cs" caret="8112" fromTop="81" />
     </RecentFiles>
     <RecentEdits>
       <File id="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8/d:Parser/d:Xiaoelang/f:XiaoelangSearchResultPageParser.cs" caret="2532" fromTop="40" />

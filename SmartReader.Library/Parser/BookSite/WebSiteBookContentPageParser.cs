@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using HtmlAgilityPack;
@@ -43,7 +44,8 @@ namespace SmartReader.Library.Parser.BookSite
 
             if (getIndexPage && book != null )
             {
-               GetIndexPageLink(body, book);
+               //GetIndexPageLink(body, book);
+                GetIndexPageLinkNew(body,book);
                 return null;
             }
             
@@ -96,6 +98,15 @@ namespace SmartReader.Library.Parser.BookSite
 
                     if (!url.Contains("http:"))
                     {
+                        //    http://www.bookgew.com/Upload/Book/11028/201111201936011.gif
+                        //   /Upload/Book/11028/201111201936011.gif
+                        var hostName = ExtractDomainNameFromUrlMethod1(Metadata.ChapterUri.ToString());
+                        
+                        if (Metadata.Book.RootUrl == null )
+                        {
+                            Metadata.Book.RootUrl = String.Format("http://{0}/", hostName);
+                        }
+
                         var rootUrl = Metadata.Book.RootUrl;
                         var subUrl = url.StartsWith("/") ? url.Substring(1) : url;
                         //Process if image path is relative path
@@ -213,7 +224,7 @@ namespace SmartReader.Library.Parser.BookSite
                     var endIndex = sb.ToString().LastIndexOf("</a>");
                     var htmlLink = sb.ToString().Substring(startIndex, endIndex - startIndex + 4);
 
-                    while (!(htmlLink.Contains(indexText1) || htmlLink.Contains(indexText2) || htmlLink.Contains(indexText3)))
+                    while (!(htmlLink.Contains(indexText1) && !htmlLink.Contains(indexText2) && !htmlLink.Contains(indexText3)))
                     {
                         var temp = sb.ToString().Substring(0, startIndex);
                         startIndex = temp.LastIndexOf("<a");
@@ -221,7 +232,7 @@ namespace SmartReader.Library.Parser.BookSite
 
                         if (startIndex > -1 && endIndex > -1)
                         {
-                            htmlLink = temp.Substring(startIndex, endIndex - startIndex + 4);    
+                            htmlLink = temp.Substring(startIndex, endIndex - startIndex + 4);
                         }
                     }
 
@@ -246,6 +257,44 @@ namespace SmartReader.Library.Parser.BookSite
                     return;
                 }
             }
+        }
+
+
+        public void GetIndexPageLinkNew(HtmlNode node, Book item)
+        {
+            const string indexText1 = "回目录";
+            const string indexText2 = "回书目";
+            const string indexText3 = "目 录";
+
+            var hyperLinkNodes = new List<HtmlNode>();
+            hh.GetAllHyperlinkElementWithFilter(node, hyperLinkNodes);
+            string url = string.Empty;
+            foreach (var link in hyperLinkNodes)
+            {
+                if (link.InnerText.Contains(indexText1) 
+                    || link.InnerText.Contains(indexText2) 
+                    || link.InnerText.Contains(indexText3))
+                {
+                    url = link.Attributes["href"].Value;
+                    break;
+                }
+            }
+
+            if (url.Contains("http"))
+            {
+                item.IndexPage = new Uri(url, UriKind.Absolute);
+                //item.IndexPageUri = new Uri(link, UriKind.Absolute);
+                return;
+            }
+            if (item.RootUrl.EndsWith(url))
+            {
+                item.IndexPage = new Uri(item.RootUrl, UriKind.Absolute);
+                return;
+            }
+
+            item.IndexPage = new Uri(item.RootUrl + url, UriKind.Absolute);
+            //item.IndexPageUri = new Uri(item.PageRootUri + link, UriKind.Absolute);
+            return;
         }
 
         public HtmlNode GetContentNode (HtmlNode body)
@@ -275,6 +324,14 @@ namespace SmartReader.Library.Parser.BookSite
                 data = stream.GetBuffer();
             }
             return data;
+        }
+
+        public static string ExtractDomainNameFromUrlMethod1(string Url)
+        {
+                if (!Url.Contains("://"))
+                        Url = "http://" + Url;
+ 
+                return new Uri(Url).Host;
         }
 
         public event EventHandler ParsingCompleted;
