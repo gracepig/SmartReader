@@ -154,40 +154,6 @@ namespace SmartReader.ViewModel
             });
         }
 
-        /// <summary>
-        /// Download single chapter, should be active from the ChapterView Page
-        /// </summary>
-        /// <param name="chapter"></param>
-        /// <param name="callback"></param>
-        public void DownloadSingleChapter (Chapter chapter, Action callback)
-        {
-            var downloader = new HttpContentDownloader();
-            downloader.Download(chapter.ChapterUri, ar =>
-            {
-                try
-                {
-                    //At this step, we can get the index page in the search engine 
-                    var state = (RequestState) ar.AsyncState;
-                    var response = (HttpWebResponse) state.Request.EndGetResponse(ar);
-                    response.GetResponseStream();
-
-                    var parser = new WebSiteBookContentPageParser();
-                    chapter.Downloaded = true;
-                    parser.Parse(response.GetResponseStream(), chapter);
-
-                    if (callback != null )
-                    {
-                        callback();
-                    }
-                }
-                catch (WebException e)
-                {
-                    //TODO need to recover from exception
-                    ExceptionHandler.HandleException(e);
-                }
-            });
-        }
-
         public class DownloadTask
         {
             public Chapter TaskChapter;

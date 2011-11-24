@@ -16,6 +16,21 @@ namespace SmartReader.Views
             {
                 _model = value;
                 DataContext = _model;
+
+                //if (_model.CurrentChapter.IsImageContent)
+                //{
+                //    ImageContainer.Visibility = Visibility.Visible;
+                //    ChapterTextContent.Visibility = Visibility.Collapsed;
+
+                //    //var bitMapImages = Model.GetImageSource();
+
+                //    //ImageContainer.ItemsSource = bitMapImages;
+                //}
+                //else
+                //{
+                //    ImageContainer.Visibility = Visibility.Collapsed;
+                //    ChapterTextContent.Visibility = Visibility.Visible;
+                //}
             }
             get { return _model; }
         }
@@ -24,20 +39,6 @@ namespace SmartReader.Views
         {
             InitializeComponent();
             Model = ModelManager.GetChapterViewModel();
-            if (Model.CurrentChapter.IsImageContent)
-            {
-                ImageContainer.Visibility = Visibility.Visible;
-                ChapterTextContent.Visibility = Visibility.Collapsed;
-
-                var bitMapImages =  Model.GetImageSource();
-
-                ImageContainer.ItemsSource = bitMapImages;
-            }
-            else
-            {
-                ImageContainer.Visibility = Visibility.Collapsed;
-                ChapterTextContent.Visibility = Visibility.Visible;
-            }
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)

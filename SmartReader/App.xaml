@@ -35,8 +35,15 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <!--<Setter Property="Background" Value="Red"/>-->
         </Style>
-        
-        
+
+        <Style x:Key="ListBoxItemStyleNegativePadding" TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="-12"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <!--<Setter Property="Background" Value="Yellow"/>-->
+        </Style>
+
         <Storyboard x:Name="ScaleUp">
             
         </Storyboard>

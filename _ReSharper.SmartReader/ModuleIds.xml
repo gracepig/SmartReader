@@ -1,5 +1,0 @@
-<Modules>
-  <Module PersistentId="1AD15308-D71D-4154-AFBA-ECE1FB1C73D8" ModuleId="SmartReader.Library" />
-  <Module PersistentId="BE72316F-3BDF-4A73-90B7-519954EBCB53" ModuleId="SmartReader" />
-  <Module PersistentId="HtmlAgilityPack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="HtmlAgilityPack" />
-</Modules>

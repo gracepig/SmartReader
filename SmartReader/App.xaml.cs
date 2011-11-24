@@ -81,11 +81,11 @@ namespace SmartReader
                     //db1.DeleteDatabase();
                   db1.CreateDatabase();
                 }
-                else
-                {
-                    db1.DeleteDatabase();
-                    db1.CreateDatabase();
-                }
+                //else
+                //{
+                //    db1.DeleteDatabase();
+                //    db1.CreateDatabase();
+                //}
             }
 
             //App.Current.RootVisual = new ViewTest();

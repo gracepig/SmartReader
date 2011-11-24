@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Media.Imaging;
 using SmartReader.Helper;
 using SmartReader.Library.DataContract;
+using SmartReader.Library.Helper;
+using SmartReader.Library.Network;
+using SmartReader.Library.Parser.BookSite;
 using SmartReader.Library.Storage;
 
 namespace SmartReader.ViewModel
@@ -45,17 +49,22 @@ namespace SmartReader.ViewModel
                     SaveCurrentBook(CurrentBook);
 
                     CurrentChapter.SaveContent1 = String.Empty;
+                    //Use tempChapter to deal with the cross thread access problem
                     var tempChapter = new Chapter();
                     tempChapter.ChapterUri = CurrentChapter.ChapterUri;
                     tempChapter.ChapterName = CurrentChapter.ChapterName;
-                    ModelManager.GetBookIndexModel().DownloadSingleChapter(tempChapter, 
-                         () => CrossThreadHelper.CrossThreadMethodCall(() => { 
-                                                                                 _currentChapter.SaveContent1 = tempChapter.SaveContent1;
-                                                                                 _currentChapter.SaveContent2 = tempChapter.SaveContent2;
-                                                                                 _currentChapter.Downloaded = tempChapter.Downloaded;
-                                                                                 PhoneStorage.GetPhoneStorageInstance().UpdateDB();
-                                                                                 RaiseProperyChanged("CurrentChapter");
-                                                                                 ProgressIndicatorHelper.StopProgressIndicator();
+                    tempChapter.Book = CurrentChapter.Book;
+                    tempChapter.Id = CurrentChapter.Id;
+
+                    DownloadSingleChapter(tempChapter, 
+                         () => CrossThreadHelper.CrossThreadMethodCall(() => {
+                             _currentChapter.SaveContent1 = tempChapter.SaveContent1;
+                             _currentChapter.SaveContent2 = tempChapter.SaveContent2;
+                             _currentChapter.Downloaded = tempChapter.Downloaded;
+                             _currentChapter.IsImageContent = tempChapter.IsImageContent;
+                             PhoneStorage.GetPhoneStorageInstance().UpdateDB();
+                             RaiseProperyChanged("CurrentChapter");
+                             ProgressIndicatorHelper.StopProgressIndicator();
                          }));
                 }
 
@@ -136,6 +145,47 @@ namespace SmartReader.ViewModel
             var image = new BitmapImage();
             image.SetSource(stream);
             return image;
+        }
+
+        /// <summary>
+        /// Download single chapter, should be active from the ChapterView Page
+        /// </summary>
+        /// <param name="chapter"></param>
+        /// <param name="callback"></param>
+        public void DownloadSingleChapter(Chapter chapter, Action callback)
+        {
+            var downloader = new HttpContentDownloader();
+            downloader.Download(chapter.ChapterUri, ar =>
+            {
+                try
+                {
+                    //At this step, we can get the index page in the search engine 
+                    var state = (RequestState)ar.AsyncState;
+                    var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                    response.GetResponseStream();
+
+                    var parser = new WebSiteBookContentPageParser();
+                    parser.ParsingCompleted += ChapterContentParsingCompleted;
+
+                    chapter.Downloaded = true;
+                    parser.Parse(response.GetResponseStream(), chapter);
+
+                    if (callback != null)
+                    {
+                        callback();
+                    }
+                }
+                catch (WebException e)
+                {
+                    //TODO need to recover from exception
+                    ExceptionHandler.HandleException(e);
+                }
+            });
+        }
+
+        private void ChapterContentParsingCompleted(object sender, EventArgs e)
+        {
+            RaiseProperyChanged("CurrentChapter");
         }
     }
 }

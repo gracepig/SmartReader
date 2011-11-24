@@ -31,6 +31,7 @@ namespace SmartReader.Views
             {
                 ApplicationBar.MenuItems.Remove(ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1]);
             }
+            PageManager.RegisterRootPage(this);
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
