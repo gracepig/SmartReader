@@ -59,7 +59,16 @@ namespace SmartReader.Library.Storage
 
         public void SaveChapters(IEnumerable<Chapter> chapters)
         {
-            _db.Chapters.InsertAllOnSubmit(chapters);
+            var temp = new List<Chapter>();
+            foreach (var chapter in chapters)
+            {
+                if (!_db.Chapters.Contains(chapter))
+                {
+                    temp.Add(chapter);
+                }
+            }
+
+            _db.Chapters.InsertAllOnSubmit(temp);
             _db.SubmitChanges(); 
         }
 

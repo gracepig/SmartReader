@@ -8,7 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Controls="clr-namespace:SmartReader.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:Converter="clr-namespace:SmartReader.Converter" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:Converter="clr-namespace:SmartReader.Converter"
+    xmlns:Controls1="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    xmlns:Controls2="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape"
@@ -20,6 +23,7 @@
 
     <phone:PhoneApplicationPage.Resources>
         <Converter:VisibilityConverter x:Key="BoolToVisibilityConverter" ></Converter:VisibilityConverter>
+        <Controls2:ImageConverter x:Key="ImageConverter" />
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -32,6 +36,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="PageTitle" Text="{Binding ChapterInfo}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <Controls1:MemoryCounter /> 
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -45,12 +50,13 @@
             <Controls:ScrollableTextBlock x:Name="ChapterTextContent" Text="{Binding CurrentChapter.Content}" Style="{StaticResource ScrollableTextBlockStyle}"
                                           HorizontalAlignment="Left" VerticalAlignment="Top" 
                                           Height="618" Width="427" Margin="12,-11,0,0" />
-            <ListBox x:Name="ImageContainer" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding CurrentChapter.IsImageContent, Converter={StaticResource BoolToVisibilityConverter}}" ItemsSource="{Binding CurrentChapter.Images}" >
+            <ListBox x:Name="ImageContainer" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding CurrentChapter.IsImageContent, Converter={StaticResource BoolToVisibilityConverter}}" ItemsSource="{Binding CurrentChapter.ImageUris}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                            <Image Source="{Binding}" />
+                            <!--<Image Source="{Binding}" />-->
                             <!--<TextBlock Text="Image Start" />-->
+                            <Controls2:AnimatedImage  Source="{Binding Converter={StaticResource ImageConverter}}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

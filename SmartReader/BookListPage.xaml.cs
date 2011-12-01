@@ -84,15 +84,8 @@ namespace SmartReader.Views
 
         private void Test(object sender, EventArgs e)
         {
-            if (Settings.IsDebugMode)
-            {
-                this.TestItem.IsEnabled = true;
-            }
-            else
-            {
 
-            }
-
+            NavigationService.Navigate(new Uri("/Test/ViewTest.xaml", UriKind.Relative));
         }
 
         public void ShowExceptionError(Exception ex)

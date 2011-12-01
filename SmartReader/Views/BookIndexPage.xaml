@@ -72,6 +72,7 @@
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="首页" Click="FirstPage"/>
                 <shell:ApplicationBarMenuItem Text="最后一页" Click="LastPage"/>
+                <shell:ApplicationBarMenuItem Text="返回本地书库" Click="BackToBookListPage"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

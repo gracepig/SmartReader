@@ -109,9 +109,9 @@ namespace SmartReader.Library.Parser.BookSite
                         }
 
                         var rootUrl = Metadata.Book.RootUrl;
-                        var subUrl = url.StartsWith("/") ? url.Substring(1) : url;
+                        //var subUrl = url.StartsWith("/") ? url.Substring(1) : url;
                         //Process if image path is relative path
-                        url = rootUrl.EndsWith("/") ? rootUrl + url : rootUrl + "/" + subUrl;
+                        url = new Uri( new Uri(rootUrl), url).ToString();
                     }
                     urlList.Add(url);
                 }
@@ -122,55 +122,71 @@ namespace SmartReader.Library.Parser.BookSite
             foreach (var imageUrl in urlList)
             {
                 var imageSequence = 0;
-                var downloader = new HttpContentDownloader();
-                var image = new ArticleImage { ChapterId = Metadata.Id, SequenceId = imageSequence};
+                
+                var image = new ArticleImage { ChapterId = Metadata.Id, SequenceId = imageSequence, ImageUrl = imageUrl};
                 imageSequence++;
-                downloader.Download(new Uri(imageUrl, UriKind.Absolute), ar =>
+                imageList.Add(image);
+
+                #region download image
+                //var downloader = new HttpContentDownloader();
+                //downloader.Download(new Uri(imageUrl, UriKind.Absolute), ar =>
+                //{
+                //    try
+                //    {
+                //        //At this step, we can get the index page in the search engine 
+                //        var state = (RequestState)ar.AsyncState;
+                //        var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
+                //        var imageStream = response.GetResponseStream();
+                //        //Metadata.IsImageContent = true;
+                        
+                //         image.ImageUrl =  response.ResponseUri.ToString();
+                //        //var image = new ArticleImage();
+
+                //        var gd = new GifDecoder();
+                //        var img = new ImageTools.ExtendedImage();
+
+                //        gd.Decode(img, imageStream);
+
+                //        var png = new PngEncoder();
+                        
+                //        using (var memStream = new MemoryStream())
+                //        {
+                //            png.Encode(img, memStream);
+                //            byte[] byteArray = memStream.GetBuffer();
+                //            image.ImageBytes = byteArray;
+                //        }
+
+                //        imageList.Add(image);
+                        
+                //        if (imageList.Count == urlList.Count)
+                //        {
+                //            PhoneStorage.GetPhoneStorageInstance().SaveArticleImages(imageList);
+                //            Metadata.Downloaded = true;
+
+                //            if (ParsingCompleted != null )
+                //            {
+                //                ParsingCompleted(this, null );
+                //            }
+                //        }
+                        
+                //    }
+                //    catch (WebException ex)
+                //    {
+                //        throw ex;
+                //    }
+                //});
+
+                #endregion download image
+                if (imageList.Count == urlList.Count)
                 {
-                    try
+                    PhoneStorage.GetPhoneStorageInstance().SaveArticleImages(imageList);
+                    Metadata.Downloaded = true;
+
+                    if (ParsingCompleted != null)
                     {
-                        //At this step, we can get the index page in the search engine 
-                        var state = (RequestState)ar.AsyncState;
-                        var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
-                        var imageStream = response.GetResponseStream();
-                        //Metadata.IsImageContent = true;
-                        
-                         image.ImageUrl =  response.ResponseUri.ToString();
-                        //var image = new ArticleImage();
-
-                        var gd = new GifDecoder();
-                        var img = new ImageTools.ExtendedImage();
-
-                        gd.Decode(img, imageStream);
-
-                        var png = new PngEncoder();
-                        
-                        using (var memStream = new MemoryStream())
-                        {
-                            png.Encode(img, memStream);
-                            byte[] byteArray = memStream.GetBuffer();
-                            image.ImageBytes = byteArray;
-                        }
-
-                        imageList.Add(image);
-                        
-                        if (imageList.Count == urlList.Count)
-                        {
-                            PhoneStorage.GetPhoneStorageInstance().SaveArticleImages(imageList);
-                            Metadata.Downloaded = true;
-
-                            if (ParsingCompleted != null )
-                            {
-                                ParsingCompleted(this, null );
-                            }
-                        }
-                        
+                        ParsingCompleted(this, null);
                     }
-                    catch (WebException ex)
-                    {
-                        throw ex;
-                    }
-                });
+                } 
             }
         }
 

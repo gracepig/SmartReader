@@ -214,6 +214,14 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="SmartReader_2011_11_25_21_56_37.sap" />
+    <None Include="SmartReader_2011_11_25_21_57_16.sap" />
+    <None Include="SmartReader_2011_11_25_22_53_14.sap" />
+    <None Include="SmartReader_2011_11_29_14_44_24.sap" />
+    <None Include="SmartReader_2011_11_29_14_52_36.sap" />
+    <None Include="SmartReader_2011_11_29_15_01_16.sap" />
+    <None Include="SmartReader_2011_11_29_15_39_19.sap" />
+    <None Include="SmartReader_2011_11_29_15_55_47.sap" />
     <None Include="Thumbs.db" />
     <None Include="Toolkit.Content\Thumbs.db" />
   </ItemGroup>

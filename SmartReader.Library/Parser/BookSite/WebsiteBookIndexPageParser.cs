@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using HtmlAgilityPack;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Helper;
@@ -41,8 +42,27 @@ namespace SmartReader.Library.Parser.BookSite
                 ParseIndexContent(link);
             }
 
-            book.Chapters = chapterList.ToArray();
+            //book.Chapters = chapterList.ToArray();
+            if (book.Chapters == null )
+            {
+                book.Chapters = chapterList.ToArray();
+            }
+            else
+            {
+                var oldList = book.Chapters.ToList();
+                //oldList.AddRange(chapterList.Where(c => !book.Chapters.Any(chapter => chapter.ChapterUri == c.ChapterUri)));
+                //book.Chapters = oldList.ToArray();    
 
+                if (oldList.Count < chapterList.Count)
+                {
+                   for ( var i = oldList.Count; i< chapterList.Count ; i++ )
+                   {
+                       oldList.Add(chapterList[i]);
+                   }
+                }
+
+                book.Chapters = oldList.ToArray(); 
+            }
             return book;
         }
 

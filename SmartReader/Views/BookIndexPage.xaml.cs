@@ -65,5 +65,10 @@ namespace SmartReader.Views
         {
             Model.Refresh();
         }
+
+        private void BackToBookListPage(object sender, EventArgs e)
+        {
+            PageManager.Navigate(PageManager.BookListPage);
+        }
     }
 }

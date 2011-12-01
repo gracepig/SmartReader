@@ -9,6 +9,7 @@ using SmartReader.Library.Network;
 using SmartReader.Library.Parser.BookSite;
 using SmartReader.Library.Parser.Sodu;
 using SmartReader.Library.Parser.Xiaoelang;
+using SmartReader.Library.Storage;
 using SearchEngine = SmartReader.Library.DataContract.SearchEngine;
 
 namespace SmartReader.ViewModel
@@ -251,6 +252,20 @@ namespace SmartReader.ViewModel
             OnPropertyChanged(new PropertyChangedEventArgs(name));
         }
 
-        
+
+        public Book CheckBookExists(Book book)
+        {
+            var storage = PhoneStorage.GetPhoneStorageInstance();
+
+            foreach (var b in storage.GetAllBooks())
+            {
+                if (b.Name == book.Name && b.WebSite.WebSiteName == book.WebSite.WebSiteName)
+                {
+                    return b;
+                }
+            }
+
+            return book;
+        }
     }
 }

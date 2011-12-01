@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -16,12 +17,16 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="Auto"/>-->
+            <RowDefinition Height="Auto"/>
             <!--<RowDefinition Height="*"/>-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="0" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyleNegativePadding}" HorizontalAlignment="Stretch" Margin="0,0,0,0" Padding="0">
+        <StackPanel Grid.Row="0">
+            <Controls:MemoryCounter />
+        </StackPanel>
+
+        <ListBox Grid.Row="1" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyleNegativePadding}" HorizontalAlignment="Stretch" Margin="0,0,0,0" Padding="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Button Click="BookSelected" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="0">
