@@ -214,6 +214,9 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="SmartReader_2011_11_25_21_56_37.sap" />
+    <None Include="SmartReader_2011_11_25_21_57_16.sap" />
+    <None Include="SmartReader_2011_11_25_22_53_14.sap" />
     <None Include="Thumbs.db" />
     <None Include="Toolkit.Content\Thumbs.db" />
   </ItemGroup>

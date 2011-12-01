@@ -30,10 +30,12 @@ namespace SmartReader.Views
         {
             var book = ((Button) sender).DataContext as Book;
 
-            if (book!= null )
+            Book targetBook = Model.CheckBookExists(book);
+
+            if (book != null)
             {
                 Model.GetBookIndexPageCompleted += GetBookIndexPageCompleted;
-                Model.GetBookSiteBookIndexPageLink(book);
+                Model.GetBookSiteBookIndexPageLink(targetBook);
                 ProgressIndicatorHelper.StartProgressIndicator(true);
             }
         }
