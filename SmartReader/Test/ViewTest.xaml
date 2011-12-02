@@ -6,12 +6,17 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <Controls:ImageConverter x:Key="ImageConverter" />
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -35,6 +40,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             
             <Button Grid.Row="0" Content="ChapterViewPageTest" Click="ViewChapter" />
@@ -43,6 +50,10 @@
             <Button Grid.Row="3" Content="ChapterViewSearchResultTest" Click="ViewChapter" />
             <Button Grid.Row="4" Content="BookListTest" Click="ViewBooks" />
             <Button Grid.Row="5" Content="TestViewImageChapter" Click="ViewImageChapter" />
+            <Button Grid.Row="6" Content="TestViewOnlineImage" Click="ViewOnlineImage" />
+            <StackPanel>
+                <Controls:AnimatedImage x:Name="GifImageContainer" Source="{Binding  Converter={StaticResource ImageConverter}}" />
+            </StackPanel>
         </Grid>
     </Grid>
  

@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Converter="clr-namespace:SmartReader.Library.Converter;assembly=SmartReader.Library"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -22,6 +23,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -56,7 +58,10 @@
             </ListBox.ItemTemplate>
         </ListBox>-->
 
-        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" LayoutUpdated="ChapterListPageLayoutUpdated" >
+        <StackPanel Grid.Row="0">
+            <Controls:MemoryCounter />
+        </StackPanel>
+        <ListBox Grid.Row="1" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" LayoutUpdated="ChapterListPageLayoutUpdated" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch">

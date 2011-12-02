@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ImageTools.IO.Gif;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SmartReader.Helper;
@@ -72,7 +73,7 @@ namespace SmartReader
         private void Init()
         {
             EncodingHelper.BuildGBKToUnicodeMapping();
-
+            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
             Settings.Load();
             using (var db1 = new SmartReaderDataContext("isostore:/SmartReader.sdf"))
             {

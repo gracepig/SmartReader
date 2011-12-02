@@ -176,6 +176,19 @@ namespace SmartReader.Library.DataContract
                 return null;    
             }
         }
+
+        public Uri[]  ImageUris
+        {
+            get
+            {
+                var images = PhoneStorage.GetPhoneStorageInstance().GetArticleImageByChapter(this);
+                if (images != null && images.Count() > 0)
+                {
+                    return images.Select(image => ConvertToImageUri(image.ImageUrl)).ToArray();
+                }
+                return null;  
+            }
+        }
         
         public static BitmapImage ConvertToBitmapImage(byte[] bytes)
         {
@@ -183,6 +196,11 @@ namespace SmartReader.Library.DataContract
             var image = new BitmapImage();
             image.SetSource(stream);
             return image;
+        }
+
+        public static Uri ConvertToImageUri (string uri)
+        {
+            return new Uri(uri, UriKind.Absolute);
         }
     }
 }

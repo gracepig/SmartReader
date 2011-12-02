@@ -34,6 +34,12 @@ namespace SmartReader.ViewModel
             set 
             {
                 _currentChapter = value;
+
+                if (_currentChapter.IsImageContent)
+                {
+                    GC.Collect();
+                }
+
                 var l = new List<Chapter>(CurrentBook.Chapters);
                 CurrentChapterIndex = l.IndexOf(_currentChapter);
 

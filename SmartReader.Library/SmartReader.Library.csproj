@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\..\project\HtmlAgilityPack\Trunk\HAPPhone\Bin\Debug\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools">
       <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.dll</HintPath>

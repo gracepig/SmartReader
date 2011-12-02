@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartReader", "SmartReader\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartReader.Library", "SmartReader.Library\SmartReader.Library.csproj", "{1AD15308-D71D-4154-AFBA-ECE1FB1C73D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PubReference", "PubReference", "{069B43B7-E636-48C6-BB82-DB4CC3D4A11A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

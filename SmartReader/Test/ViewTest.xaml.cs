@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using ImageTools.IO.Gif;
 using Microsoft.Phone.Controls;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Network;
@@ -71,6 +72,15 @@ namespace SmartReader.Test
             x.CurrentBook = TestDBHelper.GetTestDBInstance().TestBook;
             x.CurrentChapter = TestDBHelper.GetTestDBInstance().TestTextChapter;
             NavigationService.Navigate(new Uri("/Views/ChapterViewPage.xaml", UriKind.Relative));
+        }
+
+
+
+        private void ViewOnlineImage(object sender, RoutedEventArgs e)
+        {
+            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            var ImageSource = new Uri("http://shuzong.com/DownFiles/Book/0/51/2011/12/1/20111201124952361.gif");
+            this.GifImageContainer.DataContext = ImageSource;
         }
     }
 }
