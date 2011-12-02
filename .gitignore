@@ -1,1 +1,9 @@
 _Resharper*.*
+SmartReader/Bin/
+SmartReader.Library/Bin/
+SmartReader/obj/
+SmartReader.Library/obj/
+_Resharper.SmartReader/
+*.user
+SmartReader.suo
+
