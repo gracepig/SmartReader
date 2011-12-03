@@ -1,9 +1,9 @@
-_Resharper*.*
+*Resharper*.*
 SmartReader/Bin/
-SmartReader.Library/Bin/
 SmartReader/obj/
+SmartReader.Library/Bin/
 SmartReader.Library/obj/
 _Resharper.SmartReader/
-*.user
 SmartReader.suo
+*.user
 *.orig
