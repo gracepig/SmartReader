@@ -6,4 +6,4 @@ SmartReader.Library/obj/
 _Resharper.SmartReader/
 *.user
 SmartReader.suo
-
+*.orig
