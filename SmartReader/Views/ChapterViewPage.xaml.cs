@@ -16,21 +16,7 @@ namespace SmartReader.Views
             {
                 _model = value;
                 DataContext = _model;
-
-                //if (_model.CurrentChapter.IsImageContent)
-                //{
-                //    ImageContainer.Visibility = Visibility.Visible;
-                //    ChapterTextContent.Visibility = Visibility.Collapsed;
-
-                //    //var bitMapImages = Model.GetImageSource();
-
-                //    //ImageContainer.ItemsSource = bitMapImages;
-                //}
-                //else
-                //{
-                //    ImageContainer.Visibility = Visibility.Collapsed;
-                //    ChapterTextContent.Visibility = Visibility.Visible;
-                //}
+                LoadMoreBtn.DataContext = value;
             }
             get { return _model; }
         }
@@ -124,6 +110,12 @@ namespace SmartReader.Views
         private void BackToBookListPage(object sender, EventArgs e)
         {
             PageManager.Navigate(PageManager.BookListPage);
+        }
+
+        private void LoadNextImage(object sender, RoutedEventArgs e)
+        {
+            Model.LoadNextImage();
+            ImageContainer.ScrollToVerticalOffset(0);
         }
     }
 }

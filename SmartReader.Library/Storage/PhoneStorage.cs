@@ -148,7 +148,8 @@ namespace SmartReader.Library.Storage
 
         public void SaveArticleImages(List<ArticleImage> images)
         {
-            _db.ArticleImages.InsertAllOnSubmit(images);
+            var temp = images.Where(img => !_db.ArticleImages.Any(i => i.ImageUrl == img.ImageUrl)).ToList();
+            _db.ArticleImages.InsertAllOnSubmit(temp);
             _db.SubmitChanges();
         }
 

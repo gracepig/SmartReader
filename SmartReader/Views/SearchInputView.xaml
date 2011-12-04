@@ -32,7 +32,7 @@
                 <RowDefinition Height="80"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" >
-                <TextBox x:Name="KeywordInput" Width="320" Text="官神"/>
+                <TextBox x:Name="KeywordInput" Width="320" Text="民国投机者"/>
                 <Button x:Name="SearchBtn" Content="Search" Grid.Row="1" Click="SearchBtnClicked" />
             </StackPanel>
         </Grid>

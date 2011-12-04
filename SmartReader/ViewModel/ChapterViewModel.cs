@@ -28,17 +28,37 @@ namespace SmartReader.ViewModel
                 }
         }
 
+        private Uri _currentImage;
+        public Uri CurrentImage
+        {
+            set 
+            { 
+                _currentImage = value;
+                RaiseProperyChanged("CurrentImage");
+            }
+            get { return _currentImage; }
+        }
+
+        private bool _showLoadMoreBtn = true;
+        public bool ShowLoadMoreBtn
+        {
+            get
+            {
+                return _showLoadMoreBtn;
+            }
+            set
+            {
+                _showLoadMoreBtn = value;
+                RaiseProperyChanged("ShowLoadMoreBtn");
+            }
+        }
+
         private Chapter _currentChapter;
         public Chapter CurrentChapter
         {
             set 
             {
                 _currentChapter = value;
-
-                if (_currentChapter.IsImageContent)
-                {
-                    GC.Collect();
-                }
 
                 var l = new List<Chapter>(CurrentBook.Chapters);
                 CurrentChapterIndex = l.IndexOf(_currentChapter);
@@ -85,12 +105,18 @@ namespace SmartReader.ViewModel
                     _currentChapter = CurrentBook.Chapters[CurrentChapterIndex];
                     CurrentBook.LastReadChapterId = CurrentChapter.Id;
                 }
+                
+                if (CurrentImage == null && _currentChapter.ImageUris != null)
+                {
+                    CurrentImage = _currentChapter.ImageUris[0];
+                }
+
                 return _currentChapter;
             }
         }
 
         public ChapterViewModel() { }
-
+        
         public ChapterViewModel(Book book)
         {
             CurrentBook = book;
@@ -192,6 +218,21 @@ namespace SmartReader.ViewModel
         private void ChapterContentParsingCompleted(object sender, EventArgs e)
         {
             RaiseProperyChanged("CurrentChapter");
+        }
+
+        public void LoadNextImage()
+        {
+            var index = CurrentChapter.ImageUris.ToList().IndexOf(CurrentImage);
+            index++;
+            if (index < CurrentChapter.ImageUris.Length)
+            {
+                CurrentImage = CurrentChapter.ImageUris[index];
+            }
+            
+            if (index >= CurrentChapter.ImageUris.Length  - 1)
+            {
+                ShowLoadMoreBtn = false;
+            }
         }
     }
 }

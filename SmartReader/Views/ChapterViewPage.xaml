@@ -50,17 +50,22 @@
             <Controls:ScrollableTextBlock x:Name="ChapterTextContent" Text="{Binding CurrentChapter.Content}" Style="{StaticResource ScrollableTextBlockStyle}"
                                           HorizontalAlignment="Left" VerticalAlignment="Top" 
                                           Height="618" Width="427" Margin="12,-11,0,0" />
-            <ListBox x:Name="ImageContainer" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding CurrentChapter.IsImageContent, Converter={StaticResource BoolToVisibilityConverter}}" ItemsSource="{Binding CurrentChapter.ImageUris}" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <!--<Image Source="{Binding}" />-->
-                            <!--<TextBlock Text="Image Start" />-->
-                            <Controls2:AnimatedImage  Source="{Binding Converter={StaticResource ImageConverter}}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+
+            <ScrollViewer x:Name="ImageContainer" Visibility="{Binding CurrentChapter.IsImageContent, Converter={StaticResource BoolToVisibilityConverter}}">
+                <StackPanel>
+                    <Controls2:AnimatedImage  x:Name="ImageDisplay" Source="{Binding CurrentImage, Converter={StaticResource ImageConverter}}" />
+                    <Button x:Name="LoadMoreBtn" Content="Load More" Click="LoadNextImage" Visibility="{Binding ShowLoadMoreBtn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                </StackPanel>
+                <!--<ListBox x:Name="ImageContainer" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding CurrentChapter.IsImageContent, Converter={StaticResource BoolToVisibilityConverter}}" ItemsSource="{Binding CurrentChapter.ImageUris}" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Controls2:AnimatedImage  Source="{Binding Converter={StaticResource ImageConverter}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+            </ScrollViewer>
             <!--<ScrollViewer>
                 <StackPanel x:Name="ImageContainer" Orientation="Vertical">
                     <Image x:Name="image1" />

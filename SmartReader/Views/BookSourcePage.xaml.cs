@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SmartReader.Helper;
 using SmartReader.Library.DataContract;
+using SmartReader.Library.Storage;
 using SmartReader.ViewModel;
 
 namespace SmartReader.Views
@@ -31,13 +32,22 @@ namespace SmartReader.Views
             var book = ((Button) sender).DataContext as Book;
 
             Book targetBook = Model.CheckBookExists(book);
-
-            if (book != null)
+            Model.GetBookIndexPageCompleted += GetBookIndexPageCompleted;
+           
+            if (targetBook != null)
             {
-                Model.GetBookIndexPageCompleted += GetBookIndexPageCompleted;
+                if (targetBook.Chapters == null )
+                {
+                    targetBook.Chapters = PhoneStorage.GetPhoneStorageInstance().GetChaptersByBook(targetBook);
+                }
                 Model.GetBookSiteBookIndexPageLink(targetBook);
-                ProgressIndicatorHelper.StartProgressIndicator(true);
             }
+            else
+            {
+                Model.GetBookSiteBookIndexPageLink(book);
+            }
+
+            ProgressIndicatorHelper.StartProgressIndicator(true);
         }
 
         private void GetBookIndexPageCompleted(object sender, EventArgs e)

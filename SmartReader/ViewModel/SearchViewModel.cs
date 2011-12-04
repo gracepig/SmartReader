@@ -265,7 +265,7 @@ namespace SmartReader.ViewModel
                 }
             }
 
-            return book;
+            return null;
         }
     }
 }
