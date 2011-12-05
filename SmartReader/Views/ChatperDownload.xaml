@@ -59,7 +59,7 @@
         </ListBox>-->
 
         <StackPanel Grid.Row="0">
-            <Controls:MemoryCounter />
+            <!--<Controls:MemoryCounter />-->
         </StackPanel>
         <ListBox Grid.Row="1" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" LayoutUpdated="ChapterListPageLayoutUpdated" >
             <ListBox.ItemTemplate>

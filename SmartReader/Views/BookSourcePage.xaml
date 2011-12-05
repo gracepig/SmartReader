@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <Controls:MemoryCounter />
+            <!--<Controls:MemoryCounter />-->
         </StackPanel>
 
         <ListBox Grid.Row="1" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyleNegativePadding}" HorizontalAlignment="Stretch" Margin="0,0,0,0" Padding="0">
