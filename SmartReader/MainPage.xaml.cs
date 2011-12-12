@@ -50,12 +50,6 @@ namespace SmartReader
             NavigationService.Navigate(new Uri("/Test/ViewTest.xaml", UriKind.Relative));
         }
 
-        public void ShowExceptionError(Exception ex)
-        {
-            //this.ErrorMessage.IsOpen = true;
-           // MessageBox.Show(ex.Message);
-        }
-
         public void Navigate (Uri uri)
         {
             NavigationService.Navigate(uri);

@@ -207,6 +207,7 @@ namespace SmartReader.ViewModel
                     SelectedBook = book;
 
                     ModelManager.GetBookIndexModel().Book = SelectedBook;
+                    
                 });
         }
 

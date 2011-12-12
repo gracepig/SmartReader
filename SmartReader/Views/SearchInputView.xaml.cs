@@ -58,7 +58,7 @@ namespace SmartReader.Views
         private void BookSelected(object sender, RoutedEventArgs e)
         {
             var searchresult = ((Button) sender).DataContext as SearchResult;
-
+            Model.BookList = null;
             Model.GetBookSiteLink(searchresult);
 
             if (searchresult != null )

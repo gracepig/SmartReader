@@ -25,51 +25,62 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="PageTitle" Text="本地书库" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-            <!--<Controls:MemoryCounter x:Name="mc" />-->
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <ListBox Grid.Row="1" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-        	
+        <ListBox Grid.Row="1" x:Name="BookList" ItemsSource="{Binding BookList}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Click="BookSelected" BorderThickness="0" HorizontalContentAlignment="Stretch">
-                        <Button.Content>
-                            <Grid HorizontalAlignment="Stretch" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <toolkit:GestureService.GestureListener>
+                            <toolkit:GestureListener Hold="BookHold" GestureCompleted="EnableBookSelectBtn" />
+                        </toolkit:GestureService.GestureListener>
+                        <Button x:Name="DeleteBtn" BorderThickness="0" Margin="0,-18,20,0" Padding="0"  Visibility="Collapsed" Click="DeleteBook" VerticalAlignment="Center">
+                            <Button.Content>
+                                <Canvas>
+                                    <Ellipse Fill="Transparent" Stroke="Red" Width="26" Height="26" d:LayoutOverrides="Height" StrokeThickness="2"/>
+                                    <Line X1="4" Y1="13" X2="22" Y2="13" Stroke="Red" StrokeThickness="2" />
+                                </Canvas>
+                            </Button.Content>
+                        </Button>
+                        <Button Click="BookSelected" BorderThickness="0" HorizontalContentAlignment="Stretch">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
 
-                                <toolkit:GestureService.GestureListener>
-                                    <toolkit:GestureListener Hold="AnimateOneItem"  Tap="AnimateOneItem"/>
-                                </toolkit:GestureService.GestureListener>
-
-                                <Rectangle Grid.RowSpan="2" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Red"  Margin="0,0,5,0"/>
-
-                                <Grid Grid.Row="0" Grid.Column="1" >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"></ColumnDefinition>
-                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="18" />
-                                    <TextBlock Grid.Column="1" Text="{Binding WebSite.WebSiteName}" FontSize="18" HorizontalAlignment="Right"/>
-                                </Grid>
 
-                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastestUpdateChapterName}" FontSize="18" />
-                            </Grid>
-                        </Button.Content>
-                    </Button>
+                                    <toolkit:GestureService.GestureListener>
+                                        <toolkit:GestureListener Tap="AnimateOneItem"/>
+                                    </toolkit:GestureService.GestureListener>
+
+                                    <Rectangle Grid.RowSpan="2" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Red"  Margin="0,0,5,0"/>
+
+                                    <Grid Grid.Row="0" Grid.Column="1" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="7*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="18" />
+                                        <TextBlock Grid.Column="1" Text="{Binding WebSite.WebSiteName}" FontSize="18" HorizontalAlignment="Right"/>
+                                    </Grid>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastestUpdateChapterName}" FontSize="18" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

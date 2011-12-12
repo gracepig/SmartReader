@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Microsoft.Phone.Controls;
 using SmartReader.Library.DataContract;
+using SmartReader.Library.Storage;
 using SmartReader.ViewModel;
 
 namespace SmartReader.Views
@@ -43,7 +44,6 @@ namespace SmartReader.Views
         private void BookSelected(object sender, RoutedEventArgs e)
         {
             ModelManager.GetBookIndexModel().Book = ((Button) sender).DataContext as Book;
-
             NavigationService.Navigate(new Uri("/Views/BookIndexPage.xaml", UriKind.Relative));
         }
 
@@ -88,15 +88,37 @@ namespace SmartReader.Views
             NavigationService.Navigate(new Uri("/Test/ViewTest.xaml", UriKind.Relative));
         }
 
-        public void ShowExceptionError(Exception ex)
-        {
-            //this.ErrorMessage.IsOpen = true;
-            // MessageBox.Show(ex.Message);
-        }
-
         public void Navigate(Uri uri)
         {
             NavigationService.Navigate(uri);
+        }
+
+        private void BookHold(object sender, GestureEventArgs e)
+        {
+            var src = sender as StackPanel;
+            src.Children[0].Visibility = src.Children[0].Visibility == Visibility.Visible
+                                             ? Visibility.Collapsed
+                                             : Visibility.Visible;
+            PreventButtonClickEvent(src);
+        }
+
+        private static void PreventButtonClickEvent(StackPanel src)
+        {
+            ((Button) src.Children[1]).IsEnabled = false;
+        }
+
+        private void DeleteBook(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var deleteBook = btn.DataContext as Book;
+
+            Model.DeleteBook(deleteBook);
+        }
+
+        private void EnableBookSelectBtn(object sender, GestureEventArgs e)
+        {
+            var src = sender as StackPanel;
+            ((Button)src.Children[1]).IsEnabled = true;
         }
     }
 }

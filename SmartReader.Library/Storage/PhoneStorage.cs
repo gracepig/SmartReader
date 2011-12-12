@@ -121,7 +121,37 @@ namespace SmartReader.Library.Storage
                 _db.Books.DeleteOnSubmit(target.First());
             }
 
+            DeleteChaptersOfBook(_book);
             _db.SubmitChanges();
+        }
+
+        private static void DeleteChaptersOfBook(Book _book)
+        {
+            var bookChapters = from chapter in _db.Chapters
+                               where chapter.Book.Id == _book.Id
+                               select chapter;
+
+            if (bookChapters.Count() > 0)
+            {
+                _db.Chapters.DeleteAllOnSubmit(bookChapters);
+            }
+
+            DeleteArticleImagesOfBook(bookChapters);
+        }
+
+        private static void DeleteArticleImagesOfBook(IQueryable<Chapter> bookChapters)
+        {
+            var chapterIds = from chapterTobeDelete in bookChapters
+                             select chapterTobeDelete.Id;
+
+            var bookImages = from image in _db.ArticleImages
+                             where chapterIds.Contains(image.ChapterId)
+                             select image;
+
+            if (bookImages.Count() > 0)
+            {
+                _db.ArticleImages.DeleteAllOnSubmit(bookImages);
+            }
         }
 
         public IEnumerable<Book> GetAllBooks()

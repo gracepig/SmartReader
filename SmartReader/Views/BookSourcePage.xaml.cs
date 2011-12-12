@@ -29,6 +29,11 @@ namespace SmartReader.Views
 
         private void BookSelected(object sender, RoutedEventArgs e)
         {
+            if (ModelManager.GetBookIndexModel().Book != null )
+            {
+                ModelManager.GetBookIndexModel().Book.DisplayingChapters = null;    
+            }
+
             var book = ((Button) sender).DataContext as Book;
 
             Book targetBook = Model.CheckBookExists(book);
@@ -36,6 +41,7 @@ namespace SmartReader.Views
            
             if (targetBook != null)
             {
+                targetBook.DisplayingChapters = null;
                 if (targetBook.Chapters == null )
                 {
                     targetBook.Chapters = PhoneStorage.GetPhoneStorageInstance().GetChaptersByBook(targetBook);

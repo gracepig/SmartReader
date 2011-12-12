@@ -25,6 +25,8 @@
     <SilverlightAppEntry>SmartReader.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +85,12 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DeleteButton.xaml.cs">
+      <DependentUpon>DeleteButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DeleteButtonIcon.xaml.cs">
+      <DependentUpon>DeleteButtonIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DownloadSetting.xaml.cs">
       <DependentUpon>DownloadSetting.xaml</DependentUpon>
@@ -151,6 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\DeleteButton.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DeleteButtonIcon.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DownloadSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

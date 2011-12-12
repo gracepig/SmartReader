@@ -26,5 +26,11 @@ namespace SmartReader.ViewModel
         {
             BookList = _storage.GetAllBooks();
         }
+
+        public void DeleteBook(Book deleteBook)
+        {
+            _storage.DeleteBook(deleteBook);
+            RefreshBookList();
+        }
     }
 }

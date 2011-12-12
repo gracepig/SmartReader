@@ -16,11 +16,6 @@ namespace SmartReader
             Shell = shell;
         }
 
-        public static void Show (Exception ex)
-        {
-            Shell.ShowExceptionError(ex);
-        }
-
         public static void Navigate (Uri uri)
         {
             Shell.Navigate(uri);
