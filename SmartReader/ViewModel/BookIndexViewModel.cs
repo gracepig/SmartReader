@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 using SmartReader.Helper;
 using SmartReader.Library.DataContract;
@@ -68,7 +69,6 @@ namespace SmartReader.ViewModel
                                        : DownloadStartIndex + ChapterToBeDownloadedCount - 1;
 
             var i = DownloadStartIndex - 1;
-            var newChapters = new List<Chapter>();
             var updatedChapters = new List<Chapter>();
 
             do
@@ -107,21 +107,12 @@ namespace SmartReader.ViewModel
 
             } while (i < downloadEndIndex);
             
-            //foreach (var chapter in updatedChapters)
-            //{
-            //    _storage.UpdateDB(chapter);
-            //}
             _storage.UpdateDB();
-            //foreach (var chapter in newChapters)
-            //{
-            //    PhoneStorage.GetPhoneStorageInstance();
-            //}
         }
 
         public void DownloadChapter(object s)
         {
             var cha = (DownloadTask)s;
-
             var downloader = new HttpContentDownloader();
             downloader.Download(cha.TaskChapter.ChapterUri, ar =>
             {
@@ -154,13 +145,6 @@ namespace SmartReader.ViewModel
             });
         }
 
-        public class DownloadTask
-        {
-            public Chapter TaskChapter;
-            public ManualResetEvent ResetEvent;
-            public int BatchCount;
-        }
-
         public void NextPageChapters()
         {
             Book.NextPageChapters();
@@ -180,26 +164,12 @@ namespace SmartReader.ViewModel
         {
             Book.LastPageChapters();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (PropertyChanged != null)
-            {
-                SmartDispatcher.BeginInvoke(() => PropertyChanged(this, e));
-            }
-        }
-
-        private void RaiseProperyChanged(string name)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(name));
-        }
-
+        
         public void Refresh()
         {
-            var downloader = new HttpContentDownloader();
 
+            ProgressIndicatorHelper.StartProgressIndicator(true);
+            var downloader = new HttpContentDownloader();
             downloader.Download(Book.IndexPage,
                 ar =>
                 {
@@ -215,19 +185,49 @@ namespace SmartReader.ViewModel
                     parser.Parse(response.GetResponseStream(), temp );
 
                     var newChapters = new List<Chapter>();
-                    newChapters.AddRange(Book.Chapters);
                     newChapters.AddRange(
                             temp.Chapters.Where
                             (
                                 chapter => !Book.Chapters.Any(c => c.ChapterName == chapter.ChapterName)
-                            )
-                        );
+                            ));
 
-                    if (newChapters.Count > Book.Chapters.Count())
+                    if (newChapters.Count > 0)
                     {
-                        Book.Chapters = newChapters.ToArray();
+                        var totalChapters = new List<Chapter>();
+                        totalChapters.AddRange(Book.Chapters);
+                        totalChapters.AddRange(newChapters);
+
+                        Book.Chapters = totalChapters.ToArray();
+                        RaiseProperyChanged("Book");
                     }
+                    else
+                    {
+                        CrossThreadHelper.CrossThreadMethodCall(() => MessageBox.Show("本书尚未有新的章节"));
+                    }
+
+                    ProgressIndicatorHelper.StopProgressIndicator();
                 });
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (PropertyChanged != null)
+            {
+                SmartDispatcher.BeginInvoke(() => PropertyChanged(this, e));
+            }
+        }
+
+        private void RaiseProperyChanged(string name)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(name));
+        }
+
+        public class DownloadTask
+        {
+            public Chapter TaskChapter;
+            public ManualResetEvent ResetEvent;
+            public int BatchCount;
         }
     }
 }

@@ -57,16 +57,16 @@
       <HintPath>..\packages\Coding4Fun.Phone.Controls.Complete.1.4.8\lib\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools">
-      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.dll</HintPath>
+      <HintPath>..\Dependency\ImageTools.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools.Controls">
-      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.Controls.dll</HintPath>
+      <HintPath>..\Dependency\ImageTools.Controls.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools.IO.Gif">
-      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.IO.Gif.dll</HintPath>
+      <HintPath>..\Dependency\ImageTools.IO.Gif.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools.IO.Png">
-      <HintPath>..\..\ImageTools 0.30\bin\Phone\ImageTools.IO.Png.dll</HintPath>
+      <HintPath>..\Dependency\ImageTools.IO.Png.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
@@ -85,12 +85,6 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DeleteButton.xaml.cs">
-      <DependentUpon>DeleteButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DeleteButtonIcon.xaml.cs">
-      <DependentUpon>DeleteButtonIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DownloadSetting.xaml.cs">
       <DependentUpon>DownloadSetting.xaml</DependentUpon>
@@ -159,14 +153,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="Controls\DeleteButton.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\DeleteButtonIcon.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\DownloadSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

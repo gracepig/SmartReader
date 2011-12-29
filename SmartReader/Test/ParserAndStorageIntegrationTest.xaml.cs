@@ -35,7 +35,7 @@ namespace SmartReader.Test
             var downloader = new HttpContentDownloader();
             var uri1 = new Uri(String.Format("http://www.tianhen.com/tian/Book/0/547/3165604.shtml"), UriKind.Absolute);
 
-            downloader.Download(uri1, new Chapter { ChapterUri = uri1, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
+            //downloader.Download(uri1, new Chapter { ChapterUri = uri1, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
             //var uri10 = new Uri(String.Format("http://www.ruyu.org/bk/0/200/1821260.html"), UriKind.Absolute);
             //downloader.Download(uri10, new Chapter { ChapterUri = uri10, ChapterName = "望河异论希（四）" }, new WebSiteBookContentPageParser());
         }

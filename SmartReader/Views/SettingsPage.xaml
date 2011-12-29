@@ -51,6 +51,16 @@
             <toolkit:ListPicker Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="DownloadChapterCountSelect" SelectedItem="{Binding DefaultDownloadItemCount,Mode=TwoWay}" VerticalAlignment="Center" >
             </toolkit:ListPicker>
 
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="网络超时设定（秒）" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="DefaultTimeOutInput" Grid.Row="2" Grid.Column="1"  Width="150" Text="{Binding DefaultTimeOutSeconds, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox.InputScope>
+                    <InputScope>
+                        <InputScopeName NameValue="TelephoneNumber" />
+                    </InputScope>
+                </TextBox.InputScope>
+            </TextBox>
         </Grid>
     </Grid>
  
@@ -59,10 +69,6 @@
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.settings.rest.png" Text="保存" Click="Save"/>
             <shell:ApplicationBarIconButton IconUri="/Images/appbar.cancel.rest.png" Text="取消" Click="Cancel"/>
-            <!--<shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>-->
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
