@@ -6,7 +6,7 @@ namespace SmartReader.Helper
     {
         private static ProgressIndicator _progressIndicator;
 
-        public static void StartProgressIndicator(bool isIndeterminate)
+        public static void StartProgressIndicator(bool isIndeterminate, string message)
         {
             if  ( _progressIndicator == null)
             {
@@ -15,7 +15,7 @@ namespace SmartReader.Helper
                 
             _progressIndicator.IsVisible = true;
             _progressIndicator.IsIndeterminate = isIndeterminate;
-            _progressIndicator.Text = "Loading";
+            //_progressIndicator.Text = string.IsNullOrEmpty(message) ? "Loading" : message;
             SystemTray.ProgressIndicator = _progressIndicator;
         }
 

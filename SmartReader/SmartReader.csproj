@@ -112,7 +112,6 @@
     <Compile Include="ViewModel\ChapterViewModel.cs" />
     <Compile Include="ViewModel\ModelManager.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
-    <Compile Include="ViewModel\Settings.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\BookIndexPage.xaml.cs">
       <DependentUpon>BookIndexPage.xaml</DependentUpon>

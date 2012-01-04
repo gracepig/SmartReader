@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using SmartReader.ViewModel;
+using SmartReader.Library;
 
 namespace SmartReader.Views
 {
@@ -31,11 +31,15 @@ namespace SmartReader.Views
             {
                 if (Exception is WebException)
                 {
+                   
                     UserFriendlyMessage.Text = "当前页面无法访问，请尝试其他网站。";
                 }
+
+                if (Exception is TimeoutException )
+                {
+                    UserFriendlyMessage.Text = Exception.Message;
+                }
             }
-
-
         }
     }
 }

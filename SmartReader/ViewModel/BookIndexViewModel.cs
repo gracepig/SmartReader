@@ -43,7 +43,8 @@ namespace SmartReader.ViewModel
             DownloadStartIndex = 1;
 
             int chapterToBeDownloadedCount;
-            ChapterToBeDownloadedCount = !AppSetting.TryGetSetting("DefaultDownloadBatchSize", out chapterToBeDownloadedCount) ? 10 : chapterToBeDownloadedCount;
+            ChapterToBeDownloadedCount = !AppSetting.TryGetSetting("DefaultDownloadBatchSize", out chapterToBeDownloadedCount) ?
+                                         10 : chapterToBeDownloadedCount;
         }
 
         private readonly PhoneStorage _storage = PhoneStorage.GetPhoneStorageInstance();
@@ -73,7 +74,7 @@ namespace SmartReader.ViewModel
 
             do
             {
-                var resetEvents = i + ThreadCount <= downloadEndIndex
+                WaitHandle[] resetEvents = i + ThreadCount <= downloadEndIndex
                                       ? new ManualResetEvent[ThreadCount]
                                       : new ManualResetEvent[1];
                 for (var j = 0; i + j < downloadEndIndex && j < resetEvents.Length; j++)
@@ -134,11 +135,15 @@ namespace SmartReader.ViewModel
                     if (_batchCompleteCount == cha.BatchCount)
                     {
                         _batchCompleteCount = 0;
-                        cha.ResetEvent.Set();
+                        ((ManualResetEvent) cha.ResetEvent).Set();
                     }
 
                 }catch (WebException e)
                 {
+                    if (e.Status == WebExceptionStatus.RequestCanceled)
+                    {
+                        throw new TimeoutException(String.Format("连接{0}超时", cha.TaskChapter.Book.WebSite.WebSiteName));
+                    }
                     //TODO need to recover from exception
                     ExceptionHandler.HandleException(e);
                 }
@@ -167,8 +172,7 @@ namespace SmartReader.ViewModel
         
         public void Refresh()
         {
-
-            ProgressIndicatorHelper.StartProgressIndicator(true);
+            ProgressIndicatorHelper.StartProgressIndicator(true , "更新本书目录");
             var downloader = new HttpContentDownloader();
             downloader.Download(Book.IndexPage,
                 ar =>
@@ -226,7 +230,7 @@ namespace SmartReader.ViewModel
         public class DownloadTask
         {
             public Chapter TaskChapter;
-            public ManualResetEvent ResetEvent;
+            public WaitHandle ResetEvent;
             public int BatchCount;
         }
     }

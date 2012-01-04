@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Microsoft.Phone.Controls;
+using SmartReader.Library;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Storage;
 using SmartReader.ViewModel;

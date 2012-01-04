@@ -30,7 +30,7 @@ namespace SmartReader.Views
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ProgressIndicatorHelper.StartProgressIndicator(true);
+            ProgressIndicatorHelper.StartProgressIndicator(true, "连接中");
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -75,13 +75,13 @@ namespace SmartReader.Views
 
         private void ShowNextChapter()
         {
-            ProgressIndicatorHelper.StartProgressIndicator(true);
+            ProgressIndicatorHelper.StartProgressIndicator(true, "读取下一章节内容");
             Model.NextChapter();
         }
 
         private void ShowPreviousChapter()
         {
-            ProgressIndicatorHelper.StartProgressIndicator(true);
+            ProgressIndicatorHelper.StartProgressIndicator(true, "读取上一章节内容");
             Model.PreviousChapter();
         }
 

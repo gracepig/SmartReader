@@ -1,19 +1,16 @@
 ﻿using System.IO.IsolatedStorage;
 using SmartReader.Library.Helper;
 
-namespace SmartReader.ViewModel
+namespace SmartReader.Library
 {
-    public class Settings : ViewModelBase
+    public class Settings 
     {
-        
 #if DEBUG 
     public static bool IsDebugMode=true;
 #else
         public static bool IsDebugMode=false;
 #endif
-
-
-public static int ChapterItemCountInSinglePage { set; get; }
+        public static int ChapterItemCountInSinglePage { set; get; }
 
         private static int _defaultDownloadItemCount = 10;
         public static int DefaultDownloadItemCount
@@ -24,12 +21,15 @@ public static int ChapterItemCountInSinglePage { set; get; }
 
         public static SearchEngineType DefaultSearchEngineType{ set; get;}
 
-        private static int _defaultTimeOutSeconds = 30;
+        private static int _defaultTimeOutSeconds;
         public static int DefaultTimeOutSeconds 
         { 
             set { _defaultTimeOutSeconds = value; }
-            get { return _defaultTimeOutSeconds; }
-        
+            get
+            {
+                if (_defaultTimeOutSeconds == 0) _defaultTimeOutSeconds = 30;
+                return _defaultTimeOutSeconds;
+            }
         }
 
         public const string ChapterItemCountInSinglePageKey = "ChapterItemCountInSinglePage";

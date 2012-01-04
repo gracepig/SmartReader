@@ -83,11 +83,11 @@
     <Compile Include="Network\HttpContentDownloader.cs" />
     <Compile Include="Parser\BookSite\WebSiteBookContentPageParser.cs" />
     <Compile Include="Parser\Sodu\SoduBookLastestUpdatePageParser.cs" />
-    <Compile Include="Parser\Sodu\SoduBookIndexPageParser.cs" />
     <Compile Include="Parser\Sodu\SoduSearchResultPageParser.cs" />
     <Compile Include="Parser\BookSite\WebsiteBookIndexPageParser.cs" />
     <Compile Include="Parser\Xiaoelang\XiaoelangBookLastestUpdatePageParser.cs" />
     <Compile Include="Parser\Xiaoelang\XiaoelangSearchResultPageParser.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Storage\PhoneStorage.cs" />
     <Compile Include="Storage\SmartReaderDataContext.cs" />
   </ItemGroup>

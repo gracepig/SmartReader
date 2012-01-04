@@ -14,6 +14,7 @@ using ImageTools.IO.Gif;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SmartReader.Helper;
+using SmartReader.Library;
 using SmartReader.Library.Helper;
 using SmartReader.Library.Storage;
 using SmartReader.Test;

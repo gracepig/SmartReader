@@ -12,7 +12,6 @@ namespace SmartReader.Views
         private readonly PhoneStorage _storage;
 
         private BookIndexViewModel _model;
-
         public BookIndexViewModel Model
         {
             set { _model = value;

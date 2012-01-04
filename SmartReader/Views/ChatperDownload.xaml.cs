@@ -30,11 +30,6 @@ namespace SmartReader.Views
             Model = ModelManager.GetBookIndexModel();
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-        }
-
         private void DownloadSetting(object sender, EventArgs e)
         {
             Model.DownloadStartIndex = 1;
@@ -72,7 +67,7 @@ namespace SmartReader.Views
 
         private void Download(object sender, EventArgs e)
         {
-            ProgressIndicatorHelper.StartProgressIndicator(false);
+            ProgressIndicatorHelper.StartProgressIndicator(false, "批量下载中");
             ProgressIndicatorHelper.SetIndicatorValue(0);
             Model.DownloadBookContents();
         }
@@ -94,7 +89,7 @@ namespace SmartReader.Views
         {
             if (firstTimeLoad)
             {
-                ProgressIndicatorHelper.StartProgressIndicator(true);
+                ProgressIndicatorHelper.StartProgressIndicator(true, "读取目录内容");
                 firstTimeLoad = false;
             }else
             {

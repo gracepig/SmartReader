@@ -53,7 +53,7 @@ namespace SmartReader.Views
                 Model.GetBookSiteBookIndexPageLink(book);
             }
 
-            ProgressIndicatorHelper.StartProgressIndicator(true);
+            ProgressIndicatorHelper.StartProgressIndicator(true, "ÏÂÔØÊé¼®Ä¿Â¼");
         }
 
         private void GetBookIndexPageCompleted(object sender, EventArgs e)

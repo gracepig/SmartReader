@@ -2,28 +2,35 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using SmartReader.Library.DataContract;
+using System.Threading;
+using System.Windows.Threading;
 using SmartReader.Library.Interface;
 
 namespace SmartReader.Library.Network
 {
     public class HttpContentDownloader : IDownloader 
     {
-        private readonly Dictionary< Object, IParser> _uriParserPairs = new Dictionary<Object, IParser>();
-
-        public void Download (Uri uri , SearchResult  keyWord)
-        {
-        }
-
-
+        private readonly Dictionary< Object, IParser> uriParserPairs = new Dictionary<Object, IParser>();
+        private RequestState state;
+        private Timer timer;
 
         public void Download(Uri targetUri, AsyncCallback callback)
         {
             var request = (HttpWebRequest)WebRequest.Create(targetUri);
-            var state = new RequestState { Request = request };
-            request.BeginGetResponse(callback,state );
-        }
+            state = new RequestState { Request = request, stopTimer = false };
 
+            request.BeginGetResponse(callback, state);
+
+            timer = new Timer(x =>  {
+                                        if (!state.stopTimer)
+                                        {
+                                            ((RequestState)x).Request.Abort();
+                                        }
+                                        timer.Dispose(); }, 
+                                    state, 
+                                    TimeSpan.FromSeconds(Settings.DefaultTimeOutSeconds), 
+                                    TimeSpan.FromTicks(0));
+        }
 
         public void DownloadPost(Uri targetUri, string key,  string data, AsyncCallback callback)
         {
@@ -42,14 +49,13 @@ namespace SmartReader.Library.Network
                                                    }
 
                                                    request.BeginGetResponse(callback, state);
-
                                                }, null);
         }
 
         #region only used by test code 
         public void Download(Uri uri, object metaData, IParser parser)
         {
-            _uriParserPairs.Add(metaData, parser);
+            uriParserPairs.Add(metaData, parser);
             var request = (HttpWebRequest)WebRequest.Create(uri);
             var state = new RequestState { Request = request, Metadata = metaData };
             request.BeginGetResponse(GetData, state);
@@ -60,7 +66,7 @@ namespace SmartReader.Library.Network
             var state = (RequestState)ar.AsyncState;
             var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
             response.GetResponseStream();
-            var parser = _uriParserPairs[state.Metadata];
+            var parser = uriParserPairs[state.Metadata];
             parser.Parse(response.GetResponseStream(), state.Metadata);
         }
         #endregion 
@@ -70,5 +76,7 @@ namespace SmartReader.Library.Network
     {
         public HttpWebRequest Request { set; get; }
         public object Metadata { set; get; }
+
+        public bool stopTimer = false;
     }
 }

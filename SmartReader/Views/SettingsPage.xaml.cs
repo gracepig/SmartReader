@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using SmartReader.Library;
 using SmartReader.Library.Helper;
-using SmartReader.ViewModel;
 
 namespace SmartReader.Views
 {

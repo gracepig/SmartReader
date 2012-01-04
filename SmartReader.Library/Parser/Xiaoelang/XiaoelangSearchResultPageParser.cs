@@ -46,7 +46,7 @@ namespace SmartReader.Library.Parser.Xiaoelang
                 if (aElement != null)
                 {
                     item.IndexPageUri = new Uri("http://www.xiaoelang.com" + aElement.Attributes["href"].Value, UriKind.Absolute);
-                    item.BookName = aElement.InnerText;
+                    item.BookName = aElement.InnerText.Trim();
                     item.Book = new Book();
                     item.Book.Name = item.BookName;
                 }
@@ -56,7 +56,7 @@ namespace SmartReader.Library.Parser.Xiaoelang
 
                 if (aElement != null)
                 {
-                    item.LastUpdateChapterName = aElement.InnerText;
+                    item.LastUpdateChapterName = aElement.InnerText.Trim();
                 }
                 //Parse last update time
                 //<td class="xt" align="center" valign="middle" width="78">2011-08-26</td>

@@ -63,7 +63,7 @@ namespace SmartReader.Library.Parser.Sodu
                 if (aElement != null)
                 {
                     item.IndexPageUri = new Uri(aElement.Attributes["href"].Value, UriKind.Absolute);
-                    item.BookName = aElement.InnerText;
+                    item.BookName = aElement.InnerText.Trim();
                     item.Book = new Book();
                     item.Book.Name = item.BookName;
                 }
@@ -73,7 +73,7 @@ namespace SmartReader.Library.Parser.Sodu
 
                 if (aElement != null)
                 {
-                    item.LastUpdateChapterName = aElement.InnerText;
+                    item.LastUpdateChapterName = aElement.InnerText.Trim();
                 }
 
                 //Parse last update time

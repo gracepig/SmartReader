@@ -64,13 +64,11 @@ namespace SmartReader.Library.Parser.Xiaoelang
             item.LastUpdateTime = DateTime.Now;
 
 
-            item.Name = metaData.Name;
+            item.Name = metaData.Name.Trim();
             item.IndexPage = new Uri("http://www.xiaoelang.com" + websiteIndexUrl.Attributes["href"].Value, UriKind.Absolute);
-            item.LastestUpdateChapterName = chaperUrl.InnerText;
+            item.LastestUpdateChapterName = chaperUrl.InnerText.Trim();
             item.WebSite = new WebSite();
-            item.WebSite.WebSiteName = websiteName.InnerText;
-            //item.LastUpdateTime = DateTime.Parse(HtmlParseHelper.GetSingleDirectChildByType(lowerTd, "td").InnerText);
-
+            item.WebSite.WebSiteName = websiteName.InnerText.Trim();
 
             if (item.WebSite.WebSiteName.Contains(websiteFilter1) || item.WebSite.WebSiteName.Contains(websiteFilter2))
                 return;

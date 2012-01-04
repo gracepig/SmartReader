@@ -67,15 +67,15 @@ namespace SmartReader.Library.Parser.Sodu
             var chapterUrl = hh.GetSingleDirectChildByType(topTd, "a");
             var lowerTd = hh.GetSingleDirectChildByType(topTd, "td");
 
-            item.Name = metaData.Name;
+            item.Name = metaData.Name.Trim();
             item.IndexPage = new Uri(chapterUrl.Attributes["href"].Value, UriKind.Absolute);
-            item.LastestUpdateChapterName = chapterUrl.InnerText;
+            item.LastestUpdateChapterName = chapterUrl.InnerText.Trim();
             item.WebSite = new WebSite();
-            item.WebSite.WebSiteName = hh.GetSingleDirectChildByType(lowerTd, "font").InnerText;
+            item.WebSite.WebSiteName = hh.GetSingleDirectChildByType(lowerTd, "font").InnerText.Trim();
             item.LastUpdateTime = DateTime.Parse(hh.GetSingleDirectChildByType(lowerTd, "td").InnerText);
             
-
-            if (item.WebSite.WebSiteName.Contains(websiteFilter1) || item.WebSite.WebSiteName.Contains(websiteFilter2))
+            if (item.WebSite.WebSiteName.Contains(websiteFilter1) 
+                || item.WebSite.WebSiteName.Contains(websiteFilter2))
                 return;
 
             var websiteBookPairAlreadyExists = (from i in items
@@ -87,8 +87,6 @@ namespace SmartReader.Library.Parser.Sodu
                 items.Add(item);
             }
         }
-
-
 
         public event EventHandler ParsingCompleted;
     }
