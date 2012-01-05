@@ -20,6 +20,7 @@ namespace SmartReader.ViewModel
     {
         private Book _book;
         public Book Book
+
         {
             set 
             { 
@@ -31,11 +32,17 @@ namespace SmartReader.ViewModel
                 return _book;
             }
         }
-
+        
+        private readonly Object _thisLock = new Object();
+        private int _batchCompleteCount;
+        private const int ThreadCount = 2;
         public int DownloadStartIndex { set; get; }
         public int ChapterToBeDownloadedCount { set; get; }
-
+        
+        private readonly PhoneStorage _storage = PhoneStorage.GetPhoneStorageInstance();
         public List<Chapter> Chapters { set; get; }
+        
+        private readonly List<HttpContentDownloader> DownloaderList = new List<HttpContentDownloader>();
 
         public BookIndexViewModel (Book targetBook)
         {
@@ -47,8 +54,6 @@ namespace SmartReader.ViewModel
                                          10 : chapterToBeDownloadedCount;
         }
 
-        private readonly PhoneStorage _storage = PhoneStorage.GetPhoneStorageInstance();
-
         public void DownloadBookContents()
         {
             _storage.SaveWebSite(Book.WebSite);
@@ -56,10 +61,6 @@ namespace SmartReader.ViewModel
             _storage.SaveChapters(Book.Chapters);
             ThreadPool.QueueUserWorkItem(DownloadChapters);
         }
-
-        private readonly Object _thisLock = new Object();
-        private int _batchCompleteCount;
-        private const int ThreadCount = 2;
 
         public void DownloadChapters(object s)
         {
@@ -115,6 +116,7 @@ namespace SmartReader.ViewModel
         {
             var cha = (DownloadTask)s;
             var downloader = new HttpContentDownloader();
+            DownloaderList.Add(downloader);
             downloader.Download(cha.TaskChapter.ChapterUri, ar =>
             {
                 try
@@ -174,6 +176,7 @@ namespace SmartReader.ViewModel
         {
             ProgressIndicatorHelper.StartProgressIndicator(true , "更新本书目录");
             var downloader = new HttpContentDownloader();
+            DownloaderList.Add(downloader);
             downloader.Download(Book.IndexPage,
                 ar =>
                 {
@@ -225,6 +228,14 @@ namespace SmartReader.ViewModel
         private void RaiseProperyChanged(string name)
         {
             OnPropertyChanged(new PropertyChangedEventArgs(name));
+        }
+
+        public void CancelRunningConnections()
+        {
+            foreach (var downloader in DownloaderList)
+            {
+                downloader.CancelConnection();
+            }
         }
 
         public class DownloadTask

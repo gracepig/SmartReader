@@ -15,7 +15,7 @@ namespace SmartReader.Helper
                 
             _progressIndicator.IsVisible = true;
             _progressIndicator.IsIndeterminate = isIndeterminate;
-            //_progressIndicator.Text = string.IsNullOrEmpty(message) ? "Loading" : message;
+            _progressIndicator.Text = string.IsNullOrEmpty(message) ? "Loading" : message;
             SystemTray.ProgressIndicator = _progressIndicator;
         }
 
@@ -32,9 +32,8 @@ namespace SmartReader.Helper
             CrossThreadHelper.CrossThreadMethodCall(() =>
                               {
                                  _progressIndicator.Value = d;
-                                 _progressIndicator.Text = string.Format("Loading " + d.ToString("#0%"));
+                                // _progressIndicator.Text = string.Format("Loading " + d.ToString("#0%"));
                               });
-            //SystemTray.ProgressIndicator = _progressIndicator;
         }
     }
 }

@@ -29,6 +29,8 @@ namespace SmartReader.Views
 
         private void BookSelected(object sender, RoutedEventArgs e)
         {
+            ProgressIndicatorHelper.StartProgressIndicator(true, "解析书籍目录链接");
+
             if (ModelManager.GetBookIndexModel().Book != null )
             {
                 ModelManager.GetBookIndexModel().Book.DisplayingChapters = null;    
@@ -52,16 +54,19 @@ namespace SmartReader.Views
             {
                 Model.GetBookSiteBookIndexPageLink(book);
             }
-
-            ProgressIndicatorHelper.StartProgressIndicator(true, "下载书籍目录");
         }
 
         private void GetBookIndexPageCompleted(object sender, EventArgs e)
         {
             ProgressIndicatorHelper.StopProgressIndicator();
-            CrossThreadHelper.CrossThreadMethodCall(() => 
-                NavigationService.Navigate(new Uri("/Views/ChatperDownload.xaml", UriKind.Relative))
-                );
+            CrossThreadHelper.CrossThreadMethodCall(() =>
+                                                        {
+                                                            ProgressIndicatorHelper.StartProgressIndicator(true,
+                                                                                                           "下载书籍目录");
+                                                            NavigationService.Navigate(
+                                                                new Uri("/Views/ChatperDownload.xaml", UriKind.Relative));
+                                                        }
+               );
         }
     }
 }

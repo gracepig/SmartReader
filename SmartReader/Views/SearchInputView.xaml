@@ -20,12 +20,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="Smart Reader" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Input " Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>-->
-
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="0" Margin="12,0,12,0">
             <Grid.RowDefinitions>
@@ -38,23 +32,24 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <ListBox x:Name="SearchResultList" ItemsSource="{Binding SearchBookResult}">
+            <ListBox x:Name="SearchResultList" ItemsSource="{Binding SearchBookResult}" ItemContainerStyle="{StaticResource ListBoxItemStyleNegativePadding}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Button Click="BookSelected">
+                        <Button Click="BookSelected" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="0">
                             <Button.Content>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition></RowDefinition>
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
-                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        
-                                        <TextBlock Text="{Binding Book.Name}" />
-                                    </StackPanel>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Row="1" Text="{Binding LastUpdateChapterName}" />
+                                    <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Orange"  Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Book.Name}" FontSize="18"  Padding="0" Margin="0" />
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding LastUpdateChapterName}" FontSize="18"  Padding="0" Margin="0"/>
                                 </Grid>
                             </Button.Content>
                         </Button>
@@ -63,17 +58,4 @@
             </ListBox>
         </Grid>
     </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-
 </phone:PhoneApplicationPage>

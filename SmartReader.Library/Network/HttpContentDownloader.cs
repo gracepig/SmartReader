@@ -52,6 +52,14 @@ namespace SmartReader.Library.Network
                                                }, null);
         }
 
+        public void CancelConnection()
+        {
+            if (!state.stopTimer)
+            {
+                state.Request.Abort();
+            }
+        }
+
         #region only used by test code 
         public void Download(Uri uri, object metaData, IParser parser)
         {

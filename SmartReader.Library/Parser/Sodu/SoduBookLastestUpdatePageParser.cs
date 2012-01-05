@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using HtmlAgilityPack;
 using SmartReader.Library.DataContract;
-using SmartReader.Library.Helper;
-using System.Linq;
 using SmartReader.Library.Interface;
 using hh = SmartReader.Library.Helper.HtmlParseHelper;
 
@@ -12,9 +11,7 @@ namespace SmartReader.Library.Parser.Sodu
 {
     public class SoduBookLastestUpdatePageParser : IParser 
     {
-        
         private List<Book> items = new List<Book>();
-
         public Book metaData;
 
         /// <summary>
@@ -25,9 +22,7 @@ namespace SmartReader.Library.Parser.Sodu
         /// <returns></returns>
         public object Parse(Stream inputStream, object state)
         {
-
             metaData = state as Book;
-
             var doc = new HtmlDocument();
             doc.Load(inputStream);
 
@@ -41,7 +36,6 @@ namespace SmartReader.Library.Parser.Sodu
             {
                 ParseChapterRow(tr);
             }
-
             return items;
         }
 
@@ -57,8 +51,9 @@ namespace SmartReader.Library.Parser.Sodu
         </tr> 
          ***/
 
-        private string websiteFilter1 = "起点";
-        private string websiteFilter2 = "纵横";
+        private const string WebsiteFilter1 = "起点";
+        private const string WebsiteFilter2 = "纵横";
+
         private void ParseChapterRow(HtmlNode tr)
         {
             var item = new Book();
@@ -74,8 +69,8 @@ namespace SmartReader.Library.Parser.Sodu
             item.WebSite.WebSiteName = hh.GetSingleDirectChildByType(lowerTd, "font").InnerText.Trim();
             item.LastUpdateTime = DateTime.Parse(hh.GetSingleDirectChildByType(lowerTd, "td").InnerText);
             
-            if (item.WebSite.WebSiteName.Contains(websiteFilter1) 
-                || item.WebSite.WebSiteName.Contains(websiteFilter2))
+            if (item.WebSite.WebSiteName.Contains(WebsiteFilter1) 
+                || item.WebSite.WebSiteName.Contains(WebsiteFilter2))
                 return;
 
             var websiteBookPairAlreadyExists = (from i in items

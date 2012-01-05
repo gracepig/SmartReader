@@ -104,9 +104,12 @@ namespace SmartReader.Views
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
+            Model.CancelRunningConnections();
+
             base.OnNavigatedFrom(e);
             firstTimeLoad = true;
             ProgressIndicatorHelper.StopProgressIndicator();
+
         }
     }
 }
