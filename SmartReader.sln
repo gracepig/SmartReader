@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartReader.Library", "Smar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PubReference", "PubReference", "{069B43B7-E636-48C6-BB82-DB4CC3D4A11A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartReaderTest", "SmartReaderTest\SmartReaderTest.csproj", "{007D85AA-AE83-464D-8704-6448652D9430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,12 @@ Global
 		{1AD15308-D71D-4154-AFBA-ECE1FB1C73D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AD15308-D71D-4154-AFBA-ECE1FB1C73D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AD15308-D71D-4154-AFBA-ECE1FB1C73D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007D85AA-AE83-464D-8704-6448652D9430}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

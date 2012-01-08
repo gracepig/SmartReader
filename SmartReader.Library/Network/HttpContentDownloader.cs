@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading;
-using System.Windows.Threading;
 using SmartReader.Library.Interface;
 
 namespace SmartReader.Library.Network

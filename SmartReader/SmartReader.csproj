@@ -102,11 +102,6 @@
     </Compile>
     <Compile Include="PageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\CommonModels.cs" />
-    <Compile Include="Test\TestDBHelper.cs" />
-    <Compile Include="Test\ViewTest.xaml.cs">
-      <DependentUpon>ViewTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\BookIndexViewModel.cs" />
     <Compile Include="ViewModel\BookListModel.cs" />
     <Compile Include="ViewModel\ChapterViewModel.cs" />
@@ -134,15 +129,6 @@
     <Compile Include="Views\SearchInputView.xaml.cs">
       <DependentUpon>SearchInputView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Test\ParserAndStorageIntegrationTest.xaml.cs">
-      <DependentUpon>ParserAndStorageIntegrationTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Test\TestParser.xaml.cs">
-      <DependentUpon>TestParser.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Test\TestStorage.xaml.cs">
-      <DependentUpon>TestStorage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -157,10 +143,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test\ViewTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,18 +171,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchInputView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test\ParserAndStorageIntegrationTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test\TestParser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test\TestStorage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -193,6 +193,7 @@ namespace SmartReader.ViewModel
                 {
                     //At this step, we can get the index page in the search engine 
                     var state = (RequestState)ar.AsyncState;
+                    state.stopTimer = true;
                     var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                     response.GetResponseStream();
 

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net;
-using System.Windows.Threading;
 using SmartReader.Helper;
 using SmartReader.Library;
 using SmartReader.Library.DataContract;
@@ -16,7 +14,7 @@ using SearchEngine = SmartReader.Library.DataContract.SearchEngine;
 
 namespace SmartReader.ViewModel
 {
-    public class SearchViewModel : INotifyPropertyChanged
+    public class SearchViewModel : ViewModelBase
     {
         private List<SearchResult> searchBookResult;
         public List<SearchResult> SearchBookResult
@@ -42,6 +40,7 @@ namespace SmartReader.ViewModel
             get { return selectedBook; }
         }
 
+        private readonly List<HttpContentDownloader> DownloaderList = new List<HttpContentDownloader>();
 
         public void Search(string keyword)
         {
@@ -53,6 +52,8 @@ namespace SmartReader.ViewModel
             }
 
             var downloader = new HttpContentDownloader();
+            DownloaderList.Add(downloader);
+
             var searchResult = new SearchResult();
 
             if (searchEngine.Type == SearchEngineType.Sodu)
@@ -108,6 +109,7 @@ namespace SmartReader.ViewModel
                                         {
                                             //At this step, we can get the index page in the search engine 
                                             var state = (RequestState)ar.AsyncState;
+                                            state.stopTimer = true;
                                             var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                                             response.GetResponseStream();
                                             var parser = new XiaoelangSearchResultPageParser();
@@ -135,6 +137,7 @@ namespace SmartReader.ViewModel
 
             Uri soduBookLatestUpdatePage = searchResult.IndexPageUri;
             var downloader = new HttpContentDownloader();
+            DownloaderList.Add(downloader);
             downloader.Download(soduBookLatestUpdatePage,
                 ar =>
                 {
@@ -180,10 +183,7 @@ namespace SmartReader.ViewModel
                             parser.Parse(response.GetResponseStream(), book);
 
                             DownloadAndParseWebSiteBookIndexPage(book);
-                            if (GetBookIndexPageCompleted != null)
-                            {
-                                GetBookIndexPageCompleted(this, null);
-                            }
+
                         }
                         catch (WebException e)
                         {
@@ -217,7 +217,15 @@ namespace SmartReader.ViewModel
                         var parser = new WebsiteBookIndexPageParser();
                         try
                         {
+                            ProgressIndicatorHelper.CrossThreadStartProgressIndicator(true, "下载完成，解析目录中");
                             parser.Parse(response.GetResponseStream(), book);
+                            SelectedBook = book;
+                            ModelManager.GetBookIndexModel().Book = SelectedBook;
+
+                            if (GetBookIndexPageCompleted != null)
+                            {
+                                GetBookIndexPageCompleted(this, null);
+                            }
                         }
                         catch (Exception e)
                         {
@@ -231,8 +239,7 @@ namespace SmartReader.ViewModel
                             throw new TimeoutException(String.Format("连接{0}目录页超时", book.WebSite.WebSiteName));
                         }
                     }
-                    SelectedBook = book;
-                    ModelManager.GetBookIndexModel().Book = SelectedBook;
+              
                 });
         }
 
@@ -261,20 +268,6 @@ namespace SmartReader.ViewModel
             return null;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (PropertyChanged != null)
-            {
-                SmartDispatcher.BeginInvoke(() => PropertyChanged(this, e));
-            }
-        }
-
-        private void RaiseProperyChanged(string name)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(name));
-        }
-
         public Book CheckBookExists(Book book)
         {
             var storage = PhoneStorage.GetPhoneStorageInstance();
@@ -287,6 +280,14 @@ namespace SmartReader.ViewModel
                 }
             }
             return null;
+        }
+
+        public void CancelRunningConnections()
+        {
+            foreach(var downloader in DownloaderList)
+            {
+                downloader.CancelConnection();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -16,21 +17,54 @@ using SmartReader.Library.Storage;
 
 namespace SmartReader.ViewModel
 {
-    public class BookIndexViewModel : INotifyPropertyChanged 
+    public class BookIndexViewModel : ViewModelBase  
     {
         private Book _book;
         public Book Book
-
         {
             set 
             { 
-                _book = value; 
+                _book = value;
+                if (_displayingChapters == null)
+                {
+                    int displayStartChapterIndex = 0;
+                    if (_book.LastReadChapterId > 0)
+                    {
+                        for (var i = 0; i < _book.Chapters.Length; i++)
+                        {
+                            if (_book.Chapters[i].Id == _book.LastReadChapterId)
+                            {
+                                displayStartChapterIndex = i;
+                            }
+                        }
+                    }
+
+                    if (_book.Chapters != null) 
+                    {
+                        DisplayingChapters = (from c in _book.Chapters
+                                              select c).Skip(displayStartChapterIndex)
+                                                       .Take(Constants.ChapterShowInOnePage).ToArray();
+                    }
+                   currentDisplayingChapterIndex = 0;
+                }
                 RaiseProperyChanged("Book");
             }
             get
             {
                 return _book;
             }
+        }
+
+        private int currentDisplayingChapterIndex;
+        private Chapter [] _displayingChapters;
+        public Chapter [] DisplayingChapters
+        {
+            set
+            {
+                _displayingChapters = value;
+                RaiseProperyChanged("DisplayingChapters");
+            }
+            get { return _displayingChapters; }
         }
         
         private readonly Object _thisLock = new Object();
@@ -40,13 +74,12 @@ namespace SmartReader.ViewModel
         public int ChapterToBeDownloadedCount { set; get; }
         
         private readonly PhoneStorage _storage = PhoneStorage.GetPhoneStorageInstance();
-        public List<Chapter> Chapters { set; get; }
         
         private readonly List<HttpContentDownloader> DownloaderList = new List<HttpContentDownloader>();
 
         public BookIndexViewModel (Book targetBook)
         {
-            Book = targetBook;
+            if (targetBook != null ) Book = targetBook;
             DownloadStartIndex = 1;
 
             int chapterToBeDownloadedCount;
@@ -66,6 +99,8 @@ namespace SmartReader.ViewModel
         {
             Debug.Assert(DownloadStartIndex > 0);
 
+            ProgressIndicatorHelper.CrossThreadStartProgressIndicator(false, "批量下载中");
+            ProgressIndicatorHelper.SetIndicatorValue(0);
             var downloadEndIndex = DownloadStartIndex + ChapterToBeDownloadedCount - 1 > Book.Chapters.Length
                                        ? Book.Chapters.Length
                                        : DownloadStartIndex + ChapterToBeDownloadedCount - 1;
@@ -123,6 +158,7 @@ namespace SmartReader.ViewModel
                 {
                     //At this step, we can get the index page in the search engine 
                     var state = (RequestState)ar.AsyncState;
+                    state.stopTimer = true;
                     var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                     response.GetResponseStream();
 
@@ -142,6 +178,7 @@ namespace SmartReader.ViewModel
 
                 }catch (WebException e)
                 {
+                    ProgressIndicatorHelper.StopProgressIndicator();
                     if (e.Status == WebExceptionStatus.RequestCanceled)
                     {
                         throw new TimeoutException(String.Format("连接{0}超时", cha.TaskChapter.Book.WebSite.WebSiteName));
@@ -151,25 +188,33 @@ namespace SmartReader.ViewModel
                 }
             });
         }
-
-        public void NextPageChapters()
+      
+        public void NextPage()
         {
-            Book.NextPageChapters();
+            DisplayingChapters = Book.Chapters.Skip(currentDisplayingChapterIndex + Constants.ChapterShowInOnePage)
+                                 .Take(Constants.ChapterShowInOnePage)
+                                 .ToArray();
+            currentDisplayingChapterIndex += Constants.ChapterShowInOnePage;
         }
 
-        public void PreviousPageChapters()
+        public void PreviousPage()
         {
-            Book.PreviousPageChapters();
+            DisplayingChapters = Book.Chapters.Skip(currentDisplayingChapterIndex - Constants.ChapterShowInOnePage)
+                                 .Take(Constants.ChapterShowInOnePage)
+                                 .ToArray();
+            currentDisplayingChapterIndex -= Constants.ChapterShowInOnePage;
         }
 
         public void FirstPage()
         {
-            Book.FirstPageChapters();
+            DisplayingChapters = Book.Chapters.Take(Constants.ChapterShowInOnePage).ToArray();
+            currentDisplayingChapterIndex = 0;
         }
 
         public void LastPage()
         {
-            Book.LastPageChapters();
+            DisplayingChapters = Book.Chapters.Skip(_book.Chapters.Count() - Constants.ChapterShowInOnePage).ToArray();
+            currentDisplayingChapterIndex = _book.Chapters.Count() - Constants.ChapterShowInOnePage;
         }
         
         public void Refresh()
@@ -182,6 +227,7 @@ namespace SmartReader.ViewModel
                 {
                     //At this step, we can get the index page in the search engine 
                     var state = (RequestState)ar.AsyncState;
+                    state.stopTimer = true;
                     var response = (HttpWebResponse)state.Request.EndGetResponse(ar);
                     response.GetResponseStream();
 
@@ -203,9 +249,9 @@ namespace SmartReader.ViewModel
                         var totalChapters = new List<Chapter>();
                         totalChapters.AddRange(Book.Chapters);
                         totalChapters.AddRange(newChapters);
-
+                        _storage.SaveChapters(newChapters);
                         Book.Chapters = totalChapters.ToArray();
-                        RaiseProperyChanged("Book");
+                        LastPage();
                     }
                     else
                     {
@@ -214,20 +260,6 @@ namespace SmartReader.ViewModel
 
                     ProgressIndicatorHelper.StopProgressIndicator();
                 });
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (PropertyChanged != null)
-            {
-                SmartDispatcher.BeginInvoke(() => PropertyChanged(this, e));
-            }
-        }
-
-        private void RaiseProperyChanged(string name)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(name));
         }
 
         public void CancelRunningConnections()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using HtmlAgilityPack;
 using SmartReader.Library.DataContract;
 using SmartReader.Library.Helper;
@@ -15,25 +16,36 @@ namespace SmartReader.Library.Parser.BookSite
     {
         private Book book; 
 
-        private List<Chapter> chapterList =  new List<Chapter>();
+        private readonly List<Chapter> chapterList =  new List<Chapter>();
 
         public object Parse(Stream inputStream, object state)
         {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
             book = state as Book;
-
             var content1 = EncodingHelper.FromGBKToUnicode(inputStream);
+            var decodeTime = stopWatch.ElapsedMilliseconds;
+
             inputStream.Close();
             var doc = new HtmlDocument();
             doc.LoadHtml(content1);
             var body = hh.GetSingleChildByTypeChain(doc.DocumentNode, new string[] { "html", "body" });
+
+
             if (body == null) body = doc.DocumentNode;
             CleanHtmlTree(body);
-            
+
+            var cleanTreeTime = stopWatch.ElapsedMilliseconds - decodeTime;
+
             var indexNode = GetIndexContentNode(body);
             var hyperLinkNodes = new List<HtmlNode>();
             hh.GetAllHyperlinkElementWithFilter(indexNode, hyperLinkNodes);
 
+            var getAllHyperLinkTime = stopWatch.ElapsedMilliseconds - cleanTreeTime - decodeTime;
+
             cleanHyperLinkNode(hyperLinkNodes);
+
+            var cleanHyperLinkTime = stopWatch.ElapsedMilliseconds - cleanTreeTime - decodeTime - getAllHyperLinkTime;
 
             Debug.Assert(hyperLinkNodes.Count > 0);
 
@@ -42,7 +54,9 @@ namespace SmartReader.Library.Parser.BookSite
                 ParseIndexContent(link);
             }
 
-            //book.Chapters = chapterList.ToArray();
+            var parseIndexContentTime = stopWatch.ElapsedMilliseconds - cleanTreeTime - decodeTime - getAllHyperLinkTime -
+                                        cleanHyperLinkTime;
+
             if (book.Chapters == null )
             {
                 book.Chapters = chapterList.ToArray();
@@ -50,8 +64,6 @@ namespace SmartReader.Library.Parser.BookSite
             else
             {
                 var oldList = book.Chapters.ToList();
-                //oldList.AddRange(chapterList.Where(c => !book.Chapters.Any(chapter => chapter.ChapterUri == c.ChapterUri)));
-                //book.Chapters = oldList.ToArray();    
 
                 if (oldList.Count < chapterList.Count)
                 {
@@ -63,6 +75,15 @@ namespace SmartReader.Library.Parser.BookSite
 
                 book.Chapters = oldList.ToArray(); 
             }
+
+            var totalTime = stopWatch.ElapsedMilliseconds;
+            stopWatch.Stop();
+
+            var time =
+                String.Format(
+                    "cleanTreeTime {0}\n getAllHyperLinkTime {1}\n decodeTime {2}\n cleanHyperLinkTime {3}\n parseIndexContentTime {4}\n Totaltime {5}\n",
+                    cleanTreeTime, getAllHyperLinkTime, decodeTime, cleanHyperLinkTime, parseIndexContentTime, totalTime);
+
             return book;
         }
 

@@ -17,7 +17,7 @@ namespace SmartReader.Views
              set 
              { 
                  _model = value;
-                 DataContext = value;
+                 this.DataContext = Model;
              }
             get { return _model; }
         }
@@ -47,12 +47,13 @@ namespace SmartReader.Views
 
         private void NextPage(object sender, EventArgs e)
         {
-            Model.NextPageChapters();
+            Model.NextPage();
+            DataContext = Model;
         }
 
         private void PreviousPage(object sender, EventArgs e)
         {
-            Model.PreviousPageChapters();
+            Model.PreviousPage();
         }
 
         private void FirstPage(object sender, EventArgs e)
@@ -67,8 +68,6 @@ namespace SmartReader.Views
 
         private void Download(object sender, EventArgs e)
         {
-            ProgressIndicatorHelper.StartProgressIndicator(false, "批量下载中");
-            ProgressIndicatorHelper.SetIndicatorValue(0);
             Model.DownloadBookContents();
         }
 
@@ -105,11 +104,9 @@ namespace SmartReader.Views
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
             Model.CancelRunningConnections();
-
             base.OnNavigatedFrom(e);
             firstTimeLoad = true;
             ProgressIndicatorHelper.StopProgressIndicator();
-
         }
     }
 }

@@ -42,12 +42,12 @@ namespace SmartReader.Views
 
         private void NextPage(object sender, EventArgs e)
         {
-            Model.NextPageChapters();
+            Model.NextPage();
         }
 
         private void PreviousPage(object sender, EventArgs e)
         {
-            Model.PreviousPageChapters();
+            Model.PreviousPage();
         }
 
         private void FirstPage(object sender, EventArgs e)

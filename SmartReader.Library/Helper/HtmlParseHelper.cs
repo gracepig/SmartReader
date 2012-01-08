@@ -152,30 +152,32 @@ namespace SmartReader.Library.Helper
         {
             foreach (var child in node.DescendantNodes())
             {
-                if (child.Name.ToLower() == "a")
+                if (child.Name.ToLower() == "a" 
+                    && child.Attributes["target"] == null 
+                    && child.Attributes["onclick"] == null
+                    && child.InnerText.Trim().Length > 1
+                    && !child.InnerText.Contains("最新章节")
+                   )
                 {
-                    if (!String.IsNullOrWhiteSpace(child.InnerText) 
-                        && child.InnerText.Trim().Length > 1
-                        && child.Attributes["href"] != null
-                        && !child.Attributes["href"].Value.EndsWith("/") 
-                        && !child.InnerText.Contains("最新章节")
-                        && !child.Attributes["href"].Value.Contains("xiazai")
-                        && !child.Attributes["href"].Value.Contains("shuye")
-                        && !String.IsNullOrEmpty(child.Attributes["href"].Value)
-                        && !child.Attributes["href"].Value.ToLower().Contains("javascript")
-                        && !child.Attributes["href"].Value.ToLower().Contains("php")
-                        && !child.Attributes["href"].Value.ToLower().Contains("list")
-                        && !child.Attributes["href"].Value.ToLower().Contains("index")
-                        && !child.Attributes["href"].Value.ToLower().Contains("mailto")
-                        && !(child.Attributes["target"] != null)
-                        && child.Attributes["onclick"] == null )
+                    var href = child.Attributes["href"];
+                    var hrefValue = href == null ? String.Empty : href.Value.ToLower();
+                    if ( href != null
+                        && !String.IsNullOrEmpty(hrefValue)
+                        && !hrefValue.EndsWith("/") 
+                        && !hrefValue.Contains("xiazai")
+                        && !hrefValue.Contains("shuye")
+                        && !hrefValue.Contains("javascript")
+                        && !hrefValue.Contains("php")
+                        && !hrefValue.Contains("list")
+                        && !hrefValue.Contains("index")
+                        && !hrefValue.Contains("mailto")
+                       )
                     {
                         if (!hyperLinkNode.Contains(child))
                             hyperLinkNode.Add(child);
                     }
                     continue;
                 }
-
                 GetAllHyperlinkElementWithFilter(child, hyperLinkNode);
             }
         }

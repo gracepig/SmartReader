@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ImageTools.IO.Gif;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -17,8 +8,6 @@ using SmartReader.Helper;
 using SmartReader.Library;
 using SmartReader.Library.Helper;
 using SmartReader.Library.Storage;
-using SmartReader.Test;
-using SmartReader.ViewModel;
 using SmartReader.Views;
 
 namespace SmartReader
@@ -30,8 +19,6 @@ namespace SmartReader
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-
-        private PhoneApplicationPage RootPage = null;
 
         /// <summary>
         /// Constructor for the Application object.
@@ -80,17 +67,9 @@ namespace SmartReader
             {
                 if (db1.DatabaseExists() == false)
                 {
-                    //db1.DeleteDatabase();
                   db1.CreateDatabase();
                 }
-                //else
-                //{
-                //    db1.DeleteDatabase();
-                //    db1.CreateDatabase();
-                //}
             }
-
-            //App.Current.RootVisual = new ViewTest();
         }
 
         // Code to execute when the application is launching (eg, from Start)

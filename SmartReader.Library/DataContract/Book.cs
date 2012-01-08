@@ -40,40 +40,13 @@ namespace SmartReader.Library.DataContract
             {
                 _chapters = value;
 
-                if (_displayingChapters == null)
-                {
 
-                    int displayStartChapterIndex = 0;
-                    if (LastReadChapterId > 0)
-                    {
-                        for(var i =0 ; i< Chapters.Length; i++)
-                        {
-                            if (Chapters[i].Id == LastReadChapterId)
-                            {
-                                displayStartChapterIndex = i;
-                            }
-                        }
-                    }
-
-                    _displayingChapters = (from c in Chapters
-                                           select c).Skip(displayStartChapterIndex).Take(Constants.ChapterShowInOnePage).ToArray();
-                    currentDisplayingChapterIndex = 0;
-                }
             }
             get { return _chapters; }
         }
 
-        private int currentDisplayingChapterIndex;
-        private Chapter[] _displayingChapters;
-        public Chapter[] DisplayingChapters
-        {
-            set
-            {
-                _displayingChapters = value;
-                NotifyPropertyChanged("DisplayingChapters"); 
-            }
-            get { return _displayingChapters; }
-        }
+
+
 
         public Chapter[] DownloadChapters { get; set; }
 
@@ -213,28 +186,6 @@ namespace SmartReader.Library.DataContract
 
         public string RootUrl;
 
-        public void NextPageChapters()
-        {
-            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex + Constants.ChapterShowInOnePage).Take(Constants.ChapterShowInOnePage).ToArray();
-            currentDisplayingChapterIndex += Constants.ChapterShowInOnePage;
-        }
 
-        public void PreviousPageChapters()
-        {
-            DisplayingChapters = Chapters.Skip(currentDisplayingChapterIndex - Constants.ChapterShowInOnePage).Take(Constants.ChapterShowInOnePage).ToArray();
-            currentDisplayingChapterIndex -= Constants.ChapterShowInOnePage;
-        }
-
-        public void FirstPageChapters()
-        {
-            DisplayingChapters = Chapters.Take(Constants.ChapterShowInOnePage).ToArray();
-            currentDisplayingChapterIndex = 0;
-        }
-
-        public void LastPageChapters()
-        {
-            DisplayingChapters = Chapters.Skip(Chapters.Count() - Constants.ChapterShowInOnePage).ToArray();
-            currentDisplayingChapterIndex = Chapters.Count() - Constants.ChapterShowInOnePage;
-        }
     }
 }

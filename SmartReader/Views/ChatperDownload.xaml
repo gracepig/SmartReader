@@ -20,48 +20,12 @@
         <Converter:BoolToVisibilityConverter x:Name="ShowDownloadStatusConverter" />
     </phone:PhoneApplicationPage.Resources>
     
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>-->
-
-        <!--ContentPanel - place additional content here-->
-        <!--<ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Button>
-                        <Button.Content>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Button Grid.Row="0"  Click="ShowChapter">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding ChapterName}" HorizontalAlignment="Left"/>
-                                            <TextBlock Text="已下载" HorizontalAlignment="Right" Visibility="{Binding Downloaded, Converter={StaticResource ShowDownloadStatusConverter}}" />
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
-                        </Button.Content>
-                    </Button>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
-
-        <StackPanel Grid.Row="0">
-            <!--<Controls:MemoryCounter />-->
-        </StackPanel>
-        <ListBox Grid.Row="1" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" LayoutUpdated="ChapterListPageLayoutUpdated" >
+        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0" > <!-- LayoutUpdated="ChapterListPageLayoutUpdated" >-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch">
@@ -82,7 +46,8 @@
                                         <ColumnDefinition Width="60"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding ChapterName}" HorizontalAlignment="Left" FontSize="18"/>
-                                    <TextBlock Grid.Column="1" Text="已下载" HorizontalAlignment="Right" Visibility="{Binding Downloaded, Converter={StaticResource ShowDownloadStatusConverter}}" FontSize="18"/>
+                                    <TextBlock Grid.Column="1" Text="已下载" HorizontalAlignment="Right" FontSize="18"
+                                               Visibility="{Binding Downloaded, Converter={StaticResource ShowDownloadStatusConverter}}" />
                                 </Grid>
                             </Button.Content>
                         </Button>
@@ -92,8 +57,6 @@
         </ListBox>
     </Grid>
 
-
-    <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="DownloadSetting" Click="PreviousPage"/>

@@ -9,6 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:Converter="clr-namespace:SmartReader.Converter"
     xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:Converter1="clr-namespace:SmartReader.Converter;assembly=SmartReader"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -17,7 +18,7 @@
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
-        <Converter:VisibilityConverter x:Key="BoolToVisibilityConverter" ></Converter:VisibilityConverter>
+        <Converter1:VisibilityConverter x:Key="BoolToVisibilityConverter" ></Converter1:VisibilityConverter>
         <Style x:Key="PerformanceProgressBar" TargetType="ProgressBar">
             <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}"/>
             <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>

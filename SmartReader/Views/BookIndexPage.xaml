@@ -34,7 +34,7 @@
         </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding Book.DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0">
+        <ListBox Grid.Row="0" x:Name="ChapterList" ItemsSource="{Binding DisplayingChapters}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Padding="0" Margin="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                             <Grid HorizontalAlignment="Stretch">
